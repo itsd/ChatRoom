@@ -1,0 +1,14 @@
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\bin\Debug\ChatRoom.Entity.dll.config
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\bin\Debug\ChatRoom.Entity.dll
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\bin\Debug\ChatRoom.Entity.pdb
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\bin\Debug\ChatRoom.Domain.dll
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\bin\Debug\EntityFramework.dll
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\bin\Debug\MySql.Data.dll
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\bin\Debug\mysql.data.entity.EF6.dll
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\bin\Debug\ChatRoom.Domain.pdb
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\bin\Debug\EntityFramework.xml
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\obj\Debug\ChatRoom.Entity.csprojResolveAssemblyReference.cache
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\obj\Debug\ChatRoom.Entity.dll
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\obj\Debug\ChatRoom.Entity.pdb

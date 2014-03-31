@@ -1,0 +1,105 @@
+﻿@import 'configuration.less';
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #f8f5f5;
+	font-family: 'Open Sans', Helvetica, "Lucida Grande", sans-serif;
+
+	#loading {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		width: 40px;
+		height: 40px;
+		margin: -20px 0 0 -20px;
+		background: rgba(0,0,0,0.8) url("images/loading.gif") center center no-repeat;
+		z-index: 99999999;
+		border-radius: 5px;
+		//.border-radius(5px);
+	}
+
+	header {
+		height: 45px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		background-color: @brangColor;
+	}
+
+	.login-content {
+		width: 900px;
+		height: 300px;
+		margin: 150px auto 0 auto;
+
+		.login {
+			width: 270px;
+			margin: 150px auto 10px auto;
+			padding: 20px 10px;
+			/*border: 1px solid #b5b0b0;*/
+			border: 1px solid @brangColor;
+			border-radius: 3px;
+			background-color: #fbfbfb;
+
+			.label {
+				display: inline-block;
+				float: left;
+				height: 37px;
+				font-size: 14px;
+				margin-top: 2px;
+			}
+
+			.input {
+				display: inline-block;
+				float: right;
+				height: 37px;
+
+				input {
+					/*border: 1px solid #8e8c8c;*/
+					border: 1px solid @brangColor;
+					border-radius: 3px;
+					height: 24px;
+					padding: 0 2px;
+					font-size: 12px;
+					width: 155px;
+				}
+			}
+
+			.button-content {
+				float: right;
+
+				.btn {
+					padding: 4px 3px;
+					width: 70px;
+					font-size: 11px;
+					cursor: pointer;
+					border: 1px solid @brangColor;
+					border-radius: 2px;
+					background-color: #e5e0e0;
+
+					&:active {
+						background-color: #a5a5a5;
+					}
+				}
+			}
+		}
+
+		.error {
+			width: 270px;
+			margin: 0 auto;
+			padding: 10px;
+			border: 1px solid #fc3434;
+			background-color: #f89494;
+			border-radius: 3px;
+			text-align: center;
+			color: red;
+			font-size: 14px;
+		}
+	}
+
+	.clearfix {
+		clear: both;
+	}
+}

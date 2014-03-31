@@ -1,0 +1,21 @@
+﻿<div class="login-content">
+	<div class="login">
+		<div class="label">Username:</div>
+		<div class="input">
+			<input type="text" ng-model="username" />
+		</div>
+		<div class="clearfix"></div>
+		<div class="label">Password:</div>
+		<div class="input">
+			<input type="password" ng-model="password" />
+		</div>
+		<div class="clearfix"></div>
+		<div class="button-content">
+			<input class="btn" type="submit" ng-click="login()" ng-disabled="username=='' || password==''" value="Login" />
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	<div class="error" ng-show="errorMessage">{{errorMessage}}</div>
+</div>
+<loading />

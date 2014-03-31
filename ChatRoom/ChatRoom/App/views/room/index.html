@@ -1,0 +1,104 @@
+﻿<div class="room">
+	<div ng-repeat="chat in chatArray" class="text-item">
+		<div class="user-image">
+			<img src="http://4vector.com/i/free-vector-male-user-icon-clip-art_125620_male-user-icon-clip-art/Male_User_Icon_clip_art_hight.png" />
+		</div>
+		<div class="user-message">
+			{{chat.text}}
+		</div>
+		<div class="user-message-date">
+			{{chat.timeAgo}} minutes ago
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+</div>
+
+<div class="room-chat-content">
+	<table>
+		<tr>
+			<td>
+				<input enter type="text" ng-model="writeText" />
+			</td>
+			<td>
+				<button id="btnSender" ng-click="send()" ng-disabled="writeText==''">Send</button>
+
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div class="online-users">
+	<div class="online-user-item" ng-repeat="user in onlineUsers" data-id="{{user.ID}}">
+		<div class="online-user-img">
+			<img src="http://4vector.com/i/free-vector-male-user-icon-clip-art_125620_male-user-icon-clip-art/Male_User_Icon_clip_art_hight.png" />
+		</div>
+		<div class="online-user-fullname">{{user.Username}}</div>
+	</div>
+
+	<div class="clearfix"></div>
+</div>
+
+<div class="dock">
+
+	<div class="item" ng-repeat="room in roomArray">
+		<a class="opener-link opener-link-{{$index}}" ng-click="openChat($index)">
+			<div class="item-opener">
+				<span>{{room.userTo}}</span>
+			</div>
+		</a>
+		<div class="item-content item-content-{{$index}}">
+			<a class="closer-link-{{$index}}" ng-click="closeChat($index)">
+				<div class="item-content-header">
+					<span>{{room.userTo}}</span>
+				</div>
+			</a>
+			<div class="item-content-body">
+
+				<div ng-class="{'item-content-body-message-you':message.isYou, 'item-content-body-message':!message.isYou}" ng-repeat="message in messagesArray">
+					<a ng-show="!message.isYou">
+						<img class="message-img" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/c13.4.48.48/s32x32/538542_460714540627865_1262920259_t.jpg" />
+					</a>
+					<div class="item-content-body-message-comment">
+						{{message.comment}}
+					</div>
+				</div>
+
+				<div class="item-content-body-end"></div>
+			</div>
+			<div class="item-content-footer">
+				<input type="text" />
+			</div>
+		</div>
+	</div>
+
+	<div class="item dock-users">
+		<a class="opener-link opener-link-users" ng-click="openChat('users')">
+			<div class="item-opener">
+				<span>Chat</span>
+			</div>
+		</a>
+
+		<div class="item-content item-content-users">
+			<a class="closer-link-users" ng-click="closeChat('users')">
+				<div class="item-content-header">
+					<span>Chat</span>
+				</div>
+			</a>
+			<div class="item-content-body">
+
+				<a ng-repeat="user in onlineUsers" ng-click="startTalk($index)">
+					<div class="online-user-item" data-id="{{user.ID}}">
+						<div class="online-user-img">
+							<img src="http://4vector.com/i/free-vector-male-user-icon-clip-art_125620_male-user-icon-clip-art/Male_User_Icon_clip_art_hight.png" />
+						</div>
+						<div class="online-user-fullname">{{user.Username}}</div>
+					</div>
+				</a>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</div>
+	</div>
+</div>

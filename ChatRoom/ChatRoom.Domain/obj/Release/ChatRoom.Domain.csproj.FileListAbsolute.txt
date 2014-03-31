@@ -1,0 +1,4 @@
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Domain\bin\Release\ChatRoom.Domain.dll
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Domain\bin\Release\ChatRoom.Domain.pdb
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Domain\obj\Release\ChatRoom.Domain.dll
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Domain\obj\Release\ChatRoom.Domain.pdb

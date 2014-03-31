@@ -1,0 +1,52 @@
+﻿@import 'configuration.less';
+
+@media all and (max-width:940px) {
+	.online-users {
+		display: none;
+	}
+
+	.dock-tablet {
+		display: block !important;
+		position: relative;
+	}
+
+	.dock {
+		.dock-users {
+			.opener-link-users {
+				display: block !important;
+			}
+
+			.item-content-users {
+				.item-content-body {
+					.online-user-item {
+						padding: 3px 3px 3px 5px;
+						margin-bottom: 1px;
+						cursor: pointer;
+
+						&:hover {
+							background-color: #c2c2c2;
+						}
+
+						.online-user-img {
+							display: inline-block;
+							width: 40px;
+
+							img {
+								width: 30px;
+								height: 30px;
+								border-radius: 3px;
+							}
+						}
+
+						.online-user-fullname {
+							display: inline-block;
+							font-size: 11px;
+							vertical-align: top;
+							margin-top: 8px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

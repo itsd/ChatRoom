@@ -1,0 +1,9 @@
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Services\bin\Release\ChatRoom.Services.dll
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Services\bin\Release\ChatRoom.Services.pdb
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Services\bin\Release\ChatRoom.Domain.dll
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Services\bin\Release\ChatRoom.Shared.dll
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Services\bin\Release\ChatRoom.Domain.pdb
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Services\bin\Release\ChatRoom.Shared.pdb
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Services\obj\Release\ChatRoom.Services.csprojResolveAssemblyReference.cache
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Services\obj\Release\ChatRoom.Services.dll
+C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Services\obj\Release\ChatRoom.Services.pdb

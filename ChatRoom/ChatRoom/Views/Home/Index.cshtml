@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html ng-app="chatApp">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chat Room</title>
+	<link href="~/Content/Site.css" rel="stylesheet" />
+	<link href="~/Content/room.css" rel="stylesheet" />
+	<link href="~/Content/configuration.css" rel="stylesheet" />
+	<link href="~/Content/room_mobile.css" rel="stylesheet" />
+</head>
+<body>
+
+	<header></header>
+
+	<div class="content">
+
+		<div id="ngView" ng-view ng-cloak class="content"></div>
+
+	</div>
+
+	<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+	@Scripts.Render("~/bundles/angular")
+	@Scripts.Render("~/bundles/angular/app")
+	@Scripts.Render("~/bundles/angular/controllers")
+
+	@*<script src="~/Scripts/angular.js"></script>
+	<script src="~/Scripts/angular-route.js"></script>
+	<script src="~/Scripts/angular-cookies.js"></script>
+	<script src="~/Scripts/angular-resource.js"></script>
+
+	<script src="~/App/app.js"></script>
+	<script src="~/App/routing.js"></script>
+	<script src="~/App/configuration.js"></script>
+	<script src="~/App/services/serssionService.js"></script>
+	<script src="~/App/directives/common.js"></script>
+
+	<script src="~/App/controllers/baseController.js"></script>
+	<script src="~/App/controllers/indexController.js"></script>
+	<script src="~/App/controllers/loginController.js"></script>
+	<script src="~/App/controllers/roomController.js"></script>*@
+
+
+</body>
+</html>
