@@ -8,6 +8,7 @@ namespace ChatRoom.Server.Models.responses {
 		Default = 0,
 		OnlineUsers = 1,
 		ComesOnline = 2,
-		WentOffline = 3
+		WentOffline = 3,
+		RoomCreated = 4
 	}
 }

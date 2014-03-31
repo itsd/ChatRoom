@@ -19,7 +19,9 @@ using ChatRoom.Server.Models.entities;
 namespace ChatRoom.Server.Models.context {
 	public class SocketContext {
 		private static Dictionary<string, Session> _users = new Dictionary<string, Session> { };
-		private static Dictionary<string, ChatRoomSocketCollection> _rooms = new Dictionary<string, ChatRoomSocketCollection> { };
+		private static Dictionary<string, ChatRoomSocketCollection> _socketRooms = new Dictionary<string, ChatRoomSocketCollection> { };
+		private static Dictionary<string, IEnumerable<int>> _chatRooms = new Dictionary<string, IEnumerable<int>> { };
+
 		private ISessionService _sessionService;
 
 		public static SocketContext Current {
@@ -74,10 +76,10 @@ namespace ChatRoom.Server.Models.context {
 		}
 
 		public void AddToRoom(WebSocketHandler socket, string roomKey) {
-			if(!_rooms.ContainsKey(roomKey)) {
-				_rooms.Add(roomKey, new ChatRoomSocketCollection { });
+			if(!_socketRooms.ContainsKey(roomKey)) {
+				_socketRooms.Add(roomKey, new ChatRoomSocketCollection { });
 			}
-			_rooms[roomKey].Add(socket);
+			_socketRooms[roomKey].Add(socket);
 		}
 
 		public void AddToPrivateRoom(WebSocketHandler socket) {
@@ -87,14 +89,14 @@ namespace ChatRoom.Server.Models.context {
 
 		public void WentOffline(WebSocketHandler socket) {
 			var session = GetSession(socket);
-			_rooms.Remove(session.GetSessionPrivateKey());
+			_socketRooms.Remove(session.GetSessionPrivateKey());
 			_users.Remove(session.GetSessionPrivateKey());
 		}
 
 		public void SendOnlineFriendsToUser(WebSocketHandler socket) {
 			var session = GetSession(socket);
 			if(_users.Count > 0) {
-				_rooms[session.GetSessionPrivateKey()].SendOnlineUsers(new ChatRoomOnlineUsersResponse {
+				_socketRooms[session.GetSessionPrivateKey()].SendOnlineUsers(new ChatRoomOnlineUsersResponse {
 					Users = _users.Where(x => x.Key != session.GetSessionPrivateKey()).Select(x => (SocketUser)x.Value)
 				});
 			}
@@ -102,7 +104,7 @@ namespace ChatRoom.Server.Models.context {
 
 		public void SendComeToOnlineNotificationToUsers(WebSocketHandler socket) {
 			var session = GetSession(socket);
-			foreach(var item in _rooms.Where(x => x.Key != session.GetSessionPrivateKey())) {
+			foreach(var item in _socketRooms.Where(x => x.Key != session.GetSessionPrivateKey())) {
 				item.Value.SendComeOnline(new ChatRoomCameOnlineResponse {
 					ID = session.UserID,
 					Username = session.Username
@@ -112,12 +114,29 @@ namespace ChatRoom.Server.Models.context {
 
 		public void SendWentOfflineNotificationToUsers(WebSocketHandler socket) {
 			var session = GetSession(socket);
-			foreach(var item in _rooms.Where(x => x.Key != session.GetSessionPrivateKey())) {
+			foreach(var item in _socketRooms.Where(x => x.Key != session.GetSessionPrivateKey())) {
 				item.Value.SendWentOffline(new ChatRoomWentOfflineResponse {
 					ID = session.UserID,
 					Username = session.Username
 				});
 			}
+		}
+
+		public void SendRoomCreatedNotification(WebSocketHandler socket, string roomId) {
+			var session = GetSession(socket);
+			foreach(var item in _socketRooms.Where(x => x.Key == session.GetSessionPrivateKey())) {
+				item.Value.SendRoomCreated(new ChatRoomRoomCreatedResponse {
+					RoomID = roomId
+				});
+			}
+		}
+
+		public string CreateChatRoomWithUsers(WebSocketHandler socket, IEnumerable<int> userIds) {
+			var session = GetSession(socket);
+			var roomId = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N");
+			((List<int>)userIds).Add(session.UserID);
+			_chatRooms.Add(roomId, userIds);
+			return roomId;
 		}
 	}
 }

@@ -9,3 +9,14 @@ C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Mongo\bin\Debu
 C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Mongo\bin\Debug\MongoDB.Driver.dll
 C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Mongo\bin\Debug\MongoDB.Bson.xml
 C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Mongo\bin\Debug\MongoDB.Driver.xml
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Debug\ChatRoom.Mongo.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Debug\ChatRoom.Mongo.pdb
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Debug\ChatRoom.Domain.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Debug\MongoDB.Bson.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Debug\MongoDB.Driver.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Debug\ChatRoom.Domain.pdb
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Debug\MongoDB.Bson.xml
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Debug\MongoDB.Driver.xml
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\obj\Debug\ChatRoom.Mongo.csprojResolveAssemblyReference.cache
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\obj\Debug\ChatRoom.Mongo.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\obj\Debug\ChatRoom.Mongo.pdb

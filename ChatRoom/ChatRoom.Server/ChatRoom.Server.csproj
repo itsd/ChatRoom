@@ -151,9 +151,13 @@
     <Compile Include="Models\context\SocketContext.cs" />
     <Compile Include="Models\entities\SocketUser.cs" />
     <Compile Include="Models\Infrastructure\Utilites.cs" />
+    <Compile Include="Models\requests\ChatRoomCreateRoomRequest.cs" />
+    <Compile Include="Models\requests\ChatRoomRequestBase.cs" />
+    <Compile Include="Models\requests\Enumerations.cs" />
     <Compile Include="Models\responses\ChatRoomCameOnlineResponse.cs" />
     <Compile Include="Models\responses\ChatRoomOnlineUsersResponse.cs" />
     <Compile Include="Models\responses\ChatRoomResponseBase.cs" />
+    <Compile Include="Models\responses\ChatRoomRoomCreatedResponse.cs" />
     <Compile Include="Models\responses\ChatRoomWentOfflineResponse.cs" />
     <Compile Include="Models\responses\Enumerations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

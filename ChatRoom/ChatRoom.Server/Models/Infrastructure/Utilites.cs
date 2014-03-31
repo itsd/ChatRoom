@@ -33,5 +33,9 @@ namespace ChatRoom.Server.Models.Infrastructure {
 		public static void SendWentOffline(this WebSocketCollection socketCollection, ChatRoomWentOfflineResponse message) {
 			socketCollection.Broadcast(JsonConvert.SerializeObject(message, Formatting.Indented));
 		}
+
+		public static void SendRoomCreated(this WebSocketCollection socketCollection, ChatRoomRoomCreatedResponse message) {
+			socketCollection.Broadcast(JsonConvert.SerializeObject(message, Formatting.Indented));
+		}
 	}
 }
