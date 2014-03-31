@@ -176,7 +176,7 @@
     <Content Include="App\directives\common.js" />
     <Content Include="App\routing.js" />
     <Content Include="App\app.js" />
-    <Content Include="App\services\serssionService.js" />
+    <Content Include="App\services\sessionService.js" />
     <Content Include="App\services\socketService.js" />
     <Content Include="App\views\index.html" />
     <Content Include="App\views\loading.html" />

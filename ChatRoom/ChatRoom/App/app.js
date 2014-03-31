@@ -23,3 +23,14 @@ Array.prototype.where = function (predicate) {
 	}
 	return results;
 };
+
+Array.prototype.remove = function (obj) {
+	var index = this.indexOf(obj);
+	var rest = this.splice(index, 1);
+};
+
+Array.prototype.removeWithID = function (predicate) {
+	for (i = 0; i < this.length; i++) {
+		if (predicate(this[i])) this.remove(this[i]);
+	}
+};

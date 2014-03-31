@@ -41,21 +41,21 @@
 
 <div class="dock">
 
-	<div class="item" ng-repeat="room in roomArray">
-		<a class="opener-link opener-link-{{$index}}" ng-click="openChat($index)">
+	<div class="item" ng-class="{'item-open':room.isOpen}" ng-repeat="room in roomArray">
+		<a class="opener-link" ng-hide="room.isOpen" ng-click="openChatItem($index)">
 			<div class="item-opener">
-				<span>{{room.userTo}}</span>
+				<span>{{room.roomName}}</span>
 			</div>
 		</a>
-		<div class="item-content item-content-{{$index}}">
-			<a class="closer-link-{{$index}}" ng-click="closeChat($index)">
+		<div class="item-content" ng-class="{'shower-class':room.isOpen}">
+			<a class="closer-link-{{$index}}" ng-click="closeChatItem($index)">
 				<div class="item-content-header">
-					<span>{{room.userTo}}</span>
+					<span>{{room.roomName}}</span>
 				</div>
 			</a>
 			<div class="item-content-body">
 
-				<div ng-class="{'item-content-body-message-you':message.isYou, 'item-content-body-message':!message.isYou}" ng-repeat="message in messagesArray">
+				<div ng-class="{'item-content-body-message-you':message.isYou, 'item-content-body-message':!message.isYou}" ng-repeat="message in room.messages">
 					<a ng-show="!message.isYou">
 						<img class="message-img" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/c13.4.48.48/s32x32/538542_460714540627865_1262920259_t.jpg" />
 					</a>
@@ -67,7 +67,9 @@
 				<div class="item-content-body-end"></div>
 			</div>
 			<div class="item-content-footer">
-				<input type="text" />
+				<form ng-submit="sendSocketMessage($index)">
+					<input type="text" ng-model="room.currentMessage" />
+				</form>
 			</div>
 		</div>
 	</div>
