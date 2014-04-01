@@ -69,21 +69,14 @@
 	}
 
 	$scope.startTalk = function (index) {
-		$scope.roomArray.push(
-			{
-				id: index,
-				roomName: $scope.onlineUsers[index].Username,
-				roomToken: '123456789',
-				isOpen: true,
-				currentMessage: '',
-				messages: [
-						{ comment: "Hello", isYou: false },
-						{ comment: "Hi", isYou: true },
-						//{ comment: "this is a message ... ", isYou: false },
-						//{ comment: "this is a message ... ja  asdk asdk asdk aiwqjekas daskd qkwje askd as,md aeqwkje qwk asmd as,md ak qweqw me ,mas d,mas dqwjenqkwm d,amsd ", isYou: true },
-				]
-			}
-		);
+
+
+		var jsonmsg = JSON.stringify({
+			type: 1,
+			userids: [1, 2, 3]
+		});
+
+		socketService.sendMessage(jsonmsg);
 	}
 
 	$scope.getSocketResponse = function (msg) {
@@ -106,24 +99,35 @@
 				$scope.onlineUsers.removeWithID(function (x) { if (x.ID == response.ID) return true; });
 				break;
 
+			case 4:
+				$scope.roomArray.push({
+					id: 123,
+					roomName: 'room name',
+					roomToken: msg.Token,
+					isOpen: true,
+					currentMessage: '',
+					messages: [
+							{ comment: "Hello", isYou: false },
+							{ comment: "Hi", isYou: true },
+					]
+				});
+
+				break;
+
 			default: break;
 		}
-
 		$scope.$apply();
 	}
 
 	$scope.sendSocketMessage = function (index) {
+
 		var cMessage = $scope.roomArray[index].currentMessage;
 		$scope.roomArray[index].currentMessage = '';
 		$scope.roomArray[index].messages.push({
 			comment: cMessage, isYou: true
 		});
 
-
 		var msg = cMessage;
-
-
-		//socketService.sendMessage(msg);
 	}
 
 	socketService.startListening($scope.getSocketResponse);

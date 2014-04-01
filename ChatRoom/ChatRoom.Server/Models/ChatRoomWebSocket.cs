@@ -29,6 +29,9 @@ namespace ChatRoom.Server.Models {
 			switch(request.Type) {
 				case RequestType.Default: break;
 				case RequestType.CreateRoom:
+
+					request = JsonConvert.DeserializeObject<ChatRoomCreateRoomRequest>(message);
+
 					string roomId = SocketContext.Current.CreateChatRoomWithUsers(this, ((ChatRoomCreateRoomRequest)request).UserIds);
 					SocketContext.Current.SendRoomCreatedNotification(this, roomId);
 					break;
@@ -39,7 +42,7 @@ namespace ChatRoom.Server.Models {
 			}
 
 
-			base.OnMessage(message);
+			//base.OnMessage(message);
 		}
 
 		public override void OnClose() {
