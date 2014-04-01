@@ -56,9 +56,6 @@ C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Server\bin\Ent
 C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Server\bin\MongoDB.Driver.xml
 C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Server\bin\MongoDB.Bson.xml
 C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Server\bin\ChatRoom.Shared.pdb
-C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Server\obj\Debug\ChatRoom.Server.csprojResolveAssemblyReference.cache
-C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Server\obj\Debug\ChatRoom.Server.dll
-C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Server\obj\Debug\ChatRoom.Server.pdb
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Server\bin\ChatRoom.Server.dll.config
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Server\bin\ChatRoom.Server.dll
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Server\bin\ChatRoom.Server.pdb
@@ -114,3 +111,6 @@ C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Server\bin\Entity
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Server\bin\MongoDB.Driver.xml
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Server\bin\MongoDB.Bson.xml
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Server\bin\ChatRoom.Shared.pdb
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Server\obj\Debug\ChatRoom.Server.csprojResolveAssemblyReference.cache
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Server\obj\Debug\ChatRoom.Server.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Server\obj\Debug\ChatRoom.Server.pdb

@@ -69,14 +69,10 @@
 	}
 
 	$scope.startTalk = function (index) {
-
-
-		var jsonmsg = JSON.stringify({
+		socketService.sendMessage(JSON.stringify({
 			type: 1,
-			userids: [1, 2, 3]
-		});
-
-		socketService.sendMessage(jsonmsg);
+			userids: [$scope.onlineUsers[index].ID]
+		}));
 	}
 
 	$scope.getSocketResponse = function (msg) {
@@ -100,20 +96,52 @@
 				break;
 
 			case 4:
+
+				var response = JSON.parse(msg);
+
 				$scope.roomArray.push({
 					id: 123,
 					roomName: 'room name',
-					roomToken: msg.Token,
+					roomToken: response.RoomID,
 					isOpen: true,
 					currentMessage: '',
 					messages: [
-							{ comment: "Hello", isYou: false },
-							{ comment: "Hi", isYou: true },
+							//{ comment: "Hello", isYou: false },
+							//{ comment: "Hi", isYou: true },
 					]
-				});
+				}); 
 
 				break;
 
+			case 5:
+				var response = JSON.parse(msg);
+				var postedRoom = $scope.roomArray.where(function (x) { if (x.roomToken == response.RoomToken) return true; });
+
+				if (postedRoom == "") {
+					$scope.roomArray.push({
+						id: 123,
+						roomName: 'room name',
+						roomToken: response.RoomToken,
+						isOpen: true,
+						currentMessage: '',
+						messages: [
+							{ comment: response.Comment, isYou: false }
+						]
+					});
+				} else {
+					for (var i = 0; i < $scope.roomArray.length; i++) {
+
+						if ($scope.roomArray[i].roomToken == response.RoomToken) {
+							$scope.roomArray[i].messages.push(
+								{ comment: response.Comment, isYou: false }
+							);
+						}
+					}
+
+					$(".item-content-body").animate({ scrollTop: $(".item-content-body").get(0).scrollHeight }, 'slow');
+				}
+
+				break;
 			default: break;
 		}
 		$scope.$apply();
@@ -121,13 +149,27 @@
 
 	$scope.sendSocketMessage = function (index) {
 
-		var cMessage = $scope.roomArray[index].currentMessage;
-		$scope.roomArray[index].currentMessage = '';
+
+		var cRoom = $scope.roomArray[index];
+
+		var cMessage = cRoom.currentMessage;
+
+		cRoom.currentMessage = '';
+
 		$scope.roomArray[index].messages.push({
 			comment: cMessage, isYou: true
 		});
 
-		var msg = cMessage;
+		//alert("c room token is >> " + cRoom.roomToken);
+
+		socketService.sendMessage(JSON.stringify({
+			roomToken: cRoom.roomToken,
+			comment: cMessage,
+			type: 2
+		}));
+
+		$(".item-content-body").animate({ scrollTop: $(".item-content-body").get(0).scrollHeight }, 'slow');
+		console.log(cRoom);
 	}
 
 	socketService.startListening($scope.getSocketResponse);

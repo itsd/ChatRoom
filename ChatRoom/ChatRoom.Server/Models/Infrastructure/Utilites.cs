@@ -37,5 +37,9 @@ namespace ChatRoom.Server.Models.Infrastructure {
 		public static void SendRoomCreated(this WebSocketCollection socketCollection, ChatRoomRoomCreatedResponse message) {
 			socketCollection.Broadcast(JsonConvert.SerializeObject(message, Formatting.Indented));
 		}
+
+		public static void SendTalking(this WebSocketCollection socketCollection, ChatRoomTalkingResponse message) {
+			socketCollection.Broadcast(JsonConvert.SerializeObject(message, Formatting.Indented));
+		}
 	}
 }

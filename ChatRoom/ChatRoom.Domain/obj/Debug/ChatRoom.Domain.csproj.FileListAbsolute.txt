@@ -5,6 +5,6 @@ C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Domain\obj\Deb
 C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Domain\obj\Debug\ChatRoom.Domain.csprojResolveAssemblyReference.cache
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Domain\bin\Debug\ChatRoom.Domain.dll
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Domain\bin\Debug\ChatRoom.Domain.pdb
-C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Domain\obj\Debug\ChatRoom.Domain.csprojResolveAssemblyReference.cache
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Domain\obj\Debug\ChatRoom.Domain.dll
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Domain\obj\Debug\ChatRoom.Domain.pdb
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Domain\obj\Debug\ChatRoom.Domain.csprojResolveAssemblyReference.cache

@@ -4,9 +4,8 @@ using System.Linq;
 using System.Web;
 
 namespace ChatRoom.Server.Models.requests {
-	public enum RequestType {
-		Default = 0,
-		CreateRoom = 1,
-		Talking = 2
+	public class ChatRoomTalkingRequest : ChatRoomRequestBase {
+		public string Comment { get; set; }
+		public string RoomToken { get; set; }
 	}
 }

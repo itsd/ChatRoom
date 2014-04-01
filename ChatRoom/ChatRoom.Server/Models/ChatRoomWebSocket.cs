@@ -35,14 +35,13 @@ namespace ChatRoom.Server.Models {
 					string roomId = SocketContext.Current.CreateChatRoomWithUsers(this, ((ChatRoomCreateRoomRequest)request).UserIds);
 					SocketContext.Current.SendRoomCreatedNotification(this, roomId);
 					break;
-				case RequestType.PostInRoom:
+				case RequestType.Talking:
+					request = JsonConvert.DeserializeObject<ChatRoomTalkingRequest>(message);
+					SocketContext.Current.PostInRoom(this, ((ChatRoomTalkingRequest)request).RoomToken, ((ChatRoomTalkingRequest)request).Comment);
 					break;
 				default:
 					break;
 			}
-
-
-			//base.OnMessage(message);
 		}
 
 		public override void OnClose() {

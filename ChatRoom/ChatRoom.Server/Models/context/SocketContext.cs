@@ -75,6 +75,11 @@ namespace ChatRoom.Server.Models.context {
 			return _users[key];
 		}
 
+		public Session GetUser(int ID) {
+			var user = _users.FirstOrDefault(x => x.Value.UserID == ID).Value;
+			return user;
+		}
+
 		public void AddToRoom(WebSocketHandler socket, string roomKey) {
 			if(!_socketRooms.ContainsKey(roomKey)) {
 				_socketRooms.Add(roomKey, new ChatRoomSocketCollection { });
@@ -137,6 +142,20 @@ namespace ChatRoom.Server.Models.context {
 			((List<int>)userIds).Add(session.UserID);
 			_chatRooms.Add(roomId, userIds);
 			return roomId;
+		}
+
+		public void PostInRoom(WebSocketHandler socket, string roomToken, string comment) {
+			var session = GetSession(socket);
+			foreach(var item in _chatRooms[roomToken]) {
+				if(item != session.UserID) {
+					var userInRoom = GetUser(item);
+					_socketRooms.FirstOrDefault(x => x.Key == userInRoom.GetSessionPrivateKey()).Value.SendTalking(new ChatRoomTalkingResponse {
+						Comment = comment,
+						CreatedByID = session.UserID,
+						RoomToken = roomToken
+					});
+				}
+			}
 		}
 	}
 }
