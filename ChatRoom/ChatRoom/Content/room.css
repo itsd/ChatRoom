@@ -231,7 +231,7 @@
 .dock .item .item-content .item-content-body .item-content-body-message .item-content-body-message-comment:before {
   content: "";
   position: absolute;
-  left: -7px;
+  left: -8px;
   top: 5px;
   width: 0;
   height: 0;
@@ -242,7 +242,7 @@
 .dock .item .item-content .item-content-body .item-content-body-message .item-content-body-message-comment:after {
   content: "";
   position: absolute;
-  left: -5px;
+  left: -6px;
   top: 5px;
   width: 0;
   height: 0;
@@ -273,7 +273,7 @@
 .dock .item .item-content .item-content-body .item-content-body-message-you .item-content-body-message-comment:before {
   content: "";
   position: absolute;
-  right: -7px;
+  right: -8px;
   top: 4px;
   width: 0;
   height: 0;
@@ -284,7 +284,7 @@
 .dock .item .item-content .item-content-body .item-content-body-message-you .item-content-body-message-comment:after {
   content: "";
   position: absolute;
-  right: -6px;
+  right: -7px;
   top: 4px;
   width: 0;
   height: 0;
