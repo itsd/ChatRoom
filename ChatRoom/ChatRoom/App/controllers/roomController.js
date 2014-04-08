@@ -11,18 +11,9 @@
 			{ id: 5, text: 'Message 5', timeAgo: 2 }
 		];
 
-	$scope.roomArray = [
-		//{ id: 1, roomName: "Username 1" },
-		//{ id: 2, roomName: "Username 2" },
-		//{ id: 3, roomName: "Username 3" },
-	];
+	$scope.roomArray = [];
 
-	$scope.onlineUsers = [
-		//{ ID: 1, Username: "Username 1" },
-		//{ ID: 2, Username: "Username 2" },
-		//{ ID: 3, Username: "Username 3" },
-		//{ ID: 4, Username: "Username 4" }
-	];
+	$scope.onlineUsers = [];
 
 	$scope.send = function () {
 		//$scope.chatArray.push({ text: $scope.writeText, timeAgo: 1 });
@@ -46,7 +37,6 @@
 		$(".opener-link-" + index).parent().children(".item-content-" + index).toggleClass("shower-class");
 		$(".opener-link-" + index).parent().toggleClass("item-open");
 		$(".opener-link-" + index).hide();
-
 	}
 
 	$scope.openChatItem = function (index) {
@@ -68,12 +58,12 @@
 		$(".users-opener").hide();
 	}
 
-	//$scope.startTalk = function (index) {
-	//	socketService.sendMessage(JSON.stringify({
-	//		type: 1,
-	//		userids: [$scope.onlineUsers[index].ID]
-	//	}));
-	//}
+	$scope.startTalk = function (index) {
+		socketService.sendMessage(JSON.stringify({
+			type: 1,
+			userids: [$scope.onlineUsers[index].ID]
+		}));
+	}
 
 	//$scope.getSocketResponse = function (msg) {
 	//	//$scope.chatArray.push({ text: msg, timeAgo: 1 });
