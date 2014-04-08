@@ -108,3 +108,7 @@ C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\bin\Microsoft.Owi
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\obj\Debug\ChatRoom.csprojResolveAssemblyReference.cache
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\obj\Debug\ChatRoom.dll
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\obj\Debug\ChatRoom.pdb
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\bin\Microsoft.AspNet.SignalR.SystemWeb.xml

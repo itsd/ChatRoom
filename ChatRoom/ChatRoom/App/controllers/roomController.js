@@ -1,4 +1,4 @@
-﻿app.controller('roomController', function ($scope, $http, socketService) {
+﻿app.controller('roomController', function ($scope, $http, signalrService) {
 
 	$scope.writeText = '';
 
@@ -68,109 +68,128 @@
 		$(".users-opener").hide();
 	}
 
-	$scope.startTalk = function (index) {
-		socketService.sendMessage(JSON.stringify({
-			type: 1,
-			userids: [$scope.onlineUsers[index].ID]
-		}));
-	}
+	//$scope.startTalk = function (index) {
+	//	socketService.sendMessage(JSON.stringify({
+	//		type: 1,
+	//		userids: [$scope.onlineUsers[index].ID]
+	//	}));
+	//}
 
-	$scope.getSocketResponse = function (msg) {
-		//$scope.chatArray.push({ text: msg, timeAgo: 1 });
-		//$scope.$apply();
-		//$(".room").animate({ scrollTop: $(".room").get(0).scrollHeight }, 'slow');
+	//$scope.getSocketResponse = function (msg) {
+	//	//$scope.chatArray.push({ text: msg, timeAgo: 1 });
+	//	//$scope.$apply();
+	//	//$(".room").animate({ scrollTop: $(".room").get(0).scrollHeight }, 'slow');
 
-		var response = JSON.parse(msg);
+	//	var response = JSON.parse(msg);
 
-		switch (response.Type) {
-			case 1:
-				$scope.onlineUsers = response.Users;
-				break;
+	//	switch (response.Type) {
+	//		case 1:
+	//			$scope.onlineUsers = response.Users;
+	//			break;
 
-			case 2:
-				$scope.onlineUsers.push({ ID: response.ID, Username: response.Username });
-				break;
+	//		case 2:
+	//			$scope.onlineUsers.push({ ID: response.ID, Username: response.Username });
+	//			break;
 
-			case 3:
-				$scope.onlineUsers.removeWithID(function (x) { if (x.ID == response.ID) return true; });
-				break;
+	//		case 3:
+	//			$scope.onlineUsers.removeWithID(function (x) { if (x.ID == response.ID) return true; });
+	//			break;
 
-			case 4:
+	//		case 4:
 
-				var response = JSON.parse(msg);
+	//			var response = JSON.parse(msg);
 
-				$scope.roomArray.push({
-					id: 123,
-					roomName: 'room name',
-					roomToken: response.RoomID,
-					isOpen: true,
-					currentMessage: '',
-					messages: [
-							//{ comment: "Hello", isYou: false },
-							//{ comment: "Hi", isYou: true },
-					]
-				}); 
+	//			$scope.roomArray.push({
+	//				id: 123,
+	//				roomName: 'room name',
+	//				roomToken: response.RoomID,
+	//				isOpen: true,
+	//				currentMessage: '',
+	//				messages: [
+	//						//{ comment: "Hello", isYou: false },
+	//						//{ comment: "Hi", isYou: true },
+	//				]
+	//			}); 
 
-				break;
+	//			break;
 
-			case 5:
-				var response = JSON.parse(msg);
-				var postedRoom = $scope.roomArray.where(function (x) { if (x.roomToken == response.RoomToken) return true; });
+	//		case 5:
+	//			var response = JSON.parse(msg);
+	//			var postedRoom = $scope.roomArray.where(function (x) { if (x.roomToken == response.RoomToken) return true; });
 
-				if (postedRoom == "") {
-					$scope.roomArray.push({
-						id: 123,
-						roomName: 'room name',
-						roomToken: response.RoomToken,
-						isOpen: true,
-						currentMessage: '',
-						messages: [
-							{ comment: response.Comment, isYou: false }
-						]
-					});
-				} else {
-					for (var i = 0; i < $scope.roomArray.length; i++) {
+	//			if (postedRoom == "") {
+	//				$scope.roomArray.push({
+	//					id: 123,
+	//					roomName: 'room name',
+	//					roomToken: response.RoomToken,
+	//					isOpen: true,
+	//					currentMessage: '',
+	//					messages: [
+	//						{ comment: response.Comment, isYou: false }
+	//					]
+	//				});
+	//			} else {
+	//				for (var i = 0; i < $scope.roomArray.length; i++) {
 
-						if ($scope.roomArray[i].roomToken == response.RoomToken) {
-							$scope.roomArray[i].messages.push(
-								{ comment: response.Comment, isYou: false }
-							);
-						}
-					}
+	//					if ($scope.roomArray[i].roomToken == response.RoomToken) {
+	//						$scope.roomArray[i].messages.push(
+	//							{ comment: response.Comment, isYou: false }
+	//						);
+	//					}
+	//				}
 
-					$(".item-content-body").animate({ scrollTop: $(".item-content-body").get(0).scrollHeight }, 'slow');
-				}
+	//				$(".item-content-body").animate({ scrollTop: $(".item-content-body").get(0).scrollHeight }, 'slow');
+	//			}
 
-				break;
-			default: break;
-		}
-		$scope.$apply();
-	}
+	//			break;
+	//		default: break;
+	//	}
+	//	$scope.$apply();
+	//}
 
-	$scope.sendSocketMessage = function (index) {
+	//$scope.sendSocketMessage = function (index) {
 
 
-		var cRoom = $scope.roomArray[index];
+	//	var cRoom = $scope.roomArray[index];
 
-		var cMessage = cRoom.currentMessage;
+	//	var cMessage = cRoom.currentMessage;
 
-		cRoom.currentMessage = '';
+	//	cRoom.currentMessage = '';
 
-		$scope.roomArray[index].messages.push({
-			comment: cMessage, isYou: true
+	//	$scope.roomArray[index].messages.push({
+	//		comment: cMessage, isYou: true
+	//	});
+
+	//	//alert("c room token is >> " + cRoom.roomToken);
+
+	//	socketService.sendMessage(JSON.stringify({
+	//		roomToken: cRoom.roomToken,
+	//		comment: cMessage,
+	//		type: 2
+	//	}));
+
+	//	$(".item-content-body").animate({ scrollTop: $(".item-content-body").get(0).scrollHeight }, 'slow');
+	//	console.log(cRoom);
+	//}
+
+	//socketService.startListening($scope.getSocketResponse);
+
+	signalrService.startListening(
+		function (data) {
+			//Append users in online users list
+			for (var i = 0; i < data.length; i++) {
+				$scope.onlineUsers.push({
+					ID: data[i].ID,
+					Username: data[i].Username
+				});
+			}
+			$scope.$apply();
+		}, function (data) {
+			//Apend user in online users list
+			$scope.onlineUsers.push({ ID: data.ID, Username: data.Username });
+			$scope.$apply();
+		}, function (data) {
+			$scope.onlineUsers.removeWithID(function (x) { if (x.ID == data.ID) return true; });
+			$scope.$apply();
 		});
-
-		//alert("c room token is >> " + cRoom.roomToken);
-
-		socketService.sendMessage(JSON.stringify({
-			roomToken: cRoom.roomToken,
-			comment: cMessage,
-			type: 2
-		}));
-
-		$(".item-content-body").animate({ scrollTop: $(".item-content-body").get(0).scrollHeight }, 'slow');
-		console.log(cRoom);
-	}
-
-	socketService.startListening($scope.getSocketResponse);
 });
