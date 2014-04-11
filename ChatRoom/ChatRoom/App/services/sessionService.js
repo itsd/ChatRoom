@@ -43,6 +43,8 @@
 
 				$http.defaults.headers.common[HTTP_HEADER_KEY] = session.user.token;
 
+				console.log("session's user is >> " + data);
+
 				if (successHandler) { successHandler(); }
 
 			})

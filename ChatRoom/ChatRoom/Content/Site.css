@@ -34,12 +34,20 @@ body header section {
   margin: 0 auto;
   padding: 3px;
 }
-body header section a {
+body header section div {
   float: right;
   color: white;
   font-size: 12px;
   font-weight: bold;
   margin-top: 10px;
+}
+body header section div a {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 10px;
 }
 body .login-content {
   width: 900px;

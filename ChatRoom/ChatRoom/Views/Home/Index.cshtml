@@ -16,7 +16,13 @@
 
 	<header ng-controller="statusController" ng-show="session.isAuthenticated">
 		<section>
-			<a href="#/logout">Logout</a>
+
+			<div>
+				welcome: <span>{{ session.user.username }}</span>
+				<a href="#/logout">Logout</a>
+			</div>
+
+
 		</section>
 	</header>
 
