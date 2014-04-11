@@ -24,9 +24,9 @@
 
 	function parseUser(data) {
 		return {
-			userID: data.id,
+			userID: data.userID,
 			token: data.token,
-			username: data.alias
+			username: data.username
 		}
 	}
 
@@ -42,8 +42,6 @@
 				$cookieStore.put(COOKIEUSER_KEY, session.user);
 
 				$http.defaults.headers.common[HTTP_HEADER_KEY] = session.user.token;
-
-				console.log("session's user is >> " + data);
 
 				if (successHandler) { successHandler(); }
 

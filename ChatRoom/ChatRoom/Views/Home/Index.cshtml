@@ -16,19 +16,30 @@
 
 	<header ng-controller="statusController" ng-show="session.isAuthenticated">
 		<section>
-
 			<div>
 				welcome: <span>{{ session.user.username }}</span>
 				<a href="#/logout">Logout</a>
 			</div>
-
-
 		</section>
 	</header>
 
 	<div class="content">
 
 		<div id="ngView" ng-view ng-cloak class="content"></div>
+
+		<div ng-controller="chatController" ng-show="session.isAuthenticated">
+
+			<div class="online-users">
+				<div class="online-user-item" ng-repeat="user in onlineUsers" data-id="{{user.id}}">
+					<div class="online-user-img">
+						<img src="http://4vector.com/i/free-vector-male-user-icon-clip-art_125620_male-user-icon-clip-art/Male_User_Icon_clip_art_hight.png" />
+					</div>
+					<div class="online-user-fullname">{{user.username}}</div>
+				</div>
+
+				<div class="clearfix"></div>
+			</div>
+		</div>
 
 	</div>
 

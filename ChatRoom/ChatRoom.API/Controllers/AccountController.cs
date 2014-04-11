@@ -25,7 +25,10 @@ namespace ChatRoom.API.Controllers {
 		[Route("login"), HttpPost]
 		public SessionModel Login(LoginModel model) {
 			try {
-				return _sessionService.Login(model.Username, model.Password);
+
+				SessionModel response = _sessionService.Login(model.Username, model.Password);
+
+				return response;
 			} catch(LoginFailedException) { throw new HttpResponseException(HttpStatusCode.Forbidden); }
 		}
 

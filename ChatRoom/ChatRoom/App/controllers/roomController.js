@@ -4,7 +4,7 @@
 	 
 	$scope.roomArray = [];
 
-	$scope.onlineUsers = [];
+
 
 	$scope.send = function () {
 		//$scope.chatArray.push({ text: $scope.writeText, timeAgo: 1 });

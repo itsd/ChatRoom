@@ -179,6 +179,7 @@
   <ItemGroup>
     <Content Include="App\configuration.js" />
     <Content Include="App\controllers\baseController.js" />
+    <Content Include="App\controllers\chatController.js" />
     <Content Include="App\controllers\indexController.js" />
     <Content Include="App\controllers\loginController.js" />
     <Content Include="App\controllers\roomController.js" />
