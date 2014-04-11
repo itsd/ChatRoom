@@ -14,7 +14,11 @@
 </head>
 <body>
 
-	<header></header>
+	<header ng-controller="statusController" ng-show="session.isAuthenticated">
+		<section>
+			<a href="#/logout">Logout</a>
+		</section>
+	</header>
 
 	<div class="content">
 

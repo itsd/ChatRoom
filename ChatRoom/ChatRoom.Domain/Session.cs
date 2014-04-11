@@ -20,8 +20,8 @@ namespace ChatRoom.Domain {
 		}
 
 		public IIdentity Identity {
-			get { throw new NotImplementedException(); }
-		}
+			get { return _identity ?? (_identity = new UserIdentity { IsAuthenticated = true, Name = Username }); }
+		}private IIdentity _identity;
 
 		public bool IsInRole(string role) {
 			throw new NotImplementedException();
@@ -35,5 +35,15 @@ namespace ChatRoom.Domain {
 				Username = user.Username,
 			};
 		}
+	}
+
+	internal class UserIdentity : IIdentity {
+		public string AuthenticationType {
+			get { return "Token Authentication"; }
+		}
+
+		public bool IsAuthenticated { get; internal set; }
+
+		public string Name { get; internal set; }
 	}
 }

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Serialization;
+﻿using ChatRoom.API.Infrastructure;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace ChatRoom.API {
 
 			// Register handlers
 			config.MessageHandlers.Add(new CorsMessageHandler(config));
+			config.MessageHandlers.Add(new SessionHandler());
 		}
 	}
 }

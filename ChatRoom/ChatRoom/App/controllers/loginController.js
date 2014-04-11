@@ -21,3 +21,14 @@
 			});
 	}
 });
+
+app.controller('logoutController', function ($scope, $location, sessionService) {
+	 
+	$scope.loading = true;
+	sessionService.logout(function () {
+
+
+		$scope.loading = false;
+		$location.path('/login');
+	});
+});

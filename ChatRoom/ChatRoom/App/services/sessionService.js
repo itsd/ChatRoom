@@ -3,7 +3,9 @@
 	var COOKIEUSER_KEY = "CURRENT_USER";
 
 	var API_LOGIN_URL = "account/login";
-	var API_LOGOUT_URL = "";
+	var API_LOGOUT_URL = "account/logout";
+
+	var HTTP_HEADER_KEY = 'Api-Auth-Token';
 
 	var defaultUser = {
 		userID: 0,
@@ -18,6 +20,8 @@
 		isAuthenticated: currentUser ? true : false
 	};
 
+	$http.defaults.headers.common[HTTP_HEADER_KEY] = session.user.token;
+
 	function parseUser(data) {
 		return {
 			userID: data.id,
@@ -29,8 +33,7 @@
 	session.login = function (username, password, successHandler, failureHandler) {
 		session.user = defaultUser;
 		$cookieStore.remove(COOKIEUSER_KEY);
-
-
+		 
 		$http.post(api(API_LOGIN_URL), { username: username, password: password })
 			.success(function (data, status, headers, config) {
 				session.user = parseUser(data);
@@ -47,6 +50,21 @@
 
 			});
 	};
+
+	session.logout = function (successHandler) {
+		$http.post(api(API_LOGOUT_URL))
+			.success(function (data, status, headers, config) {
+				session.user = defaultUser;
+				session.isAuthenticated = false;
+
+				$cookieStore.remove(COOKIEUSER_KEY);
+
+				if (successHandler) successHandler();
+			})
+			.error(function () {
+
+			});
+	}
 
 	return session;
 });

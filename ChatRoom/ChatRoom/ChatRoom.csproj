@@ -191,6 +191,7 @@
     <Content Include="App\views\index.html" />
     <Content Include="App\views\loading.html" />
     <Content Include="App\views\login\index.html" />
+    <Content Include="App\views\logout\index.html" />
     <Content Include="App\views\room\index.html" />
     <Content Include="Content\configuration.css">
       <DependentUpon>configuration.less</DependentUpon>

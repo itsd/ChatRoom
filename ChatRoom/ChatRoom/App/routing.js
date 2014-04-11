@@ -12,6 +12,12 @@
 				controller: 'loginController'
 			});
 
+		$routeProvider.when('/logout',
+			{
+				templateUrl: 'app/views/logout/index.html',
+				controller: 'logoutController'
+			});
+
 		$routeProvider.when('/room',
 			{
 				templateUrl: 'app/views/room/index.html',
