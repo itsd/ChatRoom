@@ -33,13 +33,15 @@
 	session.login = function (username, password, successHandler, failureHandler) {
 		session.user = defaultUser;
 		$cookieStore.remove(COOKIEUSER_KEY);
-		 
+
 		$http.post(api(API_LOGIN_URL), { username: username, password: password })
 			.success(function (data, status, headers, config) {
 				session.user = parseUser(data);
 				session.isAuthenticated = true;
 
 				$cookieStore.put(COOKIEUSER_KEY, session.user);
+
+				$http.defaults.headers.common[HTTP_HEADER_KEY] = session.user.token;
 
 				if (successHandler) { successHandler(); }
 
