@@ -5,66 +5,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Chat Room</title>
 	<link href="~/Content/Site.css" rel="stylesheet" />
-	<link href="~/Content/room.css" rel="stylesheet" />
 	<link href="~/Content/configuration.css" rel="stylesheet" />
-	<link href="~/Content/room_mobile.css" rel="stylesheet" />
+	@*<link href="~/Content/room_mobile.css" rel="stylesheet" />*@
+	@*<link href="~/Content/room.css" rel="stylesheet" />*@
 	<script src="~/Scripts/jquery-1.10.2.js"></script>
 	<script src="~/Scripts/jquery.signalR-2.0.3.js"></script>
 	<script src='http://localhost:47806/signalr/js'></script>
 </head>
 <body>
 
-	<header ng-controller="statusController" ng-show="session.isAuthenticated">
-		<section>
-			<div>
-				welcome: <span>{{ session.user.username }}</span>
-				<a href="#/logout">Logout</a>
-			</div>
-		</section>
-	</header>
+	<header> </header>
 
 	<div class="content">
-
-		<div id="ngView" ng-view ng-cloak class="content"></div>
-
-		<div ng-controller="chatController" ng-show="session.isAuthenticated">
-
-			<div class="online-users">
-				<div class="online-user-item" ng-repeat="user in onlineUsers" data-id="{{user.id}}">
-					<div class="online-user-img">
-						<img src="http://4vector.com/i/free-vector-male-user-icon-clip-art_125620_male-user-icon-clip-art/Male_User_Icon_clip_art_hight.png" />
-					</div>
-					<div class="online-user-fullname">{{user.username}}</div>
-				</div>
-
-				<div class="clearfix"></div>
-			</div>
-		</div>
-
+		<div id="ngView" ng-view ng-cloak></div>
 	</div>
 
-
+	<div ng-include="'app/views/shared/onlineUsers.html'"></div>
 
 	@Scripts.Render("~/bundles/angular")
 	@Scripts.Render("~/bundles/angular/app")
 	@Scripts.Render("~/bundles/angular/controllers")
-
-	@*<script src="~/Scripts/angular.js"></script>
-		<script src="~/Scripts/angular-route.js"></script>
-		<script src="~/Scripts/angular-cookies.js"></script>
-		<script src="~/Scripts/angular-resource.js"></script>
-
-		<script src="~/App/app.js"></script>
-		<script src="~/App/routing.js"></script>
-		<script src="~/App/configuration.js"></script>
-		<script src="~/App/services/sessionService.js"></script>
-		<script src="~/App/directives/common.js"></script>
-
-		<script src="~/App/controllers/baseController.js"></script>
-		<script src="~/App/controllers/indexController.js"></script>
-		<script src="~/App/controllers/loginController.js"></script>
-		<script src="~/App/controllers/roomController.js"></script>*@
-
 
 </body>
 </html>
