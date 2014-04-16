@@ -52,7 +52,7 @@ body header section div a {
 body .content {
   border-top: 1px solid #1e0351;
   width: 900px;
-  margin: 50px 200px 0 auto;
+  margin: 50px auto;
 }
 body .online-users {
   width: 180px;
@@ -61,6 +61,22 @@ body .online-users {
   border-left: 1px solid #1e0351;
   top: 45px;
   right: 0;
+  background-color: #f8f5f5;
+}
+body .online-users .online-user-item {
+  width: 100%;
+  margin-bottom: 1px;
+  height: 36px;
+  padding: 2px;
+}
+body .online-users .online-user-item div {
+  display: inline-block;
+  font-size: small;
+  vertical-align: middle;
+}
+body .online-users .online-user-item:hover {
+  background-color: #e8e4e4;
+  cursor: pointer;
 }
 body .clearfix {
   clear: both;

@@ -3,7 +3,7 @@
 body {
 	margin: 0;
 	padding: 0;
-	background-color: #f8f5f5;
+	background-color: @bodyColor;
 	font-family: 'Open Sans', Helvetica, "Lucida Grande", sans-serif;
 
 	#loading {
@@ -56,7 +56,7 @@ body {
 	.content {
 		border-top: 1px solid @brangColor;
 		width: 900px;
-		margin: 50px 200px 0 auto;
+		margin: 50px auto;
 	}
 
 	.online-users {
@@ -66,6 +66,28 @@ body {
 		border-left: 1px solid @brangColor;
 		top: 45px;
 		right: 0;
+		background-color: @onlineItemsColor;
+
+		.online-user-item {
+			width: 100%;
+			margin-bottom: 1px;
+			height: 36px;
+			padding: 2px;
+
+			a {
+			}
+
+			div {
+				display: inline-block;
+				font-size: small;
+				vertical-align: middle;
+			}
+
+			&:hover {
+				background-color: @onlineItemHoverColor;
+				cursor: pointer;
+			}
+		}
 	}
 
 	.clearfix {
