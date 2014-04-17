@@ -188,6 +188,7 @@
     <Content Include="App\routing.js" />
     <Content Include="App\app.js" />
     <Content Include="App\services\sessionService.js" />
+    <Content Include="App\services\shareService.js" />
     <Content Include="App\services\signalrService.js" />
     <Content Include="App\services\socketService.js" />
     <Content Include="App\views\index.html" />
