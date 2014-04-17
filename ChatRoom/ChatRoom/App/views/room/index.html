@@ -1,1 +1,25 @@
-﻿ 
+﻿<div class="conversation">
+	<a>
+		<img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc1/t1.0-1/c178.0.604.604/s160x160/252231_1002029915278_1941483569_n.jpg" />
+	</a>
+
+	<div class="conversation-body">
+		<div class="conversation-header">
+			{{currentTalk.username}}
+		</div>
+
+		<div class="conversation-content">
+			<div class="conversation-content-inner">
+				<div class="conversation-item user" ng-repeat="message in currentTalk.messages">{{message.message}}</div>
+			</div>
+		</div>
+
+		<div class="conversation-footer">
+			<input type="text" />
+			<input type="submit" value="send" />
+		</div>
+	</div>
+
+</div>
+
+<a ng-click="talkTo(3)">xxxxx</a>

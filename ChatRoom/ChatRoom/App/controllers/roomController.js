@@ -1,8 +1,58 @@
-﻿app.controller('roomController', function ($scope, $http, signalrService) {
+﻿app.controller('roomController', function ($scope, $rootScope, $http, signalrService) {
 
-	$scope.writeText = '';
-	 
-	$scope.roomArray = [];
+	$scope.onlineUsers = [
+		{ id: 1, username: 'user 1' },
+		{ id: 2, username: 'user 2' },
+		{ id: 3, username: 'user 3' },
+		{ id: 4, username: 'user 4' },
+		{ id: 5, username: 'user 5' },
+		{ id: 6, username: 'user 6' },
+		{ id: 7, username: 'user 7' }
+	];
+
+	$scope.currentTalk = {
+		username: 'user 1',
+
+		messages: [
+				//{ isUser: true, message: 'Hello' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hiiiiiiiiiiiiiiiiiiiiiiii' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' },
+				//{ isUser: false, message: 'hi' }
+		]
+	};
+
+	//$scope.talkTo = function (index) {
+	$scope.$on('talkTo', function (evt, data) {
+		$scope.currentTalk.username = $scope.onlineUsers[data.index].username;
+	});
+
+	$scope.xxxx = function (index) {
+		$rootScope.$broadcast('talkTo', { index: index });
+	}
 
 
 

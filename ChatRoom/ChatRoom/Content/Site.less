@@ -53,10 +53,11 @@ body {
 		}
 	}
 
-	.content {
-		border-top: 1px solid @brangColor;
-		width: 900px;
+	.container {
+		width: 910px;
+		min-height: 500px;
 		margin: 50px auto;
+		padding-right: 200px;
 	}
 
 	.online-users {
@@ -71,16 +72,19 @@ body {
 		.online-user-item {
 			width: 100%;
 			margin-bottom: 1px;
-			height: 36px;
-			padding: 2px;
+			height: 32px;
+			padding: 3px;
 
 			a {
+				display: inline-block;
 			}
 
 			div {
 				display: inline-block;
-				font-size: small;
-				vertical-align: middle;
+				font-size: 12px;
+				height: 32px;
+				line-height: 32px;
+				vertical-align: top;
 			}
 
 			&:hover {
