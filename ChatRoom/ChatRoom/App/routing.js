@@ -24,5 +24,11 @@
 				controller: 'roomController'
 			});
 
+		$routeProvider.when('/profile',
+			{
+				templateUrl: 'app/views/profile/index.html',
+				controller: 'profileController'
+			});
+
 		//$locationProvider.html5Mode(true);
 	});

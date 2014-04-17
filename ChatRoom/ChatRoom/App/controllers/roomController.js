@@ -1,5 +1,7 @@
 ﻿app.controller('roomController', function ($scope, $rootScope, $http, signalrService) {
 
+	$scope.currentMessage = '';
+
 	$scope.onlineUsers = [
 		{ id: 1, username: 'user 1' },
 		{ id: 2, username: 'user 2' },
@@ -14,46 +16,39 @@
 		username: 'user 1',
 
 		messages: [
-				//{ isUser: true, message: 'Hello' },
+				{ isUser: true, message: 'Hello' },
 				//{ isUser: false, message: 'hi' },
 				//{ isUser: false, message: 'hi' },
 				//{ isUser: false, message: 'hi' },
 				//{ isUser: false, message: 'hi' },
 				//{ isUser: false, message: 'hiiiiiiiiiiiiiiiiiiiiiiii' },
 				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
-				//{ isUser: false, message: 'hi' },
 				//{ isUser: false, message: 'hi' }
 		]
 	};
 
-	//$scope.talkTo = function (index) {
-	$scope.$on('talkTo', function (evt, data) {
-		$scope.currentTalk.username = $scope.onlineUsers[data.index].username;
-	});
-
-	$scope.xxxx = function (index) {
-		$rootScope.$broadcast('talkTo', { index: index });
+	$scope.talking = function () {
+		if ($scope.currentMessage != '') {
+			$scope.currentTalk.messages.push({ isUser: false, message: $scope.currentMessage });
+			$scope.currentMessage = '';
+			$(".conversation-content-inner").animate({ scrollTop: $(".conversation-content-inner").get(0).scrollHeight }, 'slow');
+		}
 	}
 
+	////$scope.talkTo = function (index) {
+	//$scope.$on('talkTo', function (evt, data) {
+	//	$scope.currentTalk.username = $scope.onlineUsers[data.index].username;
+	//});
+
+	//$scope.xxxx = function (index) {
+	//	$rootScope.$broadcast('talkTo', { index: index });
+	//}
+
+	$scope.talkTo = function (index) {
+		$scope.currentTalk.username = $scope.onlineUsers[index].username;
+
+
+	};
 
 
 	$scope.send = function () {

@@ -10,16 +10,19 @@
 
 		<div class="conversation-content">
 			<div class="conversation-content-inner">
-				<div class="conversation-item user" ng-repeat="message in currentTalk.messages">{{message.message}}</div>
+				<div class="conversation-item" ng-class="{user:message.isUser, you:!message.isUser}" ng-repeat="message in currentTalk.messages">{{message.message}}</div>
 			</div>
 		</div>
 
 		<div class="conversation-footer">
-			<input type="text" />
-			<input type="submit" value="send" />
+			<form ng-submit="talking()">
+				<input type="text" ng-model="currentMessage" />
+				<input type="submit" value="send" />
+			</form>
 		</div>
 	</div>
 
 </div>
 
-<a ng-click="talkTo(3)">xxxxx</a>
+
+<div ng-include="'app/views/shared/onlineUsers.html'"></div>

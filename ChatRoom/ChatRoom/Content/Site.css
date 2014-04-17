@@ -1,4 +1,4 @@
-/*@brangcolor: #03511d;*/
+/*@brandColor: #03511d;*/
 .text {
   display: none;
 }
@@ -28,26 +28,36 @@ body header {
   width: 100%;
   background-color: #1e0351;
 }
-body header section {
-  width: 900px;
-  height: 39px;
+body header div {
+  width: 1110px;
   margin: 0 auto;
-  padding: 3px;
+  line-height: 45px;
 }
-body header section div {
-  float: right;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
+body header div .logo {
+  display: inline-block;
+  width: 165px;
+  float: left;
+}
+body header div .menu {
+  width: 200px;
+  display: inline-block;
+  margin-left: 3px;
+  height: 45px;
+  vertical-align: middle;
+}
+body header div .menu a {
+  display: inline-block;
+}
+body header div .menu a img {
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  width: 22px;
+  height: 22px;
   margin-top: 10px;
 }
-body header section div a {
+body header div .menu div {
   display: inline-block;
-  text-decoration: none;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  margin-left: 10px;
 }
 body .container {
   width: 910px;

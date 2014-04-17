@@ -182,6 +182,7 @@
     <Content Include="App\controllers\chatController.js" />
     <Content Include="App\controllers\indexController.js" />
     <Content Include="App\controllers\loginController.js" />
+    <Content Include="App\controllers\profileController.js" />
     <Content Include="App\controllers\roomController.js" />
     <Content Include="App\directives\common.js" />
     <Content Include="App\routing.js" />
@@ -193,7 +194,9 @@
     <Content Include="App\views\loading.html" />
     <Content Include="App\views\login\index.html" />
     <Content Include="App\views\logout\index.html" />
+    <Content Include="App\views\profile\index.html" />
     <Content Include="App\views\room\index.html" />
+    <Content Include="App\views\shared\header.html" />
     <Content Include="App\views\shared\onlineUsers.html" />
     <Content Include="Content\configuration.css">
       <DependentUpon>configuration.less</DependentUpon>
@@ -204,6 +207,9 @@
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\login.css">
       <DependentUpon>login.less</DependentUpon>
+    </Content>
+    <Content Include="Content\mixins.css">
+      <DependentUpon>mixins.less</DependentUpon>
     </Content>
     <Content Include="Content\room.css">
       <DependentUpon>room.less</DependentUpon>
@@ -259,6 +265,7 @@
     <Content Include="Content\room_mobile.less" />
     <Content Include="Content\login.less" />
     <Content Include="Content\conversation.less" />
+    <Content Include="Content\mixins.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />
