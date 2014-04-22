@@ -1,28 +1,29 @@
-﻿<div class="conversation">
+﻿<div class="conversation" ng-hide="hideChat()">
 	<a>
 		<img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc1/t1.0-1/c178.0.604.604/s160x160/252231_1002029915278_1941483569_n.jpg" />
 	</a>
 
 	<div class="conversation-body">
 		<div class="conversation-header">
-			{{currentTalk.username}}
+			{{openRoom.name}}
 		</div>
 
 		<div class="conversation-content">
 			<div class="conversation-content-inner">
-				<div class="conversation-item" ng-class="{user:message.isUser, you:!message.isUser}" ng-repeat="message in currentTalk.messages">{{message.message}}</div>
+				<!--<div class="conversation-item" ng-class="{user:message.isUser, you:!message.isUser}" ng-repeat="message in openRoom.messages">
+					{{message.message}}
+				</div>-->
+
+				<div class="conversation-item" ng-class="{user:message.isUser, you:!message.isUser}" ng-repeat="message in openRoom.messages" ng-bind-html="renderHtml(message.message)"></div>
+
 			</div>
 		</div>
 
 		<div class="conversation-footer">
-			<form ng-submit="talking()">
+			<form ng-submit="writingInRoom()">
 				<input type="text" ng-model="currentMessage" />
 				<input type="submit" value="send" />
 			</form>
 		</div>
 	</div>
-
 </div>
-
-
-<div ng-include="'app/views/shared/onlineUsers.html'"></div>

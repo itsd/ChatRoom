@@ -69,6 +69,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -165,6 +166,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\SignalRContractResolver.cs" />
     <Compile Include="Models\context\SignalrContext.cs" />
     <Compile Include="Models\entities\SocketUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

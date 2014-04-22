@@ -12,6 +12,7 @@
 	<script src="~/Scripts/jquery-1.10.2.js"></script>
 	<script src="~/Scripts/jquery.signalR-2.0.3.js"></script>
 	<script src='http://localhost:47806/signalr/js'></script>
+	  
 </head>
 <body>
 
@@ -23,7 +24,7 @@
 		<div id="ngView" ng-view ng-cloak></div>
 	</div>
 
-
+	<div ng-include="'app/views/shared/onlineUsers.html'"></div>
 
 	@Scripts.Render("~/bundles/angular")
 	@Scripts.Render("~/bundles/angular/app")

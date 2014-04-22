@@ -52,7 +52,8 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 		}
 
 		public void SendOnlineUsers(string connectionId) {
-			var onlineUsers = _messenger.GetOnlineUsers(connectionId);
+			string token = Context.QueryString["token"];
+			var onlineUsers = _messenger.GetOnlineUsers(token);
 			Clients.Caller.getOnlineUsers(onlineUsers);
 		}
 

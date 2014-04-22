@@ -82,8 +82,8 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 			return null;
 		}
 
-		public IEnumerable<SocketUser> GetOnlineUsers(string connectionId) {
-			return _users.Where(x => x.Key != connectionId).Select(x => (SocketUser)x.Value);
+		public IEnumerable<SocketUser> GetOnlineUsers(string token) {
+			return _users.Where(x => x.Key != token).Select(x => (SocketUser)x.Value);
 		}
 	}
 }

@@ -34,3 +34,14 @@ Array.prototype.removeWithID = function (predicate) {
 		if (predicate(this[i])) this.remove(this[i]);
 	}
 };
+
+String.prototype.showSmiles = function () {
+	return this.replace(/:P/g, '<img width="20" src="Content/images/smiles/Smiley-stick-tongue-icon.png" />');
+
+	//var msgssss1 = this.replace(/:D/g, '<img src="http://img4.wikia.nocookie.net/__cb20061223084010/lostpedia/images/e/e4/Big_smile.gif" />');
+	////var msgssss2 = msgssss1.replace(/:P/g, '<img src="http://www.oodmag.com/community/images/smilies/1134_tongue.gif" />');
+	////var msgssss3 = msgssss2.replace(';)', '<img src="https://uglounge.com/images/smilies/Wink.gif" />');
+	////var msgssss4 = msgssss3.replace(':)', '<img src="https://www.ihg.com/hotels/images/chatImages/images/smiles/smile_smily.png" />');
+
+	//return msgssss1;
+}

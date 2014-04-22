@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.Owin;
 using Owin;
 using Microsoft.AspNet.SignalR;
+using Newtonsoft.Json;
+using ChatRoom.Server.SignalR.Infrastructure;
 
 [assembly: OwinStartup(typeof(ChatRoom.Server.SignalR.Startup))]
 
@@ -13,6 +15,12 @@ namespace ChatRoom.Server.SignalR {
 
 			var config = new HubConfiguration { EnableJSONP = true };
 			app.MapSignalR(config);
+
+			//Camel Case Property Names Contract Resolver
+			var settings = new JsonSerializerSettings();
+			settings.ContractResolver = new SignalRContractResolver();
+			var serializer = JsonSerializer.Create(settings);
+			GlobalHost.DependencyResolver.Register(typeof(JsonSerializer), () => serializer);
 		}
 	}
 }
