@@ -22,9 +22,6 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 		#region BaseMethods
 
 		public override Task OnConnected() {
-
-
-
 			this.SendOnlineUsers(Context.ConnectionId);
 			this.CameOnline();
 
@@ -46,7 +43,7 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 		public void CameOnline() {
 			string token = Context.QueryString["token"];
-			var user = _messenger.GetUser(token);
+			var user = _messenger.GetUserByToken(token, Context.ConnectionId);
 
 			Clients.AllExcept(Context.ConnectionId).getWhoCameOnline((SocketUser)user);
 		}
@@ -59,9 +56,27 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 		public void WentOffline(string connectionId) {
 			string token = Context.QueryString["token"];
-			var user = _messenger.GetUser(token);
+			var user = _messenger.GetUserByConnection(Context.ConnectionId);
+			_messenger.RemoveFromUsers(Context.ConnectionId);
+			Clients.AllExcept(connectionId).wentOffline(user);
+		}
 
-			Clients.AllExcept(connectionId).wentOffline((SocketUser)user);
+		public string SendMessage(string message, IEnumerable<int> userIds) {
+			string roomToken = Context.QueryString["groupToken"];
+			var createdBy = _messenger.GetUserByID(userIds.First());
+
+			if(string.IsNullOrEmpty(roomToken)) {
+				var user1 = _messenger.GetUserByID(userIds.First());
+				var user2 = _messenger.GetUserByID(userIds.Skip(1).First());
+				roomToken = _messenger.CreateRoom(new List<string> { user1.Connection, user2.Connection });
+				Groups.Add(user1.Connection, roomToken);
+				Groups.Add(user2.Connection, roomToken);
+			}
+
+			Clients.OthersInGroup(roomToken).getMessage(roomToken, message, createdBy.Username);
+			//Clients.Others.getMessage(roomToken, message, createdBy.Username, userIds);
+
+			return roomToken;
 		}
 	}
 }

@@ -14,8 +14,8 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 	public class Messanger {
 		//private static readonly Lazy<Messanger> _instance = new Lazy<Messanger>(() => new Messanger());
 
-		private static readonly Dictionary<string, IEnumerable<int>> _chatRooms = new Dictionary<string, IEnumerable<int>> { };
-		private static readonly Dictionary<string, Session> _users = new Dictionary<string, Session> { };
+		private static readonly Dictionary<string, IEnumerable<string>> _chatRooms = new Dictionary<string, IEnumerable<string>> { };
+		private static readonly Dictionary<string, SocketUser> _users = new Dictionary<string, SocketUser> { };
 
 		private ISessionService _sessionService;
 
@@ -48,21 +48,36 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 		//	}
 		//}public static Messanger _instance;
 
-		public string CreateRoom(IEnumerable<int> userIds) {
+		public string CreateRoom(IEnumerable<string> userConnections) {
 			var roomToken = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N");
-
-			//((List<int>)userIds).Add(session.UserID);
-			_chatRooms.Add(roomToken, userIds);
-
+			_chatRooms.Add(roomToken, new List<string> { });
+			foreach(var item in userConnections) {
+				((List<string>)_chatRooms[roomToken]).Add(item);
+			}
 			return roomToken;
 		}
 
-		public Session GetUser(string token) {
+		public SocketUser GetUserByID(int id) {
+			return _users.FirstOrDefault(x => x.Value.ID == id).Value;
+		}
+
+		public SocketUser GetUserByToken(string token, string connection) {
 			if(!_users.ContainsKey(token)) {
 				var session = _sessionService.FetchByToken(token);
-				_users.Add(token, session);
+				SocketUser user = session;
+				user.Connection = connection;
+				_users.Add(token, user);
 			}
 			return _users[token];
+		}
+
+		public SocketUser GetUserByConnection(string connection) {
+			return _users.FirstOrDefault(x => x.Value.Connection == connection).Value;
+		}
+
+		public void RemoveFromUsers(string connection) {
+			var user = _users.FirstOrDefault(x => x.Value.Connection == connection);
+			_users.Remove(user.Key);
 		}
 
 		public void ComeOnline(string connectionId, Session user) {

@@ -1,4 +1,4 @@
-﻿app.factory('signalrService', function ($http, $cookieStore) {
+﻿app.factory('signalrService', function ($http, $cookieStore, chatService) {
 
 	var signalrSession = {
 		isInitialized: false
@@ -36,8 +36,58 @@
 			.fail(function () { console.log("could not connect to" + connectionUrl); });
 	}
 
-	signalrSession.sendMessage = function (msg) {
+	signalrSession.sendMessageTo = function (msg, room, callBack) {
+		connection.hub.qs = { 'token': $cookieStore.get(COOKIEUSER_KEY).token, 'groupToken': room.token };
 
+		connection.chatRoom.server.sendMessage(msg, room.userIds)
+		.done(function (data) {
+			if (room.token == '') {
+				chatService.openRoom.token = data;
+			}
+			chatService.openRoom.messages.push({ isUser: false, message: msg });
+			callBack();
+		});
+	}
+
+	signalrSession.listenMessages = function (callBack) {
+
+		connection.chatRoom.client.getMessage = function (token, message, createdBy, userIds) {
+
+			console.log(chatService.openRoom);
+
+			if (Object.keys(chatService.openRoom).length === 0) {
+				console.log("We don't have open room");
+				chatService.openRoom.name = createdBy;
+				chatService.openRoom.token = token;
+				chatService.openRoom.id = 1;
+				chatService.openRoom.isOpen = true;
+				chatService.openRoom.userIds = userIds;
+				chatService.openRoom.messages = [];
+				chatService.openRoom.messages.push({ isUser: true, message: message });
+			} else {
+
+				if (chatService.openRoom.token == token) {
+					chatService.openRoom.messages.push({ isUser: true, message: message });
+				} else {
+					alert("You got new notification in other room");
+				}
+			}
+
+			//if (chatService.openRoom != null && chatService.openRoom.token == token) {
+			//	//message came in current room
+			//	chatService.openRoom.messages.push({ isUser: true, message: message });
+			//} else {
+
+			//	chatService.openRoom.name = createdBy;
+			//	chatService.openRoom.token = token;
+			//	chatService.openRoom.id = 1;
+			//	chatService.openRoom.isOpen = true;
+			//	chatService.openRoom.userIds = userIds;
+			//	chatService.openRoom.messages = [];
+			//	chatService.openRoom.messages.push({ isUser: true, message: message });
+			//}
+			callBack();
+		}
 	}
 
 	return signalrSession;

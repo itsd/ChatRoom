@@ -6,29 +6,30 @@
 		if (sessionService.isAuthenticated) {
 
 			selectedUser = chatService.onlineUsers[index];
+			newGroupID = chatService.rooms.length + 1;
 
 			newRoom = {
 				name: selectedUser.username,
 				token: '',
-				userIds: [selectedUser.id, sessionService.user.userID],
+				id: newGroupID,
+				userIds: [sessionService.user.userID, selectedUser.id],
 				isOpen: true,
 				messages: []
 			}
 
+			chatService.rooms.push(newRoom);
 
-			 
-			//chatService.rooms.push(newRoom);
+			selectedRoom = chatService.rooms.where(function (obj) {
+				if (obj.id == newGroupID) return true;
+			});
 
-			//selectedRoom = chatService.rooms[index];
+			chatService.openRoom.name = selectedRoom[0].name;
+			chatService.openRoom.token = selectedRoom[0].token;
+			chatService.openRoom.id = selectedRoom[0].id;
+			chatService.openRoom.isOpen = true;
+			chatService.openRoom.messages = selectedRoom[0].messages;
+			chatService.openRoom.userIds = selectedRoom[0].userIds;
 
-			//chatService.openRoom.name = selectedRoom.name;
-			//chatService.openRoom.token = selectedRoom.token;
-			//chatService.openRoom.isOpen = true;
-			//chatService.openRoom.messages = selectedRoom.messages;
-
-			//chatService.openRoom.userIds = [];
-			//chatService.openRoom.userIds.push();
-			//chatService.openRoom.userIds.push();
 		}
 	}
 
