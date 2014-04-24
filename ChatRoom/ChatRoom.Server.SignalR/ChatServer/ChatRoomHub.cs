@@ -25,10 +25,6 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 		public override Task OnConnected() {
 
-			Context.User = SignalRContext.Current;
-			 
-
-			
 
 			//string token = Context.QueryString["token"];
 			//string connection = Context.ConnectionId;
