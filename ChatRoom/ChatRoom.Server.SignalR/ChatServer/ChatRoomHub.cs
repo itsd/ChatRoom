@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ChatRoom.Domain;
 using Microsoft.AspNet.SignalR.Hubs;
 using ChatRoom.Server.SignalR.Models.entities;
+using ChatRoom.Server.SignalR.Infrastructure;
 
 namespace ChatRoom.Server.SignalR.ChatServer {
 
@@ -15,6 +16,7 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 		private Messanger _messenger;
 
+
 		public ChatRoomHub() {
 			_messenger = new Messanger();
 		}
@@ -22,16 +24,31 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 		#region BaseMethods
 
 		public override Task OnConnected() {
-			this.SendOnlineUsers(Context.ConnectionId);
-			this.CameOnline();
 
+			Context.User = SignalRContext.Current;
+			 
+
+			
+
+			//string token = Context.QueryString["token"];
+			//string connection = Context.ConnectionId;
+			//var user = _messenger.GetUserByToken(token);
+			//_messenger.SaveUser(user, connection);
+
+			//var onlineUsers = _messenger.GetOnlineUsers(token);
+
+			//Clients.AllExcept(connection).getWhoCameOnline(user);
+			//Clients.Caller.getOnlineUsers(onlineUsers);
 			return base.OnConnected();
 		}
 
 		public override Task OnDisconnected() {
-			_messenger.WentOffline(Context.ConnectionId);
-			this.WentOffline(Context.ConnectionId);
+			//string token = Context.QueryString["token"];
+			//var user = _messenger.GetUserByToken(token);
+			//string connection = Context.ConnectionId;
+			//_messenger.RemoveUser(user, connection);
 
+			//Clients.AllExcept(connection).wentOffline(user);
 			return base.OnDisconnected();
 		}
 
@@ -41,40 +58,45 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 		#endregion
 
-		public void CameOnline() {
-			string token = Context.QueryString["token"];
-			var user = _messenger.GetUserByToken(token, Context.ConnectionId);
-
-			Clients.AllExcept(Context.ConnectionId).getWhoCameOnline((SocketUser)user);
-		}
-
-		public void SendOnlineUsers(string connectionId) {
-			string token = Context.QueryString["token"];
-			var onlineUsers = _messenger.GetOnlineUsers(token);
-			Clients.Caller.getOnlineUsers(onlineUsers);
-		}
-
-		public void WentOffline(string connectionId) {
-			string token = Context.QueryString["token"];
-			var user = _messenger.GetUserByConnection(Context.ConnectionId);
-			_messenger.RemoveFromUsers(Context.ConnectionId);
-			Clients.AllExcept(connectionId).wentOffline(user);
-		}
-
 		public string SendMessage(string message, IEnumerable<int> userIds) {
 			string roomToken = Context.QueryString["groupToken"];
-			var createdBy = _messenger.GetUserByID(userIds.First());
+			string token = Context.QueryString["token"];
 
-			if(string.IsNullOrEmpty(roomToken)) {
-				var user1 = _messenger.GetUserByID(userIds.First());
-				var user2 = _messenger.GetUserByID(userIds.Skip(1).First());
-				roomToken = _messenger.CreateRoom(new List<string> { user1.Connection, user2.Connection });
-				Groups.Add(user1.Connection, roomToken);
-				Groups.Add(user2.Connection, roomToken);
-			}
+			var createdBy = _messenger.GetUserByToken(token);
+
+
+
+
+			//if(string.IsNullOrEmpty(roomToken)) {
+			var user1Token = _messenger.GetConnection(userIds.First());
+			var user2Token = _messenger.GetConnection(userIds.Skip(1).First());
+
+			roomToken = //_messenger.CreateRoom(new List<string> { user1Token, user2Token });
+
+			string.Format("{0}_{1}", user1Token, user2Token);
+
+			Groups.Add(user1Token, roomToken);
+			Groups.Add(user1Token, roomToken);
+			//}
+
+
+			//var user1Token = _messenger.GetConnection(userIds.First());
+			//var user2Token = _messenger.GetConnection(userIds.Skip(1).First());
+
+			//string roomKey = string.Format("{0}_{1}", user1Token, user2Token);
+
+			//Groups.Add(user1Token, roomKey);
+			//Groups.Add(user2Token, roomKey);
 
 			Clients.OthersInGroup(roomToken).getMessage(roomToken, message, createdBy.Username);
+
+			//Clients.OthersInGroup(roomToken).getMessage(roomToken, message, createdBy.Username);
 			//Clients.Others.getMessage(roomToken, message, createdBy.Username, userIds);
+
+
+
+			//Clients.All.getMessage(roomToken, message, createdBy.Username, userIds);
+
 
 			return roomToken;
 		}

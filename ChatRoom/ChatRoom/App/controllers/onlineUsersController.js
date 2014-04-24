@@ -19,16 +19,16 @@
 
 			chatService.rooms.push(newRoom);
 
-			selectedRoom = chatService.rooms.where(function (obj) {
-				if (obj.id == newGroupID) return true;
-			});
+			//selectedRoom = chatService.rooms.where(function (obj) {
+			//	if (obj.id == newGroupID) return true;
+			//});
 
-			chatService.openRoom.name = selectedRoom[0].name;
-			chatService.openRoom.token = selectedRoom[0].token;
-			chatService.openRoom.id = selectedRoom[0].id;
+			chatService.openRoom.name = newRoom.name;
+			chatService.openRoom.token = newRoom.token;
+			chatService.openRoom.id = newRoom.id;
 			chatService.openRoom.isOpen = true;
-			chatService.openRoom.messages = selectedRoom[0].messages;
-			chatService.openRoom.userIds = selectedRoom[0].userIds;
+			chatService.openRoom.messages = newRoom.messages;
+			chatService.openRoom.userIds = newRoom.userIds;
 
 		}
 	}
@@ -39,13 +39,13 @@
 				chatService.onlineUsers.push({ id: data[i].id, username: data[i].username });
 			}
 		},
-		function (data) { // U got online user
-			console.log("u got online user");
-			console.log(data);
+		function (data) { // U got online user 
+			chatService.onlineUsers.push({ id: data.id, username: data.username });
+			console.log("got online user");
 		},
-		function (data) { // U got offline user
-			console.log("u got offline user");
-			console.log(data);
+		function (data) { // U got offline user 
+			chatService.onlineUsers.remove(chatService.onlineUsers.where(function (x) { if (x.id == data.id) return true; })[0]);
+			console.log("Got offline user");
 		},
 		function () { // call back
 			$scope.$apply();

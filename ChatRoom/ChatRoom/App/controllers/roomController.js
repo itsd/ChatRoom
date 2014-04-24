@@ -3,11 +3,8 @@
 	$scope.openRoom = chatService.openRoom;
 
 	$scope.currentMessage = '';
-
-	signalrService.listenMessages(function () {
-		$scope.$apply();
-		$(".conversation-content-inner").animate({ scrollTop: $(".conversation-content-inner").get(0).scrollHeight }, 'slow');
-	});
+	 
+	signalrService.setScope($scope);
 
 	$scope.hideChat = function () {
 		return Object.keys($scope.openRoom).length === 0;

@@ -21,6 +21,9 @@ namespace ChatRoom.Server.SignalR {
 			settings.ContractResolver = new SignalRContractResolver();
 			var serializer = JsonSerializer.Create(settings);
 			GlobalHost.DependencyResolver.Register(typeof(JsonSerializer), () => serializer);
+
+			//Authentication
+			//GlobalHost.HubPipeline.RequireAuthentication();
 		}
 	}
 }
