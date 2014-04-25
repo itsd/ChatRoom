@@ -16,39 +16,26 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 		private Messanger _messenger;
 
-
 		public ChatRoomHub() {
-			_messenger = new Messanger();
+			_messenger = Messanger.Instance;
 		}
 
 		#region BaseMethods
 
 		public override Task OnConnected() {
-
-
-			//string token = Context.QueryString["token"];
-			//string connection = Context.ConnectionId;
-			//var user = _messenger.GetUserByToken(token);
-			//_messenger.SaveUser(user, connection);
-
-			//var onlineUsers = _messenger.GetOnlineUsers(token);
-
-			//Clients.AllExcept(connection).getWhoCameOnline(user);
-			//Clients.Caller.getOnlineUsers(onlineUsers);
+			_messenger.OnlineUsers++;
+			Clients.Others.getWhoCameOnline(_messenger.OnlineUsers);
 			return base.OnConnected();
 		}
 
 		public override Task OnDisconnected() {
-			//string token = Context.QueryString["token"];
-			//var user = _messenger.GetUserByToken(token);
-			//string connection = Context.ConnectionId;
-			//_messenger.RemoveUser(user, connection);
-
-			//Clients.AllExcept(connection).wentOffline(user);
+			_messenger.OnlineUsers--;
+			Clients.Others.wentOffline(_messenger.OnlineUsers);
 			return base.OnDisconnected();
 		}
 
 		public override Task OnReconnected() {
+			_messenger.OnlineUsers++;
 			return base.OnReconnected();
 		}
 

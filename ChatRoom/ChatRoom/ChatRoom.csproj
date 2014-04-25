@@ -186,6 +186,7 @@
     <Content Include="App\controllers\profileController.js" />
     <Content Include="App\controllers\roomController.js" />
     <Content Include="App\directives\common.js" />
+    <Content Include="App\main.js" />
     <Content Include="App\routing.js" />
     <Content Include="App\app.js" />
     <Content Include="App\services\chatService.js" />

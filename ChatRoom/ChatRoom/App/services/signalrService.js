@@ -14,6 +14,7 @@
 		connection = $.connection;
 		connection.hub.url = connectionUrl;
 		//connection.hub.logging = true;
+		//connection.hub.transportConnectTimeout = 50;
 		connection.hub.qs = "token=" + $cookieStore.get(COOKIEUSER_KEY).token;
 
 		connection.chatRoom.client.getWhoCameOnline = function (data) {
@@ -52,7 +53,7 @@
 					alert("You got new notification in other room");
 				}
 			}
-			 
+
 			if (Object.keys(signalrSession.roomScope).length !== 0) {
 				signalrSession.roomScope.$apply();
 			}
@@ -60,12 +61,17 @@
 		}
 
 		//Start hub connection
-		connection.hub.start({ jsonp: true })
+		//connection.hub.start({ jsonp: true/*, transport: 'webSockets'*/ })     longPolling
+		connection.hub.start({ jsonp: true, transport: 'longPolling' })
 			.done(function () {
 				console.log("connected to >> " + connectionUrl);
 				$("#connectionID").html($.connection.hub.id);
 			})
-			.fail(function () { console.log("could not connect to" + connectionUrl); });
+			.fail(function () { console.log("could not connect to " + connectionUrl); });
+
+		connection.hub.disconnected(function () {
+			alert("You went offline");
+		});
 	}
 
 	signalrSession.sendMessageTo = function (msg, room, callBack) {

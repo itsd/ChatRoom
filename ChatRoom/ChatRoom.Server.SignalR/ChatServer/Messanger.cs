@@ -14,19 +14,20 @@ using System.Web;
 namespace ChatRoom.Server.SignalR.ChatServer {
 	public class Messanger {
 		private static readonly Dictionary<string, IEnumerable<string>> _chatRooms = new Dictionary<string, IEnumerable<string>> { };
-
-
-		//private readonly static ConnectionMapping<int> _connections = new ConnectionMapping<int>();
-		//private readonly static TokenMapping<string, SocketUser> _tokens = new TokenMapping<string, SocketUser>();
-
-
 		private readonly static IDictionary<int, string> _connections = new Dictionary<int, string>();
 		private readonly static IDictionary<string, SocketUser> _tokens = new Dictionary<string, SocketUser>();
 
+		public int OnlineUsers { get; set; }
 
 		private ISessionService _sessionService;
 
-		public Messanger() {
+		public static Messanger Instance {
+			get {
+				return _instance ?? (_instance = new Messanger());
+			}
+		}private static Messanger _instance;
+
+		private Messanger() {
 			IUnityContainer Resolver = new UnityContainer();
 
 			Resolver.RegisterTypes(
@@ -43,6 +44,10 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 			_sessionService = Resolver.Resolve<ISessionService>();
 		}
+
+		//public Messanger() {
+
+		//}
 
 		public string CreateRoom(IEnumerable<string> userConnections) {
 			var roomToken = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N");

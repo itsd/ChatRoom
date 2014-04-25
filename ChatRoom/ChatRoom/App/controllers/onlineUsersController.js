@@ -33,22 +33,28 @@
 		}
 	}
 
-	signalrService.startListening(
-		function (data) { // U got online users 
-			for (var i = 0; i < data.length; i++) {
-				chatService.onlineUsers.push({ id: data[i].id, username: data[i].username });
-			}
-		},
-		function (data) { // U got online user 
-			chatService.onlineUsers.push({ id: data.id, username: data.username });
-			console.log("got online user");
-		},
-		function (data) { // U got offline user 
-			chatService.onlineUsers.remove(chatService.onlineUsers.where(function (x) { if (x.id == data.id) return true; })[0]);
-			console.log("Got offline user");
-		},
-		function () { // call back
-			$scope.$apply();
+	angular.element(document).ready(function () {
+		if (sessionService.isAuthenticated) {
+			signalrService.startListening(
+				function (data) { // U got online users 
+					for (var i = 0; i < data.length; i++) {
+						chatService.onlineUsers.push({ id: data[i].id, username: data[i].username });
+					}
+				},
+				function (data) { // U got online user 
+					//chatService.onlineUsers.push({ id: data.id, username: data.username });
+					console.log("+Came online");
+					console.log("Online users count is: " + data);
+				},
+				function (data) { // U got offline user 
+					//chatService.onlineUsers.remove(chatService.onlineUsers.where(function (x) { if (x.id == data.id) return true; })[0]);
+					console.log("-Went offline");
+					console.log("Online users count is: " + data);
+				},
+				function () { // call back
+					$scope.$apply();
+				}
+			);
 		}
-	)
+	});
 });
