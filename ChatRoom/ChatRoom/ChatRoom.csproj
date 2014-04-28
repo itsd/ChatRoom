@@ -182,7 +182,7 @@
     <Content Include="App\controllers\chatController.js" />
     <Content Include="App\controllers\indexController.js" />
     <Content Include="App\controllers\loginController.js" />
-    <Content Include="App\controllers\onlineUsersController.js" />
+    <Content Include="App\controllers\chatUsersController.js" />
     <Content Include="App\controllers\profileController.js" />
     <Content Include="App\controllers\roomController.js" />
     <Content Include="App\directives\common.js" />
@@ -201,7 +201,7 @@
     <Content Include="App\views\profile\index.html" />
     <Content Include="App\views\room\index.html" />
     <Content Include="App\views\shared\header.html" />
-    <Content Include="App\views\shared\onlineUsers.html" />
+    <Content Include="App\views\shared\chatUsers.html" />
     <Content Include="Content\configuration.css">
       <DependentUpon>configuration.less</DependentUpon>
     </Content>
@@ -214,6 +214,7 @@
     <Content Include="Content\images\smiles\Emotes-face-wink-icon.png" />
     <Content Include="Content\images\smiles\Smiley-cool-icon.png" />
     <Content Include="Content\images\smiles\Smiley-stick-tongue-icon.png" />
+    <Content Include="Content\images\Status-user-online-icon.png" />
     <Content Include="Content\login.css">
       <DependentUpon>login.less</DependentUpon>
     </Content>

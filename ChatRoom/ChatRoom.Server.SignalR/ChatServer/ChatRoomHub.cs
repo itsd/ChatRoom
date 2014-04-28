@@ -23,7 +23,11 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 		#region BaseMethods
 
 		public override Task OnConnected() {
-			_messenger.OnlineUsers++;
+			string roomToken = Context.QueryString["groupToken"];
+			string token = Context.QueryString["token"];
+
+			_messenger.GetAllUsers(token);
+			 
 			Clients.Others.getWhoCameOnline(_messenger.OnlineUsers);
 			return base.OnConnected();
 		}

@@ -19,5 +19,12 @@ namespace ChatRoom.Server.SignalR.Models.entities {
 				Token = session.Token
 			};
 		}
+
+		public static implicit operator SocketUser(User user) {
+			return new SocketUser {
+				ID = user.ID,
+				Username = user.Username
+			};
+		}
 	}
 }

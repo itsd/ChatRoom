@@ -34,5 +34,9 @@ namespace ChatRoom.Services {
 		public User Fetch(int id) {
 			return _userRepository.Fetch(id);
 		}
+		 
+		public IEnumerable<User> GetAll() {
+			return _userRepository.GetAll();
+		}
 	}
 }

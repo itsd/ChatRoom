@@ -9,7 +9,7 @@
 	var connectionUrl = "http://localhost:47806/signalR";
 	var COOKIEUSER_KEY = "CURRENT_USER";
 
-	signalrSession.startListening = function (getOnlineUsers, getOnlineUser, wentOffline, callBack) {
+	signalrSession.startListening = function (getChatUsers, getOnlineUser, wentOffline, callBack) {
 		//Configure connection
 		connection = $.connection;
 		connection.hub.url = connectionUrl;
@@ -22,8 +22,8 @@
 			callBack();
 		}
 
-		connection.chatRoom.client.getOnlineUsers = function (data) {
-			getOnlineUsers(data);
+		connection.chatRoom.client.getChatUsers = function (data) {
+			getChatUsers(data);
 			callBack();
 		}
 
@@ -59,7 +59,7 @@
 			}
 
 		}
-
+		 
 		//Start hub connection
 		//connection.hub.start({ jsonp: true/*, transport: 'webSockets'*/ })     longPolling
 		connection.hub.start({ jsonp: true, transport: 'longPolling' })

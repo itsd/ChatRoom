@@ -29,7 +29,7 @@
 //		socket.send(msg);
 //	}
 
-//	socketSession.getOnlineUsers = function () { }
+//	socketSession.getChatUsers = function () { }
 
 //	return socketSession;
 //});

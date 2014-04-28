@@ -2,7 +2,11 @@
 
 	var shareData = {
 
-		onlineUsers: [],
+		chatUsers: [
+			{ id: 1, username: 'username 1', isOnline: true },
+			{ id: 2, username: 'username 2', isOnline: false },
+			{ id: 3, username: 'username 3', isOnline: true }
+		],
 
 		rooms: [],
 

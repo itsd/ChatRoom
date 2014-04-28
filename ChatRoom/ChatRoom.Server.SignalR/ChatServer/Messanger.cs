@@ -20,6 +20,7 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 		public int OnlineUsers { get; set; }
 
 		private ISessionService _sessionService;
+		private IUserService _userService;
 
 		public static Messanger Instance {
 			get {
@@ -43,6 +44,7 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 			 );
 
 			_sessionService = Resolver.Resolve<ISessionService>();
+			_userService = Resolver.Resolve<IUserService>();
 		}
 
 		//public Messanger() {
@@ -90,6 +92,11 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 		public IEnumerable<SocketUser> GetOnlineUsers(string token) {
 			return _tokens.Where(x => x.Key != token).Select(x => x.Value);
+		}
+
+		public IEnumerable<SocketUser> GetAllUsers(string token) {
+			var user = GetUserByToken(token);
+			return _userService.GetAll().Where(x => x.ID != user.ID).Select(y => (SocketUser)y);
 		}
 	}
 }

@@ -27,5 +27,9 @@ namespace ChatRoom.Entity {
 		public User Fetch(int id) {
 			return _context.Users.FirstOrDefault(x => x.ID == id);
 		}
+
+		public IEnumerable<User> GetAll() {
+			return _context.Users;
+		}
 	}
 }

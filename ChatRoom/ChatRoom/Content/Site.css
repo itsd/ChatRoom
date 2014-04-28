@@ -83,12 +83,26 @@ body .online-users .online-user-item {
 body .online-users .online-user-item a {
   display: inline-block;
 }
-body .online-users .online-user-item div {
+body .online-users .online-user-item .user-fullname {
   display: inline-block;
   font-size: 12px;
   height: 32px;
   line-height: 32px;
   vertical-align: top;
+}
+body .online-users .online-user-item .user-online {
+  display: inline-block;
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+  background-image: url(images/Status-user-online-icon.png);
+  background-repeat: no-repeat;
+  width: 10px;
+  height: 10px;
+  background-size: 8px 8px;
+  -moz-background-size: 8px 8px;
+  -o-background-size: 8px 8px;
+  -webkit-background-size: 8px 8px;
 }
 body .online-users .online-user-item:hover {
   background-color: #e8e4e4;

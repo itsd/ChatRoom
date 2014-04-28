@@ -50,7 +50,7 @@
 }
 .conversation .conversation-body .conversation-content .conversation-content-inner {
   overflow-y: auto;
-  max-height: 400px;
+  max-height: 500px;
 }
 .conversation .conversation-body .conversation-content .conversation-content-inner .conversation-item {
   clear: both;

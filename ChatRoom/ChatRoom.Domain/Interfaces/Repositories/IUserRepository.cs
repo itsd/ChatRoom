@@ -14,5 +14,7 @@ namespace ChatRoom.Domain.Interfaces.Repositories {
 		void Save(User user);
 
 		bool UsernameExists(int id, string username);
+
+		IEnumerable<User> GetAll();
 	}
 }

@@ -8,5 +8,6 @@ namespace ChatRoom.Domain.Interfaces.Services {
 	public interface IUserService {
 		User Fetch(int id);
 		User Register(string username, string password);
+		IEnumerable<User> GetAll();
 	}
 }
