@@ -28,6 +28,10 @@ namespace ChatRoom.Mongo {
 			return _context.Sessions.FindOne(Query.EQ("_id", token));
 		}
 
+		public Session Fetch(int userId) {
+			return _context.Sessions.FindOne(Query.EQ("UserID", userId));
+		}
+
 		public void UpdateLastAccess(string token) {
 			_context.Sessions.Update(
 				Query.EQ("_id", token),
@@ -35,5 +39,6 @@ namespace ChatRoom.Mongo {
 				WriteConcern.Unacknowledged
 			);
 		}
+
 	}
 }

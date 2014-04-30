@@ -70,7 +70,7 @@
 			.fail(function () { console.log("could not connect to " + connectionUrl); });
 
 		connection.hub.disconnected(function () {
-			alert("You went offline");
+			//alert("You went offline");
 		});
 	}
 

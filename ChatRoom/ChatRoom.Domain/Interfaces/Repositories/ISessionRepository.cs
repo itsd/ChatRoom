@@ -9,6 +9,7 @@ namespace ChatRoom.Domain.Interfaces.Repositories {
 		void Save(Session session);
 		void Delete(string token);
 		Session Fetch(string token);
+		Session Fetch(int userId);
 		void UpdateLastAccess(string token);
 	}
 }

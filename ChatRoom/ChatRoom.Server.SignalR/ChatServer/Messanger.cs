@@ -65,12 +65,16 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 			return false;
 		}
 
+		public IEnumerable<string> GetConnectionsForUser(string token) {
+			return _tokens.GetAllByKey(token);
+		}
+
 		public IEnumerable<SocketUser> GetOnlineUsers(string token) {
 			var onlineTokens = _tokens.GetAllKeys();
 
-			return from x in _users.ValuesList
-				   where x.Token != token && onlineTokens.Contains(x.Token)
-				   select x;
+			return from u in _users.ValuesList
+				   where u.Token != token && onlineTokens.Contains(u.Token)
+				   select u;
 		}
 
 		public IEnumerable<SocketUser> GetAllUsers(string token) {

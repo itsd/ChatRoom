@@ -36,7 +36,7 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 			var users = _messenger.GetOnlineUsers(token);
 
 			//Get this user to others
-			Clients.Others.getWhoCameOnline(user);
+			Clients.AllExcept(_messenger.GetConnectionsForUser(token).ToArray()).getWhoCameOnline(user);
 
 			//Get online users to this user
 			Clients.Caller.getChatUsers(users);

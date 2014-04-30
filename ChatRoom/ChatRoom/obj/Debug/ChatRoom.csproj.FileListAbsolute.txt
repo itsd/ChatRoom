@@ -111,4 +111,3 @@ C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\bin\Microsoft.Asp
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\bin\Microsoft.AspNet.SignalR.Core.xml
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
-C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\obj\Debug\ChatRoom.csprojResolveAssemblyReference.cache

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 
 namespace ChatRoom.Server.SignalR.Infrastructure {
-	public class ConnectionMapping<T> {
-		private readonly Dictionary<T, HashSet<string>> _connections = new Dictionary<T, HashSet<string>>();
+	public class ConnectionMapping<K> {
+		private readonly Dictionary<K, HashSet<string>> _connections = new Dictionary<K, HashSet<string>>();
 
 		public int Count {
 			get {
@@ -13,7 +13,7 @@ namespace ChatRoom.Server.SignalR.Infrastructure {
 			}
 		}
 
-		public void Add(T key, string connectionId) {
+		public void Add(K key, string connectionId) {
 			lock(_connections) {
 				HashSet<string> connections;
 				if(!_connections.TryGetValue(key, out connections)) {
@@ -27,7 +27,7 @@ namespace ChatRoom.Server.SignalR.Infrastructure {
 			}
 		}
 
-		public IEnumerable<string> GetConnections(T key) {
+		public IEnumerable<string> GetConnections(K key) {
 			HashSet<string> connections;
 			if(_connections.TryGetValue(key, out connections)) {
 				return connections;
@@ -36,7 +36,7 @@ namespace ChatRoom.Server.SignalR.Infrastructure {
 			return Enumerable.Empty<string>();
 		}
 
-		public void Remove(T key, string connectionId) {
+		public void Remove(K key, string connectionId) {
 			lock(_connections) {
 				HashSet<string> connections;
 				if(!_connections.TryGetValue(key, out connections)) {
@@ -53,11 +53,18 @@ namespace ChatRoom.Server.SignalR.Infrastructure {
 			}
 		}
 
-		public IEnumerable<T> GetAllKeys() {
+		public IEnumerable<K> GetAllKeys() {
 			return _connections.Select(x => x.Key);
 		}
 
-		public int CountForKey(T key) {
+		public IEnumerable<string> GetAllByKey(K key) {
+			if(_connections.ContainsKey(key)) {
+				return _connections[key].Select(x => x);
+			}
+			return default(IEnumerable<string>);
+		}
+
+		public int CountForKey(K key) {
 			return _connections.ContainsKey(key) ? _connections[key].Count : 0;
 		}
 	}

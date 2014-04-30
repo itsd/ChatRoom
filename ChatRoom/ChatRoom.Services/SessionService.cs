@@ -26,12 +26,10 @@ namespace ChatRoom.Services {
 			var user = _userRepository.Fetch(username.ToLower(), password);
 			if(user == null) throw new LoginFailedException();
 
-
 			//Here we need to check if session exists for the user and if it exists attach user to it
 
-			Session session = (Session)user;
+			Session session = _sessionRepository.Fetch(user.ID) ?? (Session)user;
 			_sessionRepository.Save(session);
-
 
 			Thread.CurrentPrincipal = session;
 			return session;
