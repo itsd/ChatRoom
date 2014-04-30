@@ -13,11 +13,9 @@ using System.Web;
 
 namespace ChatRoom.Server.SignalR.ChatServer {
 	public class Messanger {
-		private static readonly Dictionary<string, IEnumerable<string>> _chatRooms = new Dictionary<string, IEnumerable<string>> { };
-		private readonly static IDictionary<int, string> _connections = new Dictionary<int, string>();
-		private readonly static IDictionary<string, SocketUser> _tokens = new Dictionary<string, SocketUser>();
 
-		public int OnlineUsers { get; set; }
+		private static readonly ConnectionMapping<string> _tokens = new ConnectionMapping<string> { };
+		private static readonly UserMapping<string, SocketUser> _users = new UserMapping<string, SocketUser> { };
 
 		private ISessionService _sessionService;
 		private IUserService _userService;
@@ -47,51 +45,28 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 			_userService = Resolver.Resolve<IUserService>();
 		}
 
-		//public Messanger() {
-
-		//}
-
-		public string CreateRoom(IEnumerable<string> userConnections) {
-			var roomToken = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N");
-			_chatRooms.Add(roomToken, new List<string> { });
-			foreach(var item in userConnections) {
-				((List<string>)_chatRooms[roomToken]).Add(item);
-			}
-			return roomToken;
-		}
-
 		public SocketUser GetUserByToken(string token) {
-			SocketUser User = _tokens.FirstOrDefault(x => x.Key == token).Value;
-			if(User == null) {
-				User = _sessionService.FetchByToken(token);
-			}
-
-			return User;
+			SocketUser user = _users.Get(token);
+			if(user == default(SocketUser)) { user = _sessionService.FetchByToken(token); }
+			return user;
 		}
 
 		public void SaveUser(SocketUser user, string connection) {
-			_tokens.Add(user.Token, user);
-			_connections.Add(user.ID, connection);
+			_tokens.Add(user.Token, connection);
+			_users.Add(user.Token, user);
 		}
 
 		public void RemoveUser(SocketUser user, string connection) {
-			_tokens.Remove(user.Token);
-			_connections.Remove(user.ID);
-		}
-
-		public string GetConnection(int userId) {
-			return _connections[userId];
-		}
-
-		public IEnumerable<string> GetConnectionIdsByID(IEnumerable<int> ids) {
-			//return from x in _users
-			//	   where ids.Contains(x.Value)
-			//	   select x.Key;
-			return null;
+			_tokens.Remove(user.Token, connection);
+			if(_tokens.CountForKey(user.Token) == 0) { _users.RemoveByKey(user.Token); }
 		}
 
 		public IEnumerable<SocketUser> GetOnlineUsers(string token) {
-			return _tokens.Where(x => x.Key != token).Select(x => x.Value);
+			var onlineTokens = _tokens.GetAllKeys();
+
+			return from x in _users.ValuesList
+				   where x.Token != token && onlineTokens.Contains(x.Token)
+				   select x;
 		}
 
 		public IEnumerable<SocketUser> GetAllUsers(string token) {

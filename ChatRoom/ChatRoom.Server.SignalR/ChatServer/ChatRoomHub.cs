@@ -23,69 +23,48 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 		#region BaseMethods
 
 		public override Task OnConnected() {
+			//Connection Properties
 			string roomToken = Context.QueryString["groupToken"];
 			string token = Context.QueryString["token"];
+			string connection = Context.ConnectionId;
 
-			_messenger.GetAllUsers(token);
-			 
-			Clients.Others.getWhoCameOnline(_messenger.OnlineUsers);
+			//Store user
+			var user = _messenger.GetUserByToken(token);
+			_messenger.SaveUser(user, connection);
+
+			//Get Online users
+			var users = _messenger.GetOnlineUsers(token);
+
+			//Get this user to others
+			Clients.Others.getWhoCameOnline(user);
+
+			//Get online users to this user
+			Clients.Caller.getChatUsers(users);
+
 			return base.OnConnected();
 		}
 
 		public override Task OnDisconnected() {
-			_messenger.OnlineUsers--;
-			Clients.Others.wentOffline(_messenger.OnlineUsers);
+			//Connection Properties
+			string roomToken = Context.QueryString["groupToken"];
+			string token = Context.QueryString["token"];
+			string connection = Context.ConnectionId;
+
+			//Remove user
+			var user = _messenger.GetUserByToken(token);
+			_messenger.RemoveUser(user, connection);
+
+
+			Clients.Others.wentOffline(user);
+
 			return base.OnDisconnected();
 		}
 
 		public override Task OnReconnected() {
-			_messenger.OnlineUsers++;
 			return base.OnReconnected();
 		}
 
 		#endregion
 
-		public string SendMessage(string message, IEnumerable<int> userIds) {
-			string roomToken = Context.QueryString["groupToken"];
-			string token = Context.QueryString["token"];
-
-			var createdBy = _messenger.GetUserByToken(token);
-
-
-
-
-			//if(string.IsNullOrEmpty(roomToken)) {
-			var user1Token = _messenger.GetConnection(userIds.First());
-			var user2Token = _messenger.GetConnection(userIds.Skip(1).First());
-
-			roomToken = //_messenger.CreateRoom(new List<string> { user1Token, user2Token });
-
-			string.Format("{0}_{1}", user1Token, user2Token);
-
-			Groups.Add(user1Token, roomToken);
-			Groups.Add(user1Token, roomToken);
-			//}
-
-
-			//var user1Token = _messenger.GetConnection(userIds.First());
-			//var user2Token = _messenger.GetConnection(userIds.Skip(1).First());
-
-			//string roomKey = string.Format("{0}_{1}", user1Token, user2Token);
-
-			//Groups.Add(user1Token, roomKey);
-			//Groups.Add(user2Token, roomKey);
-
-			Clients.OthersInGroup(roomToken).getMessage(roomToken, message, createdBy.Username);
-
-			//Clients.OthersInGroup(roomToken).getMessage(roomToken, message, createdBy.Username);
-			//Clients.Others.getMessage(roomToken, message, createdBy.Username, userIds);
-
-
-
-			//Clients.All.getMessage(roomToken, message, createdBy.Username, userIds);
-
-
-			return roomToken;
-		}
 	}
 }

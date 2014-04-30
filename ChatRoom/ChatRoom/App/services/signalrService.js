@@ -59,7 +59,7 @@
 			}
 
 		}
-		 
+
 		//Start hub connection
 		//connection.hub.start({ jsonp: true/*, transport: 'webSockets'*/ })     longPolling
 		connection.hub.start({ jsonp: true, transport: 'longPolling' })
@@ -72,6 +72,10 @@
 		connection.hub.disconnected(function () {
 			alert("You went offline");
 		});
+	}
+
+	signalrSession.stopListening = function () {
+		connection.hub.stop();
 	}
 
 	signalrSession.sendMessageTo = function (msg, room, callBack) {

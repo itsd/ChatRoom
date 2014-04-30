@@ -52,5 +52,13 @@ namespace ChatRoom.Server.SignalR.Infrastructure {
 				}
 			}
 		}
+
+		public IEnumerable<T> GetAllKeys() {
+			return _connections.Select(x => x.Key);
+		}
+
+		public int CountForKey(T key) {
+			return _connections.ContainsKey(key) ? _connections[key].Count : 0;
+		}
 	}
 }

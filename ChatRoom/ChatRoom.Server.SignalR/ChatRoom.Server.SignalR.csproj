@@ -170,6 +170,7 @@
     <Compile Include="Infrastructure\SignalRContractResolver.cs" />
     <Compile Include="Infrastructure\SignalRSession.cs" />
     <Compile Include="Infrastructure\TokenMapping.cs" />
+    <Compile Include="Infrastructure\UserMapping.cs" />
     <Compile Include="Models\context\SignalrContext.cs" />
     <Compile Include="Models\entities\SocketUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

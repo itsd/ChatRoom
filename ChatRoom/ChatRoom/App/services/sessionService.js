@@ -7,6 +7,8 @@
 
 	var HTTP_HEADER_KEY = 'Api-Auth-Token';
 
+	var loginSuccess;
+
 	var defaultUser = {
 		userID: 0,
 		token: '',
@@ -44,6 +46,7 @@
 				$http.defaults.headers.common[HTTP_HEADER_KEY] = session.user.token;
 
 				if (successHandler) { successHandler(); }
+				if (loginSuccess) { loginSuccess(); }
 
 			})
 			.error(function (data, status, headers, config) {
@@ -66,6 +69,10 @@
 			.error(function () {
 
 			});
+	}
+
+	session.initializeLoginSuccess = function (successCallBack) {
+		loginSuccess = successCallBack;
 	}
 
 	return session;
