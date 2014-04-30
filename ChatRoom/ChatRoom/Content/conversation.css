@@ -3,6 +3,8 @@
   display: none;
 }
 .conversation {
+  margin-top: 50px;
+  margin-left: 70px;
   padding: 0;
 }
 .conversation a {

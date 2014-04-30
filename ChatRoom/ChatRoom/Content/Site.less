@@ -40,36 +40,62 @@ body {
 				float: left;
 			}
 
-			.menu {
-				width: 200px;
+			ul.menu {
+				height: 45px;
+				line-height: 45px;
+				margin-top: 0;
+				width: 1100px;
+
+				li {
+					display: inline-block;
+					margin-right: 5px;
+					line-height: 45px;
+					color: white;
+					font-size: 12px;
+					vertical-align: middle;
+
+					&:last-child {
+						float: right;
+
+						a {
+							text-decoration: none;
+							color: white;
+						}
+					}
+
+					a {
+
+						img {
+							.radius(3px);
+							width: 22px;
+							height: 22px;
+							margin-top: 12px;
+						}
+					}
+				}
+				/*width: 200px;
 				display: inline-block;
 				margin-left: 3px;
 				height: 45px;
-				vertical-align: middle;
-
-				a {
+				vertical-align: middle;*/
+				/*a {
 					display: inline-block;
 
-					img {
-						.radius(3px);
-						width: 22px;
-						height: 22px;
-						margin-top: 10px;
-					}
+					
 				}
 
 				div {
 					display: inline-block;
-				}
+				}*/
 			}
 		}
 	}
 
 	.container {
-		width: 910px;
+		/*width: 910px;
 		min-height: 500px;
 		margin: 50px auto;
-		padding-right: 200px;
+		padding-right: 200px;*/
 	}
 
 	.online-users {

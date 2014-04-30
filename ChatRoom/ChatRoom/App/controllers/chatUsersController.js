@@ -1,4 +1,5 @@
 ﻿app.controller('chatUsersController', function ($scope, $http, chatService, signalrService, sessionService) {
+	$scope.isAuthorised = sessionService.isAuthenticated;
 
 	$scope.chatUsers = chatService.chatUsers;
 

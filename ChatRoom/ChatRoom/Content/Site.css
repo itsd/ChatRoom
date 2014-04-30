@@ -38,32 +38,54 @@ body header div .logo {
   width: 165px;
   float: left;
 }
-body header div .menu {
-  width: 200px;
-  display: inline-block;
-  margin-left: 3px;
+body header div ul.menu {
   height: 45px;
+  line-height: 45px;
+  margin-top: 0;
+  width: 1100px;
+  /*width: 200px;
+				display: inline-block;
+				margin-left: 3px;
+				height: 45px;
+				vertical-align: middle;*/
+  /*a {
+					display: inline-block;
+
+					
+				}
+
+				div {
+					display: inline-block;
+				}*/
+}
+body header div ul.menu li {
+  display: inline-block;
+  margin-right: 5px;
+  line-height: 45px;
+  color: white;
+  font-size: 12px;
   vertical-align: middle;
 }
-body header div .menu a {
-  display: inline-block;
+body header div ul.menu li:last-child {
+  float: right;
 }
-body header div .menu a img {
+body header div ul.menu li:last-child a {
+  text-decoration: none;
+  color: white;
+}
+body header div ul.menu li a img {
   border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   width: 22px;
   height: 22px;
-  margin-top: 10px;
-}
-body header div .menu div {
-  display: inline-block;
+  margin-top: 12px;
 }
 body .container {
-  width: 910px;
-  min-height: 500px;
-  margin: 50px auto;
-  padding-right: 200px;
+  /*width: 910px;
+		min-height: 500px;
+		margin: 50px auto;
+		padding-right: 200px;*/
 }
 body .online-users {
   width: 180px;
