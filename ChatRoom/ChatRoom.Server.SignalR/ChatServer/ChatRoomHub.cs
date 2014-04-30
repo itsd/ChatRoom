@@ -52,10 +52,12 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 			//Remove user
 			var user = _messenger.GetUserByToken(token);
-			_messenger.RemoveUser(user, connection);
+			bool notifyOthers = _messenger.RemoveUser(user, connection);
 
-
-			Clients.Others.wentOffline(user);
+			//If there is not any connection for this user notify to others
+			if(notifyOthers) {
+				Clients.Others.wentOffline(user);
+			}
 
 			return base.OnDisconnected();
 		}

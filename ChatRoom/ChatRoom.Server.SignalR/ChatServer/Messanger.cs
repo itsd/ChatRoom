@@ -56,9 +56,13 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 			_users.Add(user.Token, user);
 		}
 
-		public void RemoveUser(SocketUser user, string connection) {
+		public bool RemoveUser(SocketUser user, string connection) {
 			_tokens.Remove(user.Token, connection);
-			if(_tokens.CountForKey(user.Token) == 0) { _users.RemoveByKey(user.Token); }
+			if(_tokens.CountForKey(user.Token) == 0) {
+				_users.RemoveByKey(user.Token);
+				return true;
+			}
+			return false;
 		}
 
 		public IEnumerable<SocketUser> GetOnlineUsers(string token) {
