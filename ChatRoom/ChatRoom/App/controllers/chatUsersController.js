@@ -60,6 +60,10 @@
 		signalrService.stopListening();
 	}
 
+	$scope.closeItem = function (obj) {
+		alert($(obj.target).attr("class"));
+	}
+
 	if (sessionService.isAuthenticated) {
 		$scope.connectToUsers();
 	} else {
