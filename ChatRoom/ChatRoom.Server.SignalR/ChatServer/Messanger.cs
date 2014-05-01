@@ -17,6 +17,8 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 		private static readonly ConnectionMapping<string> _tokens = new ConnectionMapping<string> { };
 		private static readonly UserMapping<string, SocketUser> _users = new UserMapping<string, SocketUser> { };
 
+		private static readonly ConnectionMapping<string> _rooms = new ConnectionMapping<string> { };
+
 		private ISessionService _sessionService;
 		private IUserService _userService;
 
@@ -77,9 +79,13 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 				   select u;
 		}
 
-		public IEnumerable<SocketUser> GetAllUsers(string token) {
-			var user = GetUserByToken(token);
-			return _userService.GetAll().Where(x => x.ID != user.ID).Select(y => (SocketUser)y);
+		public string CreateRoom(IEnumerable<int> userIds) {
+			string newRoomId = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N");
+			foreach(var item in userIds) {
+				_tokens.Add(newRoomId, item.ToString()); 
+
+			}
+			return newRoomId;
 		}
 	}
 }

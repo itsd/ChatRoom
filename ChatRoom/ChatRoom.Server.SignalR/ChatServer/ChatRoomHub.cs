@@ -68,5 +68,21 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 		#endregion
 
+		public string SendMessage(string message, IEnumerable<int> userIds) {
+			//Connection Properties
+			string roomToken = Context.QueryString["groupToken"];
+			string token = Context.QueryString["token"];
+			string connection = Context.ConnectionId;
+
+			var user = _messenger.GetUserByToken(token);
+
+			
+
+			if(string.IsNullOrEmpty(roomToken)) {
+				roomToken = _messenger.CreateRoom(userIds);
+			}
+
+			return roomToken;
+		}
 	}
 }

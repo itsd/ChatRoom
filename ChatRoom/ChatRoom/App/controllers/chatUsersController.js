@@ -54,44 +54,7 @@
 		alert($(obj.target).attr("class"));
 	}
 
-	$scope.rooms = [
-		//{
-		//	id: 1,
-		//	isOpen: false,
-		//	name: 'sa',
-		//	widthUser: 1,
-		//	currentMessage: '',
-		//	messages: [
-		//	  {
-		//	  	isUser: true,
-		//	  	message: 'hello'
-		//	  },
-
-
-		//	  {
-		//	  	isUser: true,
-		//	  	message: 'a asd asd asd ssss as kjask djaskjdhkjashdkjas h kashd kasdhj askjdh askd haksdh'
-		//	  },
-		//	  {
-		//	  	isUser: true,
-		//	  	message: 'a asd asd asd ssss as kjask djaskjdhkjashdkjas h kashd kasdhj askjdh askd haksdh'
-		//	  },
-
-		//	]
-		//},
-		//{
-		//	id: 2,
-		//	isOpen: false,
-		//	name: 'sasa',
-		//	widthUser: 2,
-		//	currentMessage: '',
-		//	messages: [
-		//		{
-		//			isUser: false,
-		//			message: 'hello'
-		//		}]
-		//},
-	];
+	$scope.rooms = [];
 
 	$scope.openRoom = function (roomId) {
 		$scope.rooms.where(function (obj) { if (obj.id == roomId) return true; })[0].isOpen = true;
