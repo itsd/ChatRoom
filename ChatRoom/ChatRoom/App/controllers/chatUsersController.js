@@ -3,34 +3,24 @@
 
 	$scope.chatUsers = chatService.chatUsers;
 
-	$scope.changeRoom = function (index) {
+	$scope.changeRoom = function (userId, username) {
 		if (sessionService.isAuthenticated) {
-
-			selectedUser = chatService.chatUsers[index];
-			newGroupID = chatService.rooms.length + 1;
-
-			newRoom = {
-				name: selectedUser.username,
-				token: '',
-				id: newGroupID,
-				userIds: [sessionService.user.userID, selectedUser.id],
-				isOpen: true,
-				messages: []
+			var room = $scope.rooms.where(function (obj) { if (obj.widthUser == userId) return true; });
+			if (room.length == 1) {
+				room[0].isOpen = true;
+			} else {
+				newRoomId = $scope.rooms.length + 1;
+				$scope.rooms.push(
+					{
+						id: newRoomId,
+						isOpen: true,
+						name: username,
+						widthUser: userId,
+						currentMessage: '',
+						messages: []
+					}
+				);
 			}
-
-			chatService.rooms.push(newRoom);
-
-			//selectedRoom = chatService.rooms.where(function (obj) {
-			//	if (obj.id == newGroupID) return true;
-			//});
-
-			chatService.openRoom.name = newRoom.name;
-			chatService.openRoom.token = newRoom.token;
-			chatService.openRoom.id = newRoom.id;
-			chatService.openRoom.isOpen = true;
-			chatService.openRoom.messages = newRoom.messages;
-			chatService.openRoom.userIds = newRoom.userIds;
-
 		}
 	}
 
@@ -62,6 +52,64 @@
 
 	$scope.closeItem = function (obj) {
 		alert($(obj.target).attr("class"));
+	}
+
+	$scope.rooms = [
+		//{
+		//	id: 1,
+		//	isOpen: false,
+		//	name: 'sa',
+		//	widthUser: 1,
+		//	currentMessage: '',
+		//	messages: [
+		//	  {
+		//	  	isUser: true,
+		//	  	message: 'hello'
+		//	  },
+
+
+		//	  {
+		//	  	isUser: true,
+		//	  	message: 'a asd asd asd ssss as kjask djaskjdhkjashdkjas h kashd kasdhj askjdh askd haksdh'
+		//	  },
+		//	  {
+		//	  	isUser: true,
+		//	  	message: 'a asd asd asd ssss as kjask djaskjdhkjashdkjas h kashd kasdhj askjdh askd haksdh'
+		//	  },
+
+		//	]
+		//},
+		//{
+		//	id: 2,
+		//	isOpen: false,
+		//	name: 'sasa',
+		//	widthUser: 2,
+		//	currentMessage: '',
+		//	messages: [
+		//		{
+		//			isUser: false,
+		//			message: 'hello'
+		//		}]
+		//},
+	];
+
+	$scope.openRoom = function (roomId) {
+		$scope.rooms.where(function (obj) { if (obj.id == roomId) return true; })[0].isOpen = true;
+	}
+
+	$scope.closeRoom = function (roomId) {
+		$scope.rooms.where(function (obj) { if (obj.id == roomId) return true; })[0].isOpen = false;
+	}
+
+	$scope.sendMessage = function (roomId) {
+
+		var inRoom = $scope.rooms.where(function (obj) { if (obj.id == roomId) return true; })[0];
+
+		if (inRoom.currentMessage != '') {
+			inRoom.messages.push({ isUser: false, message: inRoom.currentMessage });
+			$(".body-chat-content").animate({ scrollTop: $(".body-chat-content").get(0).scrollHeight }, 'slow');
+			inRoom.currentMessage = '';
+		}
 	}
 
 	if (sessionService.isAuthenticated) {

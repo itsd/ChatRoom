@@ -5,6 +5,11 @@
 @openedItemtHeight: 270px;
 @openedItemHeaderFooterSize: 25px;
 @closedItemsHeaderSize: 28px;
+@userMessageBodyColor: lighten(gray,30%);
+@userMessageBorderColor: darken(gray,30%);
+
+@yourMessageBodyColor: #dbedfe;
+@yourMessageBorderColor: darken(#dbedfe,40%);
 
 .online-users {
 	width: 180px;
@@ -59,7 +64,7 @@
 
 	.item {
 		width: 170px;
-		margin-left: 1px;
+		margin-left: 4px;
 		display: inline-block;
 		position: relative;
 		vertical-align: bottom;
@@ -104,10 +109,14 @@
 				overflow-y: auto;
 
 				.message-item {
+					margin-top: 5px;
+					height: 20px;
 					padding: 5px;
+					clear: both;
 
 					a {
 						display: inline-block;
+						float: left;
 
 						img {
 							height: 20px;
@@ -118,79 +127,26 @@
 					}
 
 					.comment {
-						display: inline-block;
-						line-height: 19px;
+						max-width: 160px;
+						position: relative;
 						font-size: 12px;
-						max-width: 170px;
-						vertical-align: top;
 						border: 1px solid @brandColor;
 						padding: 1px 3px;
-						position: relative;
 						.radius(3px);
+						line-height: 20px;
 					}
 
-					.he {
-						margin-left: 5px;
-
-						&:before {
-							content: "";
-							position: absolute;
-							left: -8px;
-							top: 5px;
-							width: 0;
-							height: 0;
-							border-top: 5px solid transparent;
-							border-right: 8px solid @brandColor;
-							border-bottom: 5px solid transparent;
-						}
-
-						&:after {
-							content: "";
-							position: absolute;
-							left: -6px;
-							top: 5px;
-							width: 0;
-							height: 0;
-							border-top: 5px solid transparent;
-							border-right: 8px solid white;
-							border-bottom: 5px solid transparent;
-						}
+					.usermessage {
+						float: left;
+						margin-left: 10px;
+						.setLeftBubble(1px,6px,4px,3px, @userMessageBodyColor,@userMessageBorderColor);
 					}
 
-					.you {
+					.yourmessage {
 						float: right;
-						margin-right: 5px;
-						background-color: lighten(blue,40%);
-
-						&:before {
-							content: "";
-							position: absolute;
-							right: -9px;
-							top: 4px;
-							width: 0;
-							height: 0;
-							border-top: 5px solid transparent;
-							border-left: 9px solid @brandColor;
-							border-bottom: 5px solid transparent;
-						}
-
-						&:after {
-							content: "";
-							position: absolute;
-							right: -7px;
-							top: 4px;
-							width: 0;
-							height: 0;
-							border-top: 5px solid transparent;
-							border-left: 8px solid lighten(blue,40%);
-							border-bottom: 5px solid transparent;
-						}
+						margin-right: 8px;
+						.setRightBubble(1px,6px,4px,3px, @yourMessageBodyColor,@yourMessageBorderColor);
 					}
-				}
-
-				.you {
-					background-color: lighten(blue,40%);
-					float: right;
 				}
 			}
 
@@ -198,17 +154,20 @@
 				vertical-align: bottom;
 				width: @openedItemtWidth - 4px;
 				height: @openedItemHeaderFooterSize;
-				background-color: red;
 				margin: 0 auto;
 
-
-				input[type="text"] {
-					outline: none;
-					border: none;
-					text-decoration: none;
+				form {
 					height: 100%;
 					width: 100%;
-					font-size: 12px;
+
+					input[type="text"] {
+						outline: none;
+						border: none;
+						text-decoration: none;
+						height: 100%;
+						width: 100%;
+						font-size: 12px;
+					}
 				}
 			}
 		}

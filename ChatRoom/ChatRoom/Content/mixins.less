@@ -25,3 +25,74 @@
 	-o-background-size: 8px 8px;
 	-webkit-background-size: 8px 8px;
 }
+
+.setLeftBubble(@borderWidth,@bubbleFromTop,@triangleSize,@radius,@contentColor,@borderColor) {
+
+	@beforeBorderTop: @triangleSize;
+	@beforeBorderRight: 2*@triangleSize;
+	@beforeBorderBottom: @triangleSize;
+
+	background-color: @contentColor;
+	border: @borderWidth solid @borderColor;
+	position: relative;
+	.radius(@radius);
+
+	&:before {
+		content: "";
+		position: absolute;
+		left: -@beforeBorderRight;
+		top: @bubbleFromTop;
+		width: 0;
+		height: 0;
+		border-top: @beforeBorderTop solid transparent;
+		border-right: @beforeBorderRight solid @borderColor;
+		border-bottom: @beforeBorderBottom solid transparent;
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		left: -@beforeBorderRight + 2*@borderWidth;
+		top: @bubbleFromTop + @borderWidth;
+		width: 0;
+		height: 0;
+		border-top: @beforeBorderTop - @borderWidth solid transparent;
+		border-right: @beforeBorderRight - 2 * @borderWidth solid @contentColor;
+		border-bottom: @beforeBorderBottom - @borderWidth solid transparent;
+	}
+}
+
+.setRightBubble(@borderWidth,@bubbleFromTop,@triangleSize,@radius,@contentColor,@borderColor) {
+	@beforeBorderTop: @triangleSize;
+	@beforeBorderRight: 2*@triangleSize;
+	@beforeBorderBottom: @triangleSize;
+
+	background-color: @contentColor;
+	border: @borderWidth solid @borderColor;
+	position: relative;
+	.radius(@radius);
+
+	&:before {
+		content: "";
+		position: absolute;
+		right: -@beforeBorderRight;
+		top: @bubbleFromTop;
+		width: 0;
+		height: 0;
+		border-top: @beforeBorderTop solid transparent;
+		border-left: @beforeBorderRight solid @borderColor;
+		border-bottom: @beforeBorderBottom solid transparent;
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		right: -@beforeBorderRight + 2*@borderWidth;
+		top: @bubbleFromTop + @borderWidth;
+		width: 0;
+		height: 0;
+		border-top: @beforeBorderTop - @borderWidth solid transparent;
+		border-left: @beforeBorderRight - 2 * @borderWidth solid @contentColor;
+		border-bottom: @beforeBorderBottom - @borderWidth solid transparent;
+	}
+}
