@@ -24,6 +24,7 @@ namespace ChatRoom.Server.SignalR {
 
 			//Authentication
 			//GlobalHost.HubPipeline.RequireAuthentication();
+			 
 		}
 	}
 }

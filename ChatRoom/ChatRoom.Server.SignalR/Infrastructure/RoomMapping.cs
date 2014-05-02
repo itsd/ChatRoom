@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 
 namespace ChatRoom.Server.SignalR.Infrastructure {
-	public class ConnectionMapping<K> {
-		private readonly Dictionary<K, HashSet<string>> _connections = new Dictionary<K, HashSet<string>>();
+	public class RoomMapping<K> {
+		private readonly Dictionary<K, HashSet<int>> _connections = new Dictionary<K, HashSet<int>>();
 
 		public int Count {
 			get {
@@ -13,38 +13,38 @@ namespace ChatRoom.Server.SignalR.Infrastructure {
 			}
 		}
 
-		public void Add(K key, string connectionId) {
+		public void Add(K key, int userId) {
 			lock(_connections) {
-				HashSet<string> connections;
+				HashSet<int> connections;
 				if(!_connections.TryGetValue(key, out connections)) {
-					connections = new HashSet<string>();
+					connections = new HashSet<int>();
 					_connections.Add(key, connections);
 				}
 
 				lock(connections) {
-					connections.Add(connectionId);
+					connections.Add(userId);
 				}
 			}
 		}
 
-		public IEnumerable<string> GetConnections(K key) {
-			HashSet<string> connections;
+		public IEnumerable<int> GetConnections(K key) {
+			HashSet<int> connections;
 			if(_connections.TryGetValue(key, out connections)) {
 				return connections;
 			}
 
-			return Enumerable.Empty<string>();
+			return Enumerable.Empty<int>();
 		}
 
-		public void Remove(K key, string connectionId) {
+		public void Remove(K key, int userId) {
 			lock(_connections) {
-				HashSet<string> connections;
+				HashSet<int> connections;
 				if(!_connections.TryGetValue(key, out connections)) {
 					return;
 				}
 
 				lock(connections) {
-					connections.Remove(connectionId);
+					connections.Remove(userId);
 
 					if(connections.Count == 0) {
 						_connections.Remove(key);
@@ -57,24 +57,17 @@ namespace ChatRoom.Server.SignalR.Infrastructure {
 			return _connections.Select(x => x.Key);
 		}
 
-		public IEnumerable<string> GetAllByKey(K key) {
+		public IEnumerable<int> GetAllByKey(K key) {
 			if(_connections.ContainsKey(key)) {
 				return _connections[key].Select(x => x);
 			}
-			return default(IEnumerable<string>);
+			return default(IEnumerable<int>);
 		}
 
-		public IEnumerable<string> GetAllByKeys(IEnumerable<K> keys) {
-
-			List<string> results = new List<string> { };
-
-			var hashedResults = from x in _connections
-								where keys.Contains(x.Key)
-								select x.Value.Select(v => v);
-
-			foreach(var item in hashedResults) { results.AddRange(item.Select(x => x)); }
-
-			return results;
+		public IEnumerable<K> GetAllByContainingValue(int value) {
+			return from x in _connections
+				   where x.Value.Contains(value)
+				   select x.Key;
 		}
 
 		public int CountForKey(K key) {

@@ -1,8 +1,6 @@
 ﻿app.controller('indexController', function ($scope, $location, sessionService) {
 	$scope.session = sessionService;
-
-	console.log($scope.session);
-
+	 
 	if (!sessionService.isAuthenticated) $location.path('/login');
 
 	if (sessionService.isAuthenticated) $location.path('/room');

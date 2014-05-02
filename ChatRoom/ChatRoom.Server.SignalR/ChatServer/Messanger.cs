@@ -16,8 +16,7 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 		private static readonly ConnectionMapping<string> _tokens = new ConnectionMapping<string> { };
 		private static readonly UserMapping<string, SocketUser> _users = new UserMapping<string, SocketUser> { };
-
-		private static readonly ConnectionMapping<string> _rooms = new ConnectionMapping<string> { };
+		private static readonly RoomMapping<string> _rooms = new RoomMapping<string> { };
 
 		private ISessionService _sessionService;
 		private IUserService _userService;
@@ -81,11 +80,27 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 		public string CreateRoom(IEnumerable<int> userIds) {
 			string newRoomId = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N");
-			foreach(var item in userIds) {
-				_tokens.Add(newRoomId, item.ToString()); 
-
-			}
+			foreach(var userId in userIds) { _rooms.Add(newRoomId, userId); }
 			return newRoomId;
+		}
+
+		public IEnumerable<string> GetConnectionsForRoom(string roomId) { //Want to get all users' all connections in this room
+			
+			var userIds = _rooms.GetAllByKey(roomId);
+
+			var userTokens = from x in _users.ValuesList
+							 where userIds.Contains(x.ID)
+							 select x.Token;
+
+			return _tokens.GetAllByKeys(userTokens);
+		}
+
+		public IEnumerable<string> GetUserRoomIds(int userId) {
+			return _rooms.GetAllByContainingValue(userId);
+		}
+
+		public IEnumerable<string> GetUsersAllConnections(string token) {
+			return _tokens.GetAllByKey(token);
 		}
 	}
 }

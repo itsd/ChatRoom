@@ -4,6 +4,5 @@ C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Shared\obj\Deb
 C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Shared\obj\Debug\ChatRoom.Shared.pdb
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Shared\bin\Debug\ChatRoom.Shared.dll
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Shared\bin\Debug\ChatRoom.Shared.pdb
-C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Shared\obj\Debug\ChatRoom.Shared.csprojResolveAssemblyReference.cache
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Shared\obj\Debug\ChatRoom.Shared.dll
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Shared\obj\Debug\ChatRoom.Shared.pdb

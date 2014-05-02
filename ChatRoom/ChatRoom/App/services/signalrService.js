@@ -9,7 +9,7 @@
 	var connectionUrl = "http://localhost:47806/signalR";
 	var COOKIEUSER_KEY = "CURRENT_USER";
 
-	signalrSession.startListening = function (getChatUsers, getOnlineUser, wentOffline, callBack) {
+	signalrSession.startListening = function (getChatUsers, getOnlineUser, wentOffline, onMessageCallBack, onYourMessageCallBack, callBack) {
 		//Configure connection
 		connection = $.connection;
 		connection.hub.url = connectionUrl;
@@ -32,32 +32,12 @@
 			callBack();
 		}
 
-		connection.chatRoom.client.getMessage = function (token, message, createdBy, userIds) {
+		connection.chatRoom.client.getMessage = function (data) {
+			if (onMessageCallBack) { onMessageCallBack(data); }
+		}
 
-			console.log("You got a new message ...");
-
-			if (Object.keys(chatService.openRoom).length === 0) {
-				console.log("We don't have open room");
-				chatService.openRoom.name = createdBy;
-				chatService.openRoom.token = token;
-				chatService.openRoom.id = 1;
-				chatService.openRoom.isOpen = true;
-				chatService.openRoom.userIds = userIds;
-				chatService.openRoom.messages = [];
-				chatService.openRoom.messages.push({ isUser: true, message: message });
-			} else {
-
-				if (chatService.openRoom.token == token) {
-					chatService.openRoom.messages.push({ isUser: true, message: message });
-				} else {
-					alert("You got new notification in other room");
-				}
-			}
-
-			if (Object.keys(signalrSession.roomScope).length !== 0) {
-				signalrSession.roomScope.$apply();
-			}
-
+		connection.chatRoom.client.getYourMessage = function (data) {
+			if (onYourMessageCallBack) { onYourMessageCallBack(data); }
 		}
 
 		//Start hub connection
@@ -74,28 +54,13 @@
 		});
 	}
 
-	signalrSession.stopListening = function () {
-		connection.hub.stop();
-	}
+	signalrSession.sendMessageTo = function (msg, roomToken, roomUsers, callBack) {
+		connection.hub.qs = { 'token': $cookieStore.get(COOKIEUSER_KEY).token, 'groupToken': roomToken };
 
-	signalrSession.sendMessageTo = function (msg, room, callBack) {
-		connection.hub.qs = { 'token': $cookieStore.get(COOKIEUSER_KEY).token, 'groupToken': room.token };
-
-		connection.chatRoom.server.sendMessage(msg, room.userIds)
+		connection.chatRoom.server.sendMessage(msg, roomUsers)
 		.done(function (data) {
-			if (room.token == '') {
-				chatService.openRoom.token = data;
-			}
-			chatService.openRoom.messages.push({ isUser: false, message: msg });
-			callBack();
+			if (callBack) callBack(data);
 		});
-	}
-
-	signalrSession.listenMessages = function (callBack) {
-
-		console.log("Listening messages ...");
-
-
 	}
 
 	signalrSession.setScope = function (scope) {

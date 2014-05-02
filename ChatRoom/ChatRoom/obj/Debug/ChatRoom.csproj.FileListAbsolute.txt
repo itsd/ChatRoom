@@ -109,6 +109,5 @@ C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\bin\Microsoft.Owi
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\obj\Debug\ChatRoom.csprojResolveAssemblyReference.cache
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\obj\Debug\ChatRoom.dll
 C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom\obj\Debug\ChatRoom.pdb
