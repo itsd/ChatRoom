@@ -209,6 +209,7 @@
     <Content Include="Content\conversation.css">
       <DependentUpon>conversation.less</DependentUpon>
     </Content>
+    <Content Include="Content\images\gnome_window_close.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\smiles\Emotes-face-smile-big-icon.png" />
     <Content Include="Content\images\smiles\Emotes-face-smile-icon.png" />

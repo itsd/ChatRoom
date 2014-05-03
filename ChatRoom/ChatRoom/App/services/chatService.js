@@ -8,7 +8,9 @@
 			{ id: 3, username: 'sasasa', isOnline: false }
 		],
 
-		rooms: [],
+		rooms: [
+			//{ name: 'sa' }
+		],
 
 		openRoom: {}
 	};

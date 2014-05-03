@@ -113,6 +113,10 @@
 		chatService.rooms.where(function (obj) { if (obj.id == roomId) return true; })[0].isOpen = false;
 	}
 
+	$scope.removeRoom = function (roomId) {
+		chatService.rooms.removeWithProperty(function (obj) { if (obj.id == roomId) return true; });
+	}
+
 	$scope.sendMessage = function (roomId, roomToken) {
 
 		var inRoom;

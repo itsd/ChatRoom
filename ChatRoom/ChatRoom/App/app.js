@@ -29,7 +29,7 @@ Array.prototype.remove = function (obj) {
 	var rest = this.splice(index, 1);
 };
 
-Array.prototype.removeWithID = function (predicate) {
+Array.prototype.removeWithProperty = function (predicate) {
 	for (i = 0; i < this.length; i++) {
 		if (predicate(this[i])) this.remove(this[i]);
 	}
