@@ -57,6 +57,17 @@ namespace ChatRoom.Server.SignalR.Infrastructure {
 			return _connections.Select(x => x.Key);
 		}
 
+		public K GetByValues(IEnumerable<int> values) {
+			var result = default(K);
+
+			result = (from x in _connections
+					  from k in values
+					  where x.Value.Count == values.Count() && x.Value.Any(y => y == k)
+					  select x.Key).FirstOrDefault();
+
+			return result;
+		}
+
 		public IEnumerable<int> GetAllByKey(K key) {
 			if(_connections.ContainsKey(key)) {
 				return _connections[key].Select(x => x);

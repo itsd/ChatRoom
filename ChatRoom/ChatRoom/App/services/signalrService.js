@@ -15,7 +15,8 @@
 		connection.hub.url = connectionUrl;
 		//connection.hub.logging = true;
 		//connection.hub.transportConnectTimeout = 50;
-		connection.hub.qs = "token=" + $cookieStore.get(COOKIEUSER_KEY).token;
+		//connection.hub.qs = "token=" + $cookieStore.get(COOKIEUSER_KEY).token;
+		connection.hub.qs = { 'token': $cookieStore.get(COOKIEUSER_KEY).token };
 
 		connection.chatRoom.client.getWhoCameOnline = function (data) {
 			getOnlineUser(data);
@@ -42,7 +43,7 @@
 
 		//Start hub connection
 		//connection.hub.start({ jsonp: true/*, transport: 'webSockets'*/ })     longPolling
-		connection.hub.start({ jsonp: true, transport: 'longPolling' })
+		connection.hub.start({ jsonp: true, transport: 'webSockets' })
 			.done(function () {
 				console.log("connected to >> " + connectionUrl);
 				$("#connectionID").html($.connection.hub.id);

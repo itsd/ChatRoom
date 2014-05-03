@@ -89,14 +89,20 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 			//If this is a first post in room
 			if(string.IsNullOrEmpty(roomToken)) {
-				//create room with user ids
-				roomToken = _messenger.CreateRoom(userIds);
 
-				var cons = _messenger.GetConnectionsForRoom(roomToken);
-				//Add users in room
-				foreach(var item in cons) {
-					Groups.Add(item, roomToken);
-					System.Diagnostics.Debug.WriteLine("Added connection {0}, in room {1}", item, roomToken);
+				//Find if room exists with this user Ids
+				roomToken = _messenger.GetRoomByUserIds(userIds);
+
+				if(string.IsNullOrEmpty(roomToken)) {
+					//create room with user ids
+					roomToken = _messenger.CreateRoom(userIds);
+
+					var cons = _messenger.GetConnectionsForRoom(roomToken);
+					//Add users in room
+					foreach(var item in cons) {
+						Groups.Add(item, roomToken);
+						System.Diagnostics.Debug.WriteLine("Added connection {0}, in room {1}", item, roomToken);
+					}
 				}
 			}
 

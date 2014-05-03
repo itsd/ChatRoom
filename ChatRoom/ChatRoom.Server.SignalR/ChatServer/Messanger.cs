@@ -84,8 +84,12 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 			return newRoomId;
 		}
 
+		public string GetRoomByUserIds(IEnumerable<int> userIds) {
+			return _rooms.GetByValues(userIds);
+		}
+
 		public IEnumerable<string> GetConnectionsForRoom(string roomId) { //Want to get all users' all connections in this room
-			
+
 			var userIds = _rooms.GetAllByKey(roomId);
 
 			var userTokens = from x in _users.ValuesList
