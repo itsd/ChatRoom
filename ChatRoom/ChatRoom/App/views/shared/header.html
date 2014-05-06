@@ -1,4 +1,4 @@
-﻿<div ng-controller="headerController" ng-show="isAuthorised">
+﻿<div ng-controller="headerController" ng-show="showHeader()">
 	<div class="logo">
 		...
 	</div>
@@ -9,14 +9,13 @@
 				<img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc1/t1.0-1/c14.0.47.47/s32x32/252231_1002029915278_1941483569_t.jpg" />
 			</a>
 		</li>
+
 		<li>Welcome : {{username}}</li>
 
 		<li>Your Token is >>>>>> <span style="font-weight:bold;" id="connectionID"></span></li>
 
-		<li>
-			<a href="#/logout">Logout</a>
-		</li>
-		<!--<div id="connectionID" style="color:white; display:inline-block; position:fixed;top:5px; right:5px; height:40px; width:520px;"></div>-->
+		<li><a href="#/logout">Logout</a></li>
+
 	</ul>
 </div>
 

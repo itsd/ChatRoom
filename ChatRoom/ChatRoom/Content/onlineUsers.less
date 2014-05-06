@@ -1,16 +1,6 @@
 ﻿@import 'configuration.less';
 @import 'mixins.less';
 
-@openedItemtWidth: 230px;
-@openedItemtHeight: 270px;
-@openedItemHeaderFooterSize: 25px;
-@closedItemsHeaderSize: 28px;
-@userMessageBodyColor: lighten(gray,30%);
-@userMessageBorderColor: darken(gray,30%);
-
-@yourMessageBodyColor: #dbedfe;
-@yourMessageBorderColor: darken(#dbedfe,40%);
-
 .online-users {
 	width: 180px;
 	height: 100%;
@@ -68,7 +58,7 @@
 		display: inline-block;
 		position: relative;
 		vertical-align: bottom;
-		border: 1px solid gray;
+		border: 1px solid @brandColor;
 		border-bottom: none;
 		.radiuses(3px,3px,0,0);
 		background-color: lighten(@bodyColor,20%);
@@ -92,20 +82,10 @@
 
 			.closer {
 				display: none;
-				width: 12px;
-				height: 12px;
 				float: right;
-				background: url(images/gnome_window_close.png) no-repeat;
 				margin: 9px 5px 3px 3px;
 				.backgroundSize(12px);
-				.radius(3px);
-				opacity: .7;
-
-
-				&:hover {
-					opacity: 1;
-					cursor: pointer;
-				}
+				.closeButton(2px, 12px, 3px, darken(@brandColor,30%));
 			}
 
 			&:hover {
@@ -133,21 +113,18 @@
 
 				.closer-Header {
 					display: inline-block;
-					width: 14px;
-					height: 14px;
 					float: right;
-					background: url(images/gnome_window_close.png) no-repeat;
 					margin: 7px 5px 3px 3px;
 					.backgroundSize(14px);
+					.closeButton(2px, 12px, 3px, darken(@brandColor,30%));
 					.radius(3px);
-					cursor: pointer;
 				}
 			}
 
 			.body {
 				height: @openedItemtHeight - ((2 * @openedItemHeaderFooterSize) + 6px);
 				width: @openedItemtWidth;
-				border-bottom: 1px solid gray;
+				border-bottom: 1px solid @brandColor;
 				overflow-y: auto;
 
 				.message-item {
@@ -163,7 +140,7 @@
 						img {
 							height: 20px;
 							width: 20px;
-							border: 1px solid gray;
+							border: 1px solid @brandColor;
 							.radius(3px);
 						}
 					}

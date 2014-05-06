@@ -96,3 +96,53 @@
 		border-bottom: @beforeBorderBottom - @borderWidth solid transparent;
 	}
 }
+
+.closeButton(@applier,@crossSpace, @crossHeight, @crossColor) {
+	@crossWidth: @crossSpace;
+
+	width: @crossSpace;
+	height: @crossSpace;
+	position: relative;
+
+	&:hover {
+		cursor: pointer;
+
+		&:after {
+			background-color: darken(@crossColor,10%);
+		}
+
+		&:before {
+			background-color: darken(@crossColor,10%);
+		}
+	}
+
+	&:after {
+		content: '';
+		position: absolute;
+		width: @crossSpace;
+		height: @crossHeight;
+		background-color: @crossColor;
+		border-radius: 50%;
+		.rotate(45deg);
+		top: (@crossSpace/2) - @crossHeight + @applier;
+	}
+
+	&:before {
+		content: '';
+		position: absolute;
+		width: @crossSpace;
+		height: @crossHeight;
+		background-color: @crossColor;
+		border-radius: 50%;
+		.rotate(-45deg);
+		top: (@crossSpace/2) - @crossHeight + @applier;
+	}
+}
+
+.rotate(@deg) {
+	-webkit-transform: rotate(@deg);
+	-moz-transform: rotate(@deg);
+	-ms-transform: rotate(@deg);
+	-o-transform: rotate(@deg);
+	transform: rotate(@deg);
+}

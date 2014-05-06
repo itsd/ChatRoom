@@ -1,6 +1,10 @@
 ﻿app.controller('chatUsersController', function ($scope, $http, chatService, signalrService, sessionService) {
 	$scope.isAuthorised = sessionService.isAuthenticated;
 
+	$scope.showUsersView = function () {
+		return sessionService.isAuthenticated;
+	}
+
 	$scope.chatUsers = chatService.chatUsers;
 
 	$scope.changeRoom = function (userId, username) {
