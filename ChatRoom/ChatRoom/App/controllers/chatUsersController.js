@@ -1,5 +1,6 @@
 ﻿app.controller('chatUsersController', function ($scope, $http, chatService, signalrService, sessionService) {
 	$scope.isAuthorised = sessionService.isAuthenticated;
+	$scope.audioNotification = new Audio('Content/sound/sound.mp3');
 
 	$scope.showUsersView = function () {
 		return sessionService.isAuthenticated;
@@ -67,6 +68,8 @@
 					}
 
 					$scope.$apply();
+					$scope.audioNotification.play();
+
 					$(".body-chat-content").animate({ scrollTop: $(".body-chat-content").get(0).scrollHeight }, 'slow');
 				},
 				function (data) {
