@@ -1,16 +1,17 @@
 ﻿app.controller('chatUsersController', function ($scope, $http, chatService, signalrService, sessionService) {
 	$scope.isAuthorised = sessionService.isAuthenticated;
-	$scope.audioNotification = new Audio('Content/sound/sound.mp3');
 
 	$scope.showUsersView = function () {
 		return sessionService.isAuthenticated;
 	}
 
+	$scope.showSettingBubble = false;
+
 	$scope.chatUsers = chatService.chatUsers;
 
 	$scope.changeRoom = function (userId, username) {
 		if (sessionService.isAuthenticated) {
-			var room = chatService.rooms.where(function (obj) { if (obj.widthUser == userId) return true; });
+			var room = chatService.rooms.where(function (obj) { if (obj.toUser == userId) return true; });
 			if (room.length == 1) {
 				room[0].isOpen = true;
 			} else {
@@ -21,7 +22,7 @@
 						token: '',
 						isOpen: true,
 						name: username,
-						widthUser: userId,
+						toUser: userId,
 						userIds: [userId, sessionService.user.userID],
 						currentMessage: '',
 						messages: []
@@ -52,23 +53,40 @@
 						room[0].isOpen = true;
 						room[0].messages.push({ isUser: true, message: data.message });
 					} else {
-						newRoomId = chatService.rooms.length + 1;
-						chatService.rooms.push(
-							{
-								id: newRoomId,
-								token: data.roomToken,
-								isOpen: true,
-								name: data.username,
-								userIds: data.userIds,
-								widthUser: data.userIds.where(function (obj) { if (obj != sessionService.user.userID) return true; })[0],
-								currentMessage: '',
-								messages: [{ isUser: true, message: data.message }]
-							}
-						);
+
+						//Let find room with userId
+						var toUserId = data.userIds.where(function (obj) { if (obj != sessionService.user.userID) return true; });
+
+						if (toUserId.length == 1) {
+							toUserId = toUserId[0];
+						} else {
+							toUserId = -1;
+						}
+
+						var room = chatService.rooms.where(function (obj) { if (obj.toUser == toUserId) return true; });
+
+						if (room.length == 1) {
+							room[0].isOpen = true;
+							room[0].messages.push({ isUser: true, message: data.message });
+						} else {
+							newRoomId = chatService.rooms.length + 1;
+							chatService.rooms.push(
+								{
+									id: newRoomId,
+									token: data.roomToken,
+									isOpen: true,
+									name: data.username,
+									userIds: data.userIds,
+									toUser: toUserId,
+									currentMessage: '',
+									messages: [{ isUser: true, message: data.message }]
+								}
+							);
+						}
 					}
 
 					$scope.$apply();
-					$scope.audioNotification.play();
+					$scope.playSound();
 
 					$(".body-chat-content").animate({ scrollTop: $(".body-chat-content").get(0).scrollHeight }, 'slow');
 				},
@@ -87,7 +105,7 @@
 								isOpen: true,
 								name: sessionService.user.username,
 								userIds: data.userIds,
-								widthUser: data.userIds.where(function (obj) { if (obj != sessionService.user.userID) return true; })[0],
+								toUser: data.userIds.where(function (obj) { if (obj != sessionService.user.userID) return true; })[0],
 								currentMessage: '',
 								messages: [{ isUser: false, message: data.message }]
 							}
@@ -146,6 +164,17 @@
 
 			$(".body-chat-content").animate({ scrollTop: $(".body-chat-content").get(0).scrollHeight }, 'slow');
 		}
+	}
+
+	$scope.playSound = function () {
+		var hiddenAudio = $('.hiddenPlayer');
+		var soundAudio = $('.chat_audio').html();
+		hiddenAudio.html('');
+		hiddenAudio.append(soundAudio);
+	}
+
+	$scope.showSettingBubbles = function () {
+		$scope.showSettingBubble = !$scope.showSettingBubble;
 	}
 
 	if (sessionService.isAuthenticated) {

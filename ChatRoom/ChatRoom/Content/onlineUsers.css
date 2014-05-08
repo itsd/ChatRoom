@@ -44,6 +44,68 @@
   background-color: #e8e4e4;
   cursor: pointer;
 }
+.online-users .chat-settings {
+  position: absolute;
+  bottom: 45px;
+  right: 0;
+  height: 30px;
+  width: 100%;
+  border-top: 1px solid #00b9f2;
+}
+.online-users .chat-settings .setting {
+  background-image: url(images/smiles/application_x_desktop.png);
+  width: 16px;
+  height: 16px;
+  display: block;
+  margin: 6px 3px;
+  cursor: pointer;
+}
+.online-users .chat-settings .bubble {
+  width: 174px;
+  height: 100px;
+  display: block;
+  position: absolute !important;
+  bottom: 40px;
+  left: -15px;
+  padding: 3px;
+  background-color: #f8f5f5;
+  border: 1px solid #00b9f2;
+  position: relative;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+.online-users .chat-settings .bubble:before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  bottom: -16px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-top: 16px solid #00b9f2;
+  border-right: 8px solid transparent;
+}
+.online-users .chat-settings .bubble:after {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 17px;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-top: 14px solid #f8f5f5;
+  border-right: 7px solid transparent;
+}
+.online-users .chat-settings .bubble .menu {
+  width: 100%;
+}
+.online-users .chat-settings .bubble .menu .setting-menu-item {
+  width: 100%;
+  height: 15px;
+  margin-bottom: 2px;
+  font-size: 12px;
+}
 .dock {
   position: absolute;
   bottom: 0;

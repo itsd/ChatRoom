@@ -211,6 +211,7 @@
     </Content>
     <Content Include="Content\images\gnome_window_close.png" />
     <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\smiles\application_x_desktop.png" />
     <Content Include="Content\images\smiles\Emotes-face-smile-big-icon.png" />
     <Content Include="Content\images\smiles\Emotes-face-smile-icon.png" />
     <Content Include="Content\images\smiles\Emotes-face-wink-icon.png" />
@@ -239,6 +240,7 @@
       <DependentUpon>Site.css</DependentUpon>
     </Content>
     <Content Include="Content\sound\sound.mp3" />
+    <Content Include="Content\sound\sound.wav" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.less" />
@@ -283,6 +285,7 @@
     <Content Include="Content\conversation.less" />
     <Content Include="Content\mixins.less" />
     <Content Include="Content\onlineUsers.less" />
+    <Content Include="Content\sound\sound.ogg" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />

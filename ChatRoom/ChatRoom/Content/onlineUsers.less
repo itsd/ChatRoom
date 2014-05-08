@@ -45,6 +45,50 @@
 			cursor: pointer;
 		}
 	}
+
+	.chat-settings {
+		position: absolute;
+		bottom: 45px;
+		right: 0;
+		height: 30px;
+		width: 100%;
+		border-top: 1px solid @brandColor;
+
+		.setting {
+			background-image: url(images/smiles/application_x_desktop.png);
+			width: 16px;
+			height: 16px;
+			display: block;
+			margin: 6px 3px;
+			cursor: pointer;
+		}
+
+		.bubble {
+			width: 174px;
+			height: 100px;
+			display: block;
+			position: absolute !important;
+			bottom: 40px;
+			left: -15px;
+			padding: 3px;
+			.setBottomBubble(1px, 16px, 8px, 3px, @onlineItemsColor, @brandColor);
+
+			.menu {
+				width: 100%;
+
+				.setting-menu-item {
+					width: 100%;
+					height: 15px;
+					margin-bottom: 2px;
+					font-size: 12px;
+
+					&:hover {
+						
+					}
+				}
+			}
+		}
+	}
 }
 
 .dock {

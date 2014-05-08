@@ -97,6 +97,41 @@
 	}
 }
 
+.setBottomBubble(@borderWidth,@bubbleFromLeft,@triangleSize,@radius,@contentColor,@borderColor) {
+	@beforeBorderTop: @triangleSize;
+	@beforeBorderRight: 2*@triangleSize;
+	@beforeBorderBottom: @triangleSize;
+
+	background-color: @contentColor;
+	border: @borderWidth solid @borderColor;
+	position: relative;
+	.radius(@radius);
+
+	&:before {
+		content: "";
+		position: absolute;
+		left: @bubbleFromLeft;
+		bottom: -@beforeBorderRight;
+		width: 0;
+		height: 0;
+		border-left: @beforeBorderTop solid transparent;
+		border-top: @beforeBorderRight solid @borderColor;
+		border-right: @beforeBorderBottom solid transparent;
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		bottom: -@beforeBorderRight + 2*@borderWidth;
+		left: @bubbleFromLeft + @borderWidth;
+		width: 0;
+		height: 0;
+		border-left: @beforeBorderTop - @borderWidth solid transparent;
+		border-top: @beforeBorderRight - 2 * @borderWidth solid @contentColor;
+		border-right: @beforeBorderBottom - @borderWidth solid transparent;
+	}
+}
+
 .closeButton(@applier,@crossSpace, @crossHeight, @crossColor) {
 	@crossWidth: @crossSpace;
 
