@@ -181,3 +181,47 @@
 	-o-transform: rotate(@deg);
 	transform: rotate(@deg);
 }
+
+.cross(@crossHeight, @crossColor) {
+
+	@height: 4px;
+	@marginTop: @crossHeight/2 - @height/2;
+
+	position: absolute;
+	top: 35px;
+	left: 35px;
+	width: @crossHeight;
+	height: @crossHeight;
+	
+
+	&:hover {
+
+
+		&:before {
+			background-color: darken( @crossColor,10%);
+		}
+
+		&:after {
+			background-color: darken( @crossColor,10%);
+		}
+	}
+
+	&:before {
+		content: '';
+		position: absolute;
+		width: @crossHeight;
+		height: 4px;
+		background-color: @crossColor;
+		.rotate(90deg);
+		top: @marginTop;
+	}
+
+	&:after {
+		content: '';
+		position: absolute;
+		width: @crossHeight;
+		height: 4px;
+		background-color: @crossColor;
+		top: @marginTop;
+	}
+}

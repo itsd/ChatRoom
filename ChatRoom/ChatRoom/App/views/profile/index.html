@@ -1,5 +1,36 @@
-﻿<div>
+﻿<div class="profile-content">
+	<div class="image-content">
+		<img alt="image_{{username}}" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc1/t1.0-1/c178.0.604.604/s160x160/252231_1002029915278_1941483569_n.jpg" />
+		<div class="hover">
+			<div class="hoverInner"></div>
+		</div>
+	</div>
 
-	Profile
+	<hr />
 
+	<i class="settings-etitor" ng-click="showEdit();" ng-show="!isEdit"></i>
+
+	<div class="profile-content-settings">
+		<div>
+			<span>Name</span>
+			<input type="text" ng-show="isEdit" />
+			<div ng-show="!isEdit">{{name}}</div>
+		</div>
+
+		<div>
+			<span>Username</span>
+			<input type="text" ng-show="isEdit" ng-model="xxxx" />
+			<div ng-show="!isEdit">{{username}}</div>
+		</div>
+
+		<div>
+			<span ng-show="isEdit">Password</span>
+			<input type="password" ng-show="isEdit" />
+		</div>
+
+	</div>
+
+	<input type="submit" ng-show="isEdit" ng-click="saveSettings()" class="save-settings" value="Save" />
+
+	<div class="clearfix"></div>
 </div>

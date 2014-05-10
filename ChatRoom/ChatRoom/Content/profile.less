@@ -1,0 +1,107 @@
+﻿@import 'configuration.less';
+@import 'mixins.less';
+
+.profile-content {
+	width: 400px;
+	margin: 0 auto;
+	.radius(3px);
+	background-color: darken(@bodyColor,2%);
+	padding: 5px;
+
+	.image-content {
+		width: 80px;
+		height: 80px;
+		margin: 10px auto;
+		position: relative;
+		.radius(50%);
+
+		img {
+			width: 80px;
+			height: 80px;
+			.radius(50%);
+			border: 1px solid gray;
+		}
+
+		.hover {
+			position: absolute;
+			width: 80px;
+			height: 80px;
+			.radius(50%);
+			top: 0;
+			left: 0;
+			border: 1px solid transparent;
+
+			.hoverInner {
+				cursor: pointer;
+				display: none;
+				.cross(10px, darken(gray,20%));
+			}
+
+			&:hover {
+				//background-color: lighten(gray, 10%);
+				background-color: rgba(0,0,0,0.1);
+
+				.hoverInner {
+					display: block;
+				}
+			}
+		}
+	}
+
+	hr {
+		background-color: darken(@bodyColor,10%);
+		height: 1px;
+		border: 0;
+		margin: 0 20px;
+	}
+
+	.settings-etitor {
+		display: block;
+		float: right;
+		background-image: url(images/pen.png);
+		background-repeat: no-repeat;
+		width: 16px;
+		height: 16px;
+		cursor: pointer;
+	}
+
+	.profile-content-settings {
+		padding: 10px 10px 2px 10px;
+		width: 255px;
+		margin: 30px auto 10px auto;
+
+
+		div {
+			display: block;
+			clear: both;
+			margin-bottom: 10px;
+
+			span {
+				font-size: 12px;
+				display: block;
+				margin-bottom: 3px;
+			}
+
+			input[type="text"], input[type="password"] {
+				display: block;
+				.radius(5px);
+				text-decoration: none;
+				outline: none;
+				width: 250px;
+				height: 20px;
+				padding: 2px;
+			}
+
+			div {
+				font-size: 13px;
+			}
+		}
+	}
+
+	.save-settings {
+		display: block;
+		float: right;
+		cursor: pointer;
+		padding: 3px 5px;
+	}
+}
