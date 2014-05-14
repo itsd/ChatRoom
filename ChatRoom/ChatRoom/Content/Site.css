@@ -28,57 +28,91 @@ body header {
   background-color: #00b9f2;
 }
 body header div {
-  width: 1110px;
+  width: 1000px;
   margin: 0 auto;
   line-height: 45px;
 }
 body header div .logo {
   display: inline-block;
-  width: 165px;
+  width: 50px;
   float: left;
 }
-body header div ul.menu {
+body header div ul {
   height: 45px;
   line-height: 45px;
-  margin-top: 0;
-  width: 1100px;
-  /*width: 200px;
-				display: inline-block;
-				margin-left: 3px;
-				height: 45px;
-				vertical-align: middle;*/
-  /*a {
-					display: inline-block;
-
-					
-				}
-
-				div {
-					display: inline-block;
-				}*/
+  margin: 0;
 }
-body header div ul.menu li {
+body header div ul li {
   display: inline-block;
-  margin-right: 5px;
-  line-height: 45px;
   color: white;
   font-size: 12px;
   vertical-align: middle;
+  margin-left: 1px;
 }
-body header div ul.menu li:last-child {
-  float: right;
+body header div ul.left {
+  width: 250px;
+  float: left;
 }
-body header div ul.menu li:last-child a {
-  text-decoration: none;
-  color: white;
+body header div ul.left li a {
+  display: inline-block;
 }
-body header div ul.menu li a img {
+body header div ul.left li a img {
   border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   width: 22px;
   height: 22px;
   margin-top: 12px;
+}
+body header div ul.left li span {
+  display: inline-block;
+  line-height: 45px;
+  vertical-align: middle;
+  margin: -12px 0 0 5px;
+  font-weight: bold;
+}
+body header div ul.right {
+  width: 320px;
+  float: right;
+}
+body header div ul.right li {
+  margin-left: 5px;
+  width: 50px;
+}
+body header div ul.right li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+body header div ul.right li a:hover {
+  color: #cccccc;
+}
+body header div ul.right li:after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 1px;
+  background-color: #00ade3;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  margin-top: 22px;
+  margin-left: 2px;
+}
+body header div ul.right li:last-child {
+  float: right;
+  margin-right: 5px;
+}
+body header div ul.right li:last-child:after {
+  display: none;
+}
+body header div ul.right li.noStick:after {
+  display: none;
 }
 body .container {
   padding: 5px;

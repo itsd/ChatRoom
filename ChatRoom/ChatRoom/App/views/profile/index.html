@@ -10,17 +10,24 @@
 
 	<i class="settings-etitor" ng-click="showEdit();" ng-show="!isEdit"></i>
 
-	<div class="profile-content-settings">
+	<div class="profile-content-settings" ng-model="user">
+
 		<div>
 			<span>Name</span>
-			<input type="text" ng-show="isEdit" />
-			<div ng-show="!isEdit">{{name}}</div>
+			<input type="text" ng-show="isEdit" ng-model="user.name" />
+			<div ng-show="!isEdit">{{user.name}}</div>
+		</div>
+
+		<div>
+			<span>Email</span>
+			<input type="text" ng-show="isEdit" ng-model="user.email" />
+			<div ng-show="!isEdit">{{user.email}}</div>
 		</div>
 
 		<div>
 			<span>Username</span>
-			<input type="text" ng-show="isEdit" />
-			<div ng-show="!isEdit">{{username}}</div>
+			<input type="text" ng-show="isEdit" ng-model="user.username" />
+			<div ng-show="!isEdit">{{user.username}}</div>
 		</div>
 
 		<div>

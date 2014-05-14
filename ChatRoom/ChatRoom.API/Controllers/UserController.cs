@@ -7,6 +7,8 @@ using System.Web.Http;
 using ChatRoom.Shared;
 using ChatRoom.Domain.Interfaces.Services;
 using ChatRoom.API.Models.Account;
+using ChatRoom.API.Models.User;
+using ChatRoom.Domain;
 
 namespace ChatRoom.API.Controllers {
 	[RoutePrefix("user")]
@@ -16,6 +18,11 @@ namespace ChatRoom.API.Controllers {
 
 		public UserController(IUserService userService) {
 			_userService = userService.ScreamIfNull("userService");
+		}
+
+		[Route(""), HttpGet]
+		public UserModel CurrentUser() {
+			return _userService.Fetch(Session.Current.UserID);
 		}
 
 		[Route("{id:int}"), HttpGet]
