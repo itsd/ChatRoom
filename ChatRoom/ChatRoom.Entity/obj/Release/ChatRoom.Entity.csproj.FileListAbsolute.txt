@@ -12,3 +12,17 @@ C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\bin\Rel
 C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\obj\Release\ChatRoom.Entity.csprojResolveAssemblyReference.cache
 C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\obj\Release\ChatRoom.Entity.dll
 C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Entity\obj\Release\ChatRoom.Entity.pdb
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Entity\bin\Release\ChatRoom.Entity.dll.config
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Entity\bin\Release\ChatRoom.Entity.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Entity\bin\Release\ChatRoom.Entity.pdb
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Entity\bin\Release\ChatRoom.Domain.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Entity\bin\Release\EntityFramework.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Entity\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Entity\bin\Release\MySql.Data.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Entity\bin\Release\mysql.data.entity.EF6.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Entity\bin\Release\ChatRoom.Domain.pdb
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Entity\bin\Release\EntityFramework.xml
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Entity\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Entity\obj\Release\ChatRoom.Entity.csprojResolveAssemblyReference.cache
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Entity\obj\Release\ChatRoom.Entity.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Entity\obj\Release\ChatRoom.Entity.pdb

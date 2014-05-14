@@ -1,0 +1,120 @@
+.text {
+  display: none;
+}
+.popup {
+  width: 800px;
+  height: 100px;
+  margin: 0 auto;
+}
+.popup .overlay {
+  background: #000;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  opacity: .5;
+}
+.popup .content {
+  position: fixed;
+  top: 20%;
+  right: 39%;
+  width: 400px;
+  height: 200px;
+  z-index: 101;
+}
+.popup .content header {
+  padding: 5px;
+  height: 20px;
+  width: 100%;
+  background-color: #00b9f2;
+  position: relative;
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 0;
+  -moz-border-radius-bottomright: 0;
+  border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  border-bottom-left-radius: 0;
+  border: 1px solid #006b8c;
+  line-height: 20px;
+  vertical-align: middle;
+}
+.popup .content header span {
+  font-size: 12px;
+  font-weight: bold;
+  float: left;
+  display: inline-block;
+}
+.popup .content header .close {
+  display: inline-block;
+  float: right;
+  margin-top: 4px;
+  width: 12px;
+  height: 12px;
+  position: relative;
+}
+.popup .content header .close:hover {
+  cursor: pointer;
+}
+.popup .content header .close:hover:after {
+  background-color: #001d26;
+}
+.popup .content header .close:hover:before {
+  background-color: #001d26;
+}
+.popup .content header .close:after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 3px;
+  background-color: #004459;
+  border-radius: 50%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 5px;
+}
+.popup .content header .close:before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 3px;
+  background-color: #004459;
+  border-radius: 50%;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 5px;
+}
+.popup .content .body {
+  height: 200px;
+  width: 100%;
+  background-color: #59d8ff;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topleft: 0;
+  border-top-left-radius: 0;
+  -webkit-border-top-right-radius: 0;
+  -moz-border-radius-topright: 0;
+  border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-bottom-right-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-bottom-left-radius: 3px;
+  border: 1px solid #006b8c;
+  border-top: none;
+  padding: 5px;
+}
+/*# sourceMappingURL=dialog.css.map */

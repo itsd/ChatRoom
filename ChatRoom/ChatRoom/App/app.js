@@ -10,7 +10,7 @@ app.directive('enter', function () {
 		})
 	};
 });
-
+ 
 function api(path) {
 	return configuration.apiUrl + '/' + path;
 }

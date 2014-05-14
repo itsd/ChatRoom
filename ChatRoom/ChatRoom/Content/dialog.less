@@ -1,0 +1,65 @@
+﻿@import 'configuration.less';
+@import 'mixins.less';
+
+.popup {
+	width: 800px;
+	height: 100px;
+	margin: 0 auto;
+
+	.overlay {
+		background: #000;
+		bottom: 0;
+		left: 0;
+		position: fixed;
+		right: 0;
+		top: 0;
+		z-index: 100;
+		opacity: .5;
+	}
+
+	.content {
+		position: fixed;
+		top: 20%;
+		right: 39%;
+		width: 400px;
+		height: 200px;
+		z-index: 101;
+
+
+		header {
+			padding: 5px;
+			height: 20px;
+			width: 100%;
+			background-color: @brandColor;
+			position: relative;
+			.radiuses(3px, 3px, 0, 0);
+			border: 1px solid darken(@brandColor,20%);
+			line-height: 20px;
+			vertical-align: middle;
+
+			span {
+				font-size: 12px;
+				font-weight: bold;
+				float: left;
+				display: inline-block;
+			}
+
+			.close {
+				display: inline-block;
+				float: right;
+				margin-top: 4px;
+				.closeButton(2px, 12px, 3px, darken(@brandColor,30%));
+			}
+		}
+
+		.body {
+			height: 200px;
+			width: 100%;
+			background-color: lighten(@brandColor,20%);
+			.radiuses(0, 0, 3px, 3px);
+			border: 1px solid darken(@brandColor,20%);
+			border-top: none;
+			padding: 5px;
+		}
+	}
+}

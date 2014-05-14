@@ -11,12 +11,19 @@
 
 	$scope.login = function () {
 		$scope.loading = true;
+		$scope.errorMessage = ''
+
 		sessionService.login($scope.username, $scope.password,
 			function () {
 				$scope.loading = false;
 				$location.path('/');
 			},
-			function () {
+			function (data, status) {
+				if (status == 403) {
+					$scope.errorMessage = 'Incorrect username or password';
+				} else {
+					$scope.errorMessage = 'Could not connect to the server, please try again later';
+				}
 				$scope.loading = false;
 			});
 	}

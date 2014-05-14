@@ -9,3 +9,14 @@ C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Mongo\bin\Rele
 C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Mongo\obj\Release\ChatRoom.Mongo.csprojResolveAssemblyReference.cache
 C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Mongo\obj\Release\ChatRoom.Mongo.dll
 C:\Users\tato7_000\Documents\Visual Studio 2013\Projects\ChatRoom.Mongo\obj\Release\ChatRoom.Mongo.pdb
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Release\ChatRoom.Mongo.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Release\ChatRoom.Mongo.pdb
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Release\ChatRoom.Domain.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Release\MongoDB.Bson.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Release\MongoDB.Driver.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Release\ChatRoom.Domain.pdb
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Release\MongoDB.Bson.xml
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\bin\Release\MongoDB.Driver.xml
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\obj\Release\ChatRoom.Mongo.csprojResolveAssemblyReference.cache
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\obj\Release\ChatRoom.Mongo.dll
+C:\Users\tato7_000\Documents\GitHub\ChatRoom\ChatRoom\ChatRoom.Mongo\obj\Release\ChatRoom.Mongo.pdb

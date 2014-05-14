@@ -50,9 +50,7 @@
 
 			})
 			.error(function (data, status, headers, config) {
-
-				if (failureHandler) { failureHandler(); }
-
+				if (failureHandler) { failureHandler(data, status); }
 			});
 	};
 
