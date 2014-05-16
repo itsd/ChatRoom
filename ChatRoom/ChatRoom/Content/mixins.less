@@ -1,4 +1,6 @@
-﻿.radius (@radius) {
+﻿@import 'configuration.less';
+
+.radius (@radius) {
 	border-radius: @radius;
 	-webkit-border-radius: @radius;
 	-moz-border-radius: @radius;
@@ -192,7 +194,7 @@
 	left: 35px;
 	width: @crossHeight;
 	height: @crossHeight;
-	
+
 
 	&:hover {
 
@@ -223,5 +225,86 @@
 		height: 4px;
 		background-color: @crossColor;
 		top: @marginTop;
+	}
+}
+
+.setDialog(@dialogWidth, @dialogHeight) {
+	/*==Properties==*/
+
+	@marginTop: 150px;
+	@borderWidth: 1px;
+	@paddingPx: 5px;
+	@borderRadiuses: 3px;
+	@startZindex: 100;
+
+	@headerHeight: 30px;
+	@headerColor: @brandColor;
+	@headerBorderColor: darken(@brandColor,20%);
+	@headerTitleColor: darken(@brandColor,30%);
+	@contentColor: lighten(@brandColor,30%);
+	@contentBorderColor: darken(@brandColor,20%);
+	@overlayColor: black;
+
+
+	/*==Properties==*/
+	position: fixed;
+	top: @marginTop;
+	left: 50%;
+	margin: 0 0 0 -(@dialogWidth/2);
+
+	.overlay {
+		position: fixed;
+		background: @overlayColor;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		top: 0;
+		z-index: @startZindex;
+		opacity: .5;
+	}
+
+	.content {
+		position: relative;
+		width: @dialogWidth + @paddingPx;
+		height: @dialogHeight + @paddingPx;
+		padding: @paddingPx;
+		z-index: @startZindex + 1;
+
+		header {
+			height: @headerHeight - (2 * @paddingPx);
+			width: @dialogWidth - @paddingPx;
+			padding: @paddingPx;
+			position: relative;
+			background-color: @headerColor;
+			.radiuses(@borderRadiuses, @borderRadiuses, 0, 0);
+			border: @borderWidth solid @headerBorderColor;
+			line-height: @headerHeight - (2 * @paddingPx);
+
+			span {
+				color: @headerTitleColor;
+				font-weight: bold;
+				font-size: 14px;
+				display: inline-block;
+			}
+
+			div.close {
+				width: 12px;
+				height: 12px;
+				margin-top: 3px;
+				display: inline-block;
+				float: right;
+				.closeButton(2px, 12px, 3px, darken(@headerColor,25%));
+			}
+		}
+
+		.body {
+			height: @dialogHeight;
+			width: @dialogWidth - @paddingPx;
+			padding: @paddingPx;
+			background-color: @contentColor;
+			.radiuses(0, 0, @borderRadiuses, @borderRadiuses);
+			border: @borderWidth solid @contentBorderColor;
+			border-top: none;
+		}
 	}
 }

@@ -21,16 +21,17 @@
 </head>
 <body>
 
+
 	<header>
 		<div ng-include="'app/views/shared/header.html'"></div>
 	</header>
 
+	<div ng-include="'app/views/shared/chatUsers.html'"></div>
+
 	<div class="container">
 		<div id="ngView" ng-view ng-cloak></div>
 	</div>
-
-	<div ng-include="'app/views/shared/chatUsers.html'"></div>
-
+	 
 	@Scripts.Render("~/bundles/angular")
 	@Scripts.Render("~/bundles/angular/app")
 	@Scripts.Render("~/bundles/angular/controllers")

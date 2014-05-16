@@ -1,12 +1,18 @@
-﻿<!--<div class="popup">
+﻿<div class="popup" ng-show="dialog.isOpen">
 	<div class="overlay"></div>
 
 	<div class="content">
 		<header>
-			<span>Title</span>
-			<div class="close"></div>
+			<span>{{dialog.title}}</span>
+			<div class="close" ng-click="dialog.closeDialog();"></div>
 		</header>
-		<div class="body"></div>
+		<div class="body">
+
+			<div style="margin:20px auto; width:100px;">
+				Hello World!!!
+			</div>
+
+		</div>
 	</div>
 
-</div>-->
+</div>

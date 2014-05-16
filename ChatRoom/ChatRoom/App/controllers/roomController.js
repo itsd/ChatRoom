@@ -2,8 +2,19 @@
 
 	$scope.openRoom = chatService.openRoom;
 
+	$scope.dialog = {
+		isOpen: false,
+		title: 'Title ...',
+		closeDialog: function () {
+			this.isOpen = false;
+		},
+		openDialog: function () {
+			this.isOpen = true;
+		}
+	};
+
 	$scope.currentMessage = '';
-	 
+
 	signalrService.setScope($scope);
 
 	$scope.hideChat = function () {

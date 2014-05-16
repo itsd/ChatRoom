@@ -2,34 +2,36 @@
   display: none;
 }
 .popup {
-  width: 800px;
-  height: 100px;
-  margin: 0 auto;
+  /*==Properties==*/
+  /*==Properties==*/
+  position: fixed;
+  top: 150px;
+  left: 50%;
+  margin: 0 0 0 -250px;
 }
 .popup .overlay {
-  background: #000;
+  position: fixed;
+  background: #000000;
   bottom: 0;
   left: 0;
-  position: fixed;
   right: 0;
   top: 0;
   z-index: 100;
   opacity: .5;
 }
 .popup .content {
-  position: fixed;
-  top: 20%;
-  right: 39%;
-  width: 400px;
-  height: 200px;
+  position: relative;
+  width: 505px;
+  height: 305px;
+  padding: 5px;
   z-index: 101;
 }
 .popup .content header {
-  padding: 5px;
   height: 20px;
-  width: 100%;
-  background-color: #00b9f2;
+  width: 495px;
+  padding: 5px;
   position: relative;
+  background-color: #00b9f2;
   -webkit-border-top-left-radius: 3px;
   -moz-border-radius-topleft: 3px;
   border-top-left-radius: 3px;
@@ -44,37 +46,36 @@
   border-bottom-left-radius: 0;
   border: 1px solid #006b8c;
   line-height: 20px;
-  vertical-align: middle;
 }
 .popup .content header span {
-  font-size: 12px;
+  color: #004459;
   font-weight: bold;
-  float: left;
+  font-size: 14px;
   display: inline-block;
 }
-.popup .content header .close {
+.popup .content header div.close {
+  margin-top: 3px;
   display: inline-block;
   float: right;
-  margin-top: 4px;
   width: 12px;
   height: 12px;
   position: relative;
 }
-.popup .content header .close:hover {
+.popup .content header div.close:hover {
   cursor: pointer;
 }
-.popup .content header .close:hover:after {
-  background-color: #001d26;
+.popup .content header div.close:hover:after {
+  background-color: #00313f;
 }
-.popup .content header .close:hover:before {
-  background-color: #001d26;
+.popup .content header div.close:hover:before {
+  background-color: #00313f;
 }
-.popup .content header .close:after {
+.popup .content header div.close:after {
   content: '';
   position: absolute;
   width: 12px;
   height: 3px;
-  background-color: #004459;
+  background-color: #005872;
   border-radius: 50%;
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -83,12 +84,12 @@
   transform: rotate(45deg);
   top: 5px;
 }
-.popup .content header .close:before {
+.popup .content header div.close:before {
   content: '';
   position: absolute;
   width: 12px;
   height: 3px;
-  background-color: #004459;
+  background-color: #005872;
   border-radius: 50%;
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -98,9 +99,10 @@
   top: 5px;
 }
 .popup .content .body {
-  height: 200px;
-  width: 100%;
-  background-color: #59d8ff;
+  height: 300px;
+  width: 495px;
+  padding: 5px;
+  background-color: #8ce4ff;
   -webkit-border-top-left-radius: 0;
   -moz-border-radius-topleft: 0;
   border-top-left-radius: 0;
@@ -115,6 +117,50 @@
   border-bottom-left-radius: 3px;
   border: 1px solid #006b8c;
   border-top: none;
-  padding: 5px;
 }
+/*.content {
+		position: fixed;
+		top: 20%;
+		right: 39%;
+		width: 400px;
+		height: 200px;
+		z-index: 101;
+
+
+		header {
+			padding: 5px;
+			height: 20px;
+			width: 100%;
+			background-color: @brandColor;
+			position: relative;
+			.radiuses(3px, 3px, 0, 0);
+			border: 1px solid darken(@brandColor,20%);
+			line-height: 20px;
+			vertical-align: middle;
+
+			span {
+				font-size: 12px;
+				font-weight: bold;
+				float: left;
+				display: inline-block;
+			}
+
+			.close {
+				display: inline-block;
+				float: right;
+				margin-top: 4px;
+				.closeButton(2px, 12px, 3px, darken(@brandColor,30%));
+			}
+		}
+
+		.body {
+			height: 200px;
+			width: 100%;
+			background-color: lighten(@brandColor,20%);
+			.radiuses(0, 0, 3px, 3px);
+			border: 1px solid darken(@brandColor,20%);
+			border-top: none;
+			padding: 5px;
+		}
+	}*/
 /*# sourceMappingURL=dialog.css.map */
