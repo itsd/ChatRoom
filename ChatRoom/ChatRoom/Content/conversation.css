@@ -1,4 +1,4 @@
-.text {
+﻿.text {
   display: none;
 }
 .conversation {
@@ -139,4 +139,3 @@
 .conversation .conversation-body .conversation-footer input[type="submit"]:active {
   background-color: #cbcbcb;
 }
-/*# sourceMappingURL=conversation.css.map */
