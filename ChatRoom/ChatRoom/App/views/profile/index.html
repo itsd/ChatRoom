@@ -2,7 +2,7 @@
 	<div class="image-content">
 		<img alt="image_{{username}}" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc1/t1.0-1/c178.0.604.604/s160x160/252231_1002029915278_1941483569_n.jpg" />
 		<div class="hover">
-			<div class="hoverInner"></div>
+			<div class="hoverInner" ng-click="dialog.openDialog();"></div>
 		</div>
 	</div>
 
@@ -14,20 +14,20 @@
 
 		<div>
 			<span>Name</span>
-			<input type="text" ng-show="isEdit" ng-model="user.name" />
 			<div ng-show="!isEdit">{{user.name}}</div>
+			<input type="text" ng-show="isEdit" ng-model="user.name" />
 		</div>
 
 		<div>
 			<span>Email</span>
-			<input type="text" ng-show="isEdit" ng-model="user.email" />
 			<div ng-show="!isEdit">{{user.email}}</div>
+			<input type="text" ng-show="isEdit" ng-model="user.email" />
 		</div>
 
 		<div>
 			<span>Username</span>
-			<input type="text" ng-show="isEdit" ng-model="user.username" />
 			<div ng-show="!isEdit">{{user.username}}</div>
+			<input type="text" ng-show="isEdit" ng-model="user.username" />
 		</div>
 
 		<div>
@@ -41,3 +41,7 @@
 
 	<div class="clearfix"></div>
 </div>
+
+<div class="profile-error" ng-show="errorMessage">{{errorMessage}}</div>
+
+<div ng-include="'app/views/shared/dialog.html'"></div>

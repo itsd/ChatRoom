@@ -310,8 +310,17 @@
 
 	.xxx() {
 		@asdaa: 1;
-
-
-
 	}
+}
+
+.error(@width) {
+	@paddingPx: 5px;
+
+	width: @width - 2 * @paddingPx;
+	border: 1px solid @errorBorderColor;
+	background-color: lighten(@errorBodyColor,20%);
+	padding: @paddingPx;
+	font-size: 12px;
+	color: @errorFontColor;
+	.radius(3px);
 }

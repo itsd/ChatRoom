@@ -42,5 +42,24 @@ namespace ChatRoom.API.Controllers {
 				return _sessionService.Login(model.Username, model.Password);
 			} catch(UsernameExistsException) { throw new HttpResponseException(HttpStatusCode.Conflict); }
 		}
+
+		[Route("updateProfile"), HttpPost]
+		public SessionModel UpdateUserSettings(UpdateProfileModel model) {
+			try {
+				var user = _userService.SetUserProfile(Session.Current.UserID, model.Name, model.Username, model.Email, model.Password);
+				return Session.Current;
+
+			} catch(UserNotFoundException) {
+				throw new HttpResponseException(HttpStatusCode.NotFound);
+			} catch(UsernameExistsException) {
+				throw new HttpResponseException(HttpStatusCode.Conflict);
+			} catch(InvalidEmailException) {
+				throw new HttpResponseException(HttpStatusCode.NotAcceptable);
+			} catch(EmailExistsException) {
+				throw new HttpResponseException(HttpStatusCode.Conflict);
+			} catch(Exception) {
+				throw new HttpResponseException(HttpStatusCode.InternalServerError);
+			}
+		}
 	}
 }

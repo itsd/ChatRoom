@@ -40,5 +40,13 @@ namespace ChatRoom.Mongo {
 			);
 		}
 
+		public void UpdateSessionUser(User user) {
+			_context.Sessions.Update(
+				Query.EQ("UserID", user.ID),
+				Update.Set("Username", user.Username),
+				UpdateFlags.Multi,
+				WriteConcern.Unacknowledged
+			);
+		}
 	}
 }

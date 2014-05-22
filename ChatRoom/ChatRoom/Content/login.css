@@ -1,4 +1,4 @@
-.text {
+﻿.text {
   display: none;
 }
 .login-content {
@@ -49,14 +49,17 @@
 .login-content .login .button-content .btn:active {
   background-color: #a5a5a5;
 }
-.login-content .error {
-  width: 270px;
-  margin: 0 auto;
-  padding: 10px;
-  border: 1px solid #fc3434;
-  background-color: #f89494;
+.login-content .login-error {
+  width: 280px;
+  border: 1px solid #ff3333;
+  background-color: #ffcccc;
+  padding: 5px;
+  font-size: 12px;
+  color: #ff0000;
   border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  margin: 0 auto;
   text-align: center;
-  color: red;
   font-size: 14px;
 }

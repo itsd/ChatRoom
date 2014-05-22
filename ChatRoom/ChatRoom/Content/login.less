@@ -1,4 +1,5 @@
 ﻿@import 'configuration.less';
+@import 'mixins.less';
 
 .login-content {
 	width: 900px;
@@ -55,15 +56,10 @@
 		}
 	}
 
-	.error {
-		width: 270px;
+	.login-error {
+		.error(290px);
 		margin: 0 auto;
-		padding: 10px;
-		border: 1px solid #fc3434;
-		background-color: #f89494;
-		border-radius: 3px;
 		text-align: center;
-		color: red;
 		font-size: 14px;
 	}
 }

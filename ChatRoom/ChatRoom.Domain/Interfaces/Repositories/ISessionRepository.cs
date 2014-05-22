@@ -11,5 +11,6 @@ namespace ChatRoom.Domain.Interfaces.Repositories {
 		Session Fetch(string token);
 		Session Fetch(int userId);
 		void UpdateLastAccess(string token);
+		void UpdateSessionUser(User user);
 	}
 }

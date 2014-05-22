@@ -16,5 +16,9 @@ namespace ChatRoom.Shared {
 			if(obj == null) throw new ArgumentNullException(name ?? typeof(T).Name);
 			return obj;
 		}
+
+		public static bool IsVaildEmail(this string email) {
+			return true;
+		}
 	}
 }
