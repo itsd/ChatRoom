@@ -1,6 +1,8 @@
 ﻿app.controller('chatUsersController', function ($scope, $http, chatService, signalrService, sessionService) {
 	$scope.isAuthorised = sessionService.isAuthenticated;
 
+	$scope.showMoreItems = 0;
+
 	$scope.showUsersView = function () {
 		return sessionService.isAuthenticated;
 	}
@@ -28,8 +30,12 @@
 						messages: []
 					}
 				);
+
+				$scope.showMoreItems++;
 			}
 		}
+
+
 	}
 
 	$scope.connectToUsers = function () {
@@ -136,10 +142,12 @@
 
 	$scope.closeRoom = function (roomId) {
 		chatService.rooms.where(function (obj) { if (obj.id == roomId) return true; })[0].isOpen = false;
+		//$scope.showMoreItems--;
 	}
 
 	$scope.removeRoom = function (roomId) {
 		chatService.rooms.removeWithProperty(function (obj) { if (obj.id == roomId) return true; });
+		$scope.showMoreItems--;
 	}
 
 	$scope.sendMessage = function (roomId, roomToken) {

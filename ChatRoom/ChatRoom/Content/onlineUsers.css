@@ -394,3 +394,21 @@
   height: 270px;
   width: 230px;
 }
+.dock .more-items {
+  width: 35px;
+  height: 19px;
+  padding: 3px;
+  cursor: pointer;
+  background-image: url(images/internet_group_chat.png);
+  background-repeat: no-repeat;
+  background-position-x: 2px;
+  background-position-y: 3px;
+}
+.dock .more-items span {
+  color: #1a1a1a;
+  font-weight: bold;
+  font-size: smaller;
+  width: 20px;
+  display: block;
+  margin: 1px 0 0 25px;
+}

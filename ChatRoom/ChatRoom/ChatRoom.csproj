@@ -223,6 +223,7 @@
     <Content Include="Content\images\smiles\Smiley-cool-icon.png" />
     <Content Include="Content\images\smiles\Smiley-stick-tongue-icon.png" />
     <Content Include="Content\images\Status-user-online-icon.png" />
+    <Content Include="Content\images\internet_group_chat.png" />
     <Content Include="Content\login.css">
       <DependentUpon>login.less</DependentUpon>
     </Content>
