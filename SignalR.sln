@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR", "SignalR\SignalR.csproj", "{4D88296C-C960-4E02-B23E-0BD0427FC964}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{293F37D4-FCA2-4D7A-A938-78E026E5524F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nostromo.Common", "E:\TFS\iTex Projects\Nostromo\Nostromo.Common\Nostromo.Common.csproj", "{9C663C05-A23F-4E81-A6AF-EECFCBC60A5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nostromo.Mongo", "E:\TFS\iTex Projects\Nostromo\Nostromo.Mongo\Nostromo.Mongo.csproj", "{B022BE7E-E037-4C8F-AC69-08171AD425A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B87E5DCC-B941-4E25-9592-08E6FFC51A25}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D88296C-C960-4E02-B23E-0BD0427FC964}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D88296C-C960-4E02-B23E-0BD0427FC964}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D88296C-C960-4E02-B23E-0BD0427FC964}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D88296C-C960-4E02-B23E-0BD0427FC964}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C663C05-A23F-4E81-A6AF-EECFCBC60A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C663C05-A23F-4E81-A6AF-EECFCBC60A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C663C05-A23F-4E81-A6AF-EECFCBC60A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C663C05-A23F-4E81-A6AF-EECFCBC60A5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B022BE7E-E037-4C8F-AC69-08171AD425A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B022BE7E-E037-4C8F-AC69-08171AD425A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B022BE7E-E037-4C8F-AC69-08171AD425A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B022BE7E-E037-4C8F-AC69-08171AD425A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9C663C05-A23F-4E81-A6AF-EECFCBC60A5D} = {293F37D4-FCA2-4D7A-A938-78E026E5524F}
+		{B022BE7E-E037-4C8F-AC69-08171AD425A8} = {293F37D4-FCA2-4D7A-A938-78E026E5524F}
+	EndGlobalSection
+EndGlobal

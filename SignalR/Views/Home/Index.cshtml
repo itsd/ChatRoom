@@ -1,0 +1,107 @@
+﻿<div style="height:500px;">
+
+	<br />
+	<br />
+	<br />
+
+
+
+
+	<div id="messages">
+		 
+	</div>
+	<div style="height:5px; width:1px;">
+
+	</div>
+	<div>
+
+		<div style="display:inline-block;">
+			<input id="textValue" type="text" style="width:200px; height:28px;" />
+		</div>
+
+		<div style="display:inline-block;">
+			<a class="btn btn-default" onclick="postMessage()">Send</a>
+		</div>
+	</div>
+
+</div>
+
+<style>
+	#messages {
+		width: 260px;
+		height: 250px;
+		overflow-y: auto;
+		border: 1px solid gray;
+		border-radius: 3px;
+		padding: 0 2px;
+	}
+
+		#messages .msgItem {
+			margin-top: 2px;
+			background-color: #e2dcdc;
+			padding: 2px;
+		}
+</style>
+
+<script>
+	var connection;
+
+	$(function () {
+		$.ajax({
+			url: "/balancer/instance/",
+			contentType: 'application/json; charset=utf-8',
+			type: "GET",
+			success: function (x, y, z) {
+				connectToSignalR(x.url);
+			}
+		});
+
+		$('#textValue').keypress(function (e) {
+			if (e.which == 13) {//Enter key pressed
+				postMessage();
+			}
+		});
+	});
+
+	function connectToSignalR(url) {
+
+		//configure signalR connection
+		connection = $.connection;
+		connection.hub.url = url;
+		connection.hub.logging = true;
+
+
+		//Client methods
+		connection.chat.client.sendMessage = function onRoomMessage(msg) {
+			  
+			var msgssss1 = msg.replace(/:D/g, '<img src="http://img4.wikia.nocookie.net/__cb20061223084010/lostpedia/images/e/e4/Big_smile.gif" />');
+			var msgssss2 = msgssss1.replace(/:P/g, '<img src="http://www.oodmag.com/community/images/smilies/1134_tongue.gif" />');
+			var msgssss3 = msgssss2.replace(';)', '<img src="https://uglounge.com/images/smilies/Wink.gif" />');
+			var msgssss4 = msgssss3.replace(':)', '<img src="https://www.ihg.com/hotels/images/chatImages/images/smiles/smile_smily.png" />');
+
+			$("#messages").append('<div class="msgItem">' + msgssss4 + '</div>');
+			$("#messages").animate({ scrollTop: $("#messages").get(0).scrollHeight }, 'slow');
+		}
+
+
+		//Start listening
+		connection.hub.start({ jsonp: true }).done(function () {
+			console.log("connected to >> " + url);
+		});
+	}
+
+	function postMessage() {
+
+		var msgSend = $("#textValue").val();
+		$("#textValue").val('');
+
+
+		$.ajax({
+			url: "/posts/createpost",
+			contentType: 'application/json; charset=utf-8',
+			type: "POST",
+			data: JSON.stringify({ comment: msgSend }),
+			success: function (x, y, z) { }
+		});
+	}
+</script>
