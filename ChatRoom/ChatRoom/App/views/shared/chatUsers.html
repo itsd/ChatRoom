@@ -1,0 +1,76 @@
+﻿<div ng-controller="chatUsersController">
+	<div class="online-users" ng-show="showUsersView()">
+		<div class="online-user-item" ng-repeat="user in chatUsers" ng-click="changeRoom(user.id,user.username)">
+			<a>
+				<img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc1/t1.0-1/c14.0.47.47/s32x32/252231_1002029915278_1941483569_t.jpg" />
+			</a>
+			<div class="user-fullname">
+				{{user.username}}
+			</div>
+			<div class="user-online" ng-show="user.isOnline"></div>
+		</div>
+
+		<div class="chat-settings">
+			<a class="setting" ng-click="showSettingBubbles();"></a>
+			<div class="bubble" ng-show="showSettingBubble">
+				<div class="menu">
+					<div class="setting-menu-item">Chat sound</div>
+					<div class="setting-menu-item">Advanced settings</div>
+					<div class="setting-menu-item" ng-click="showSettingBubbles();">Close</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="dock">
+
+		<div class="item more-items" ng-show="showMoreItems>2">
+			<span>{{showMoreItems}}</span>
+			<div class="closed-items hidden"></div>
+			<div class="semi-line hidden"></div>
+		</div>
+
+		<div class="item" ng-class="{'item-open':room.isOpen}" ng-repeat="room in rooms" ng-class="{item-open:room.isOpen}">
+			<div ng-show="!room.isOpen" class="header" ng-click="openRoom(room.id)">
+				<div class="user-fullname">
+					{{room.name}}
+				</div>
+				<a class="closer" ng-click="removeRoom(room.id)"></a>
+			</div>
+
+			<div ng-show="room.isOpen" class="content">
+
+				<div class="header" ng-click="closeRoom(room.id)">
+					<div class="user-fullname">{{room.name}}</div>
+					<a class="closer-Header" ng-click="removeRoom(room.id)"></a>
+				</div>
+
+				<div class="body body-chat-content">
+					<div class="message-item" ng-repeat="message in room.messages">
+						<a ng-show="message.isUser">
+							<img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc1/t1.0-1/c14.0.47.47/s32x32/252231_1002029915278_1941483569_t.jpg" />
+						</a>
+						<div class="comment" ng-class="{usermessage:message.isUser, yourmessage:!message.isUser}">{{message.message}}</div>
+					</div>
+				</div>
+
+				<div class="footer">
+					<form ng-submit="sendMessage(room.id,room.token)">
+						<input type="text" autofocus ng-model="room.currentMessage" />
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="hiddenPlayer" style="display:none;"></div>
+
+<script type="text/template" class="chat_audio">
+	<audio controls autoplay class="none audioPlayer">
+		<source src="/Content/sound/sound.ogg" type="audio/ogg">
+		<source src="/Content/sound/sound.mp3" type="audio/mpeg">
+		<source src="/Content/sound/sound.wav" type="audio/wav">
+	</audio>
+</script>

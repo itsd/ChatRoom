@@ -1,0 +1,152 @@
+﻿.text {
+  display: none;
+}
+.profile-content {
+  width: 400px;
+  margin: 0 auto;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  background-color: #f4f8f8;
+  padding: 5px;
+}
+.profile-content .image-content {
+  width: 80px;
+  height: 80px;
+  margin: 10px auto;
+  position: relative;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+}
+.profile-content .image-content img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border: 1px solid gray;
+}
+.profile-content .image-content .hover {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  top: 0;
+  left: 0;
+  border: 1px solid transparent;
+}
+.profile-content .image-content .hover .hoverInner {
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  top: 35px;
+  left: 35px;
+  width: 10px;
+  height: 10px;
+}
+.profile-content .image-content .hover .hoverInner:hover:before {
+  background-color: #333333;
+}
+.profile-content .image-content .hover .hoverInner:hover:after {
+  background-color: #333333;
+}
+.profile-content .image-content .hover .hoverInner:before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 4px;
+  background-color: #4d4d4d;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  top: 3px;
+}
+.profile-content .image-content .hover .hoverInner:after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 4px;
+  background-color: #4d4d4d;
+  top: 3px;
+}
+.profile-content .image-content .hover:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.profile-content .image-content .hover:hover .hoverInner {
+  display: block;
+}
+.profile-content hr {
+  background-color: #dae9e9;
+  height: 1px;
+  border: 0;
+  margin: 0 20px;
+}
+.profile-content .settings-etitor {
+  display: block;
+  float: right;
+  background-image: url(images/pen.png);
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.profile-content .profile-content-settings {
+  padding: 10px 10px 2px 10px;
+  width: 255px;
+  margin: 30px auto 10px auto;
+}
+.profile-content .profile-content-settings div {
+  display: block;
+  clear: both;
+  margin-bottom: 10px;
+  width: 250px;
+}
+.profile-content .profile-content-settings div span {
+  font-size: 12px;
+  margin-bottom: 3px;
+  font-weight: bold;
+  display: inline-block;
+  width: 100px;
+}
+.profile-content .profile-content-settings div input[type="text"],
+.profile-content .profile-content-settings div input[type="password"] {
+  display: block;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  text-decoration: none;
+  outline: none;
+  width: 250px;
+  height: 20px;
+  padding: 2px;
+}
+.profile-content .profile-content-settings div div {
+  font-size: 12px;
+  float: right;
+  display: inline-block;
+  width: 100px;
+}
+.profile-content .save-settings {
+  display: block;
+  float: right;
+  cursor: pointer;
+  padding: 3px 5px;
+}
+.profile-error {
+  margin: 10px auto;
+  width: 390px;
+  border: 1px solid #ff3333;
+  background-color: #ffcccc;
+  padding: 5px;
+  font-size: 12px;
+  color: #ff0000;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
