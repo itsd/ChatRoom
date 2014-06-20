@@ -6,7 +6,7 @@
 	};
 
 	var connection;
-	var connectionUrl = "http://localhost:47806/signalR";
+	var connectionUrl = configuration.signalRUrl;
 	var COOKIEUSER_KEY = "CURRENT_USER";
 
 	signalrSession.startListening = function (getChatUsers, getOnlineUser, wentOffline, onMessageCallBack, onYourMessageCallBack, callBack) {
