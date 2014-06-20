@@ -34,8 +34,12 @@ body header div {
 }
 body header div .logo {
   display: inline-block;
-  width: 50px;
+  width: 40px;
   float: left;
+}
+body header div .logo a {
+  margin-top: 5px;
+  display: block;
 }
 body header div ul {
   height: 45px;

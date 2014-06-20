@@ -7,6 +7,7 @@
 
 	var connection;
 	var connectionUrl = configuration.signalRUrl;
+	//var connectionUrl = "http://localhost:47806/signalR";
 	var COOKIEUSER_KEY = "CURRENT_USER";
 
 	signalrSession.startListening = function (getChatUsers, getOnlineUser, wentOffline, onMessageCallBack, onYourMessageCallBack, callBack) {
@@ -43,7 +44,7 @@
 
 		//Start hub connection
 		//connection.hub.start({ jsonp: true/*, transport: 'webSockets'*/ })     longPolling
-		connection.hub.start({ jsonp: true, transport: 'webSockets' })
+		connection.hub.start({ jsonp: true, transport: 'longPolling' })
 			.done(function () {
 				console.log("connected to >> " + connectionUrl);
 				$("#connectionID").html($.connection.hub.id);
@@ -53,6 +54,10 @@
 		connection.hub.disconnected(function () {
 			//alert("You went offline");
 		});
+	}
+
+	signalrSession.stopListening = function () {
+		connection.hub.stop();
 	}
 
 	signalrSession.sendMessageTo = function (msg, roomToken, roomUsers, callBack) {

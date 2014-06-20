@@ -29,11 +29,12 @@
 	}
 });
 
-app.controller('logoutController', function ($scope, $location, sessionService) {
+app.controller('logoutController', function ($scope, $location, sessionService, signalrService) {
 
 	$scope.loading = true;
 	sessionService.logout(function () {
 		$scope.loading = false;
+		signalrService.stopListening();
 		$location.path('/');
 	});
 });

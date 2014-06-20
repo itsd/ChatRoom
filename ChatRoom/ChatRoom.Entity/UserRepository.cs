@@ -35,5 +35,9 @@ namespace ChatRoom.Entity {
 		public IEnumerable<User> GetAll() {
 			return _context.Users;
 		}
+
+		public IEnumerable<User> GetFriends(int userId) {
+			return _context.Users.Where(u => u.ID != userId);
+		}
 	}
 }

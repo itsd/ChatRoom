@@ -10,5 +10,6 @@ namespace ChatRoom.Domain.Interfaces.Services {
 		User Register(string username, string password);
 		User SetUserProfile(int userId, string name, string username, string email, string password);
 		IEnumerable<User> GetAll();
+		IEnumerable<User> GetFriends(int userId);
 	}
 }

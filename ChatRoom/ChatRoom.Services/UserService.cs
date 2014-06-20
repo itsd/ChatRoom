@@ -78,5 +78,9 @@ namespace ChatRoom.Services {
 
 			return user;
 		}
+
+		public IEnumerable<User> GetFriends(int userId) {
+			return _userRepository.GetFriends(userId);
+		}
 	}
 }

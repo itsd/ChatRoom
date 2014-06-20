@@ -36,8 +36,13 @@ body {
 
 			.logo {
 				display: inline-block;
-				width: 50px;
+				width: 40px;
 				float: left;
+
+				a {
+					margin-top: 5px;
+					display: block;
+				}
 			}
 
 			ul {
@@ -54,78 +59,78 @@ body {
 				}
 			}
 
-				ul.left {
-					width: 250px;
-					float: left;
+			ul.left {
+				width: 250px;
+				float: left;
 
-					li {
-						a {
-							display: inline-block;
+				li {
+					a {
+						display: inline-block;
 
-							img {
-								.radius(3px);
-								width: 22px;
-								height: 22px;
-								margin-top: 12px;
-							}
-						}
-
-						span {
-							display: inline-block;
-							line-height: 45px;
-							vertical-align: middle;
-							margin: -12px 0 0 5px;
-							font-weight: bold;
+						img {
+							.radius(3px);
+							width: 22px;
+							height: 22px;
+							margin-top: 12px;
 						}
 					}
+
+					span {
+						display: inline-block;
+						line-height: 45px;
+						vertical-align: middle;
+						margin: -12px 0 0 5px;
+						font-weight: bold;
+					}
 				}
+			}
 
-				ul.right {
-					width: 320px;
-					float: right;
+			ul.right {
+				width: 320px;
+				float: right;
 
-					li {
-						margin-left: 5px;
-						width: 50px;
+				li {
+					margin-left: 5px;
+					width: 50px;
 
-						a {
-							text-decoration: none;
-							color: white;
-							font-weight: bold;
+					a {
+						text-decoration: none;
+						color: white;
+						font-weight: bold;
 
-							&:hover {
-								color: darken(white,20%);
-							}
+						&:hover {
+							color: darken(white,20%);
 						}
+					}
+
+					&:after {
+						content: '';
+						position: absolute;
+						width: 20px;
+						height: 1px;
+						background-color: darken(@brandColor,3%);
+						.rotate(90deg);
+						.radius(3px);
+						margin-top: 22px;
+						margin-left: 2px;
+					}
+
+					&:last-child {
+						float: right;
+						margin-right: 5px;
 
 						&:after {
-							content: '';
-							position: absolute;
-							width: 20px;
-							height: 1px;
-							background-color: darken(@brandColor,3%);
-							.rotate(90deg);
-							.radius(3px);
-							margin-top: 22px;
-							margin-left: 2px;
-						}
-
-						&:last-child {
-							float: right;
-							margin-right: 5px;
-
-							&:after {
-								display: none;
-							}
+							display: none;
 						}
 					}
-
-						li.noStick {
-							&:after {
-								display: none;
-							}
-						}
 				}
+
+				li.noStick {
+					&:after {
+						display: none;
+					}
+				}
+			}
 		}
 	}
 

@@ -22,6 +22,11 @@ namespace ChatRoom {
 			bundles.Add(new ScriptBundle("~/bundles/angular/controllers").Include(
 				"~/App/controllers/*.js"));
 
+			bundles.Add(new ScriptBundle("~/bundles/signalR").Include(
+				"~/Scripts/jquery-1.10.2.js",
+				"~/Scripts/jquery.signalR-2.0.3.js",
+				"http://localhost:47806/signalr/js"));
+
 
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 					  "~/Content/bootstrap.css",

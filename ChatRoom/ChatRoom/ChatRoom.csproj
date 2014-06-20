@@ -222,6 +222,8 @@
     <Content Include="Content\images\smiles\Emotes-face-wink-icon.png" />
     <Content Include="Content\images\smiles\Smiley-cool-icon.png" />
     <Content Include="Content\images\smiles\Smiley-stick-tongue-icon.png" />
+    <Content Include="Content\images\speech-balloon-green-c-icon.png" />
+    <Content Include="Content\images\speech-balloon-white-c-icon.png" />
     <Content Include="Content\images\Status-user-online-icon.png" />
     <Content Include="Content\images\internet_group_chat.png" />
     <Content Include="Content\login.css">

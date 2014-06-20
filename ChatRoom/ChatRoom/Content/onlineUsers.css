@@ -96,6 +96,14 @@
   border-top: 14px solid #f8f5f5;
   border-right: 7px solid transparent;
 }
+.online-users .chat-settings .bubble .overlay {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  display: none;
+}
 .online-users .chat-settings .bubble .menu {
   width: 100%;
 }

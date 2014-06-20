@@ -25,6 +25,20 @@ namespace ChatRoom.API.Controllers {
 			return _userService.Fetch(Session.Current.UserID);
 		}
 
+		[Route("friends"), HttpGet]
+		public IEnumerable<UserModel> GetFriends() {
+
+			List<UserModel> response = new List<UserModel> { };
+
+			var friends = _userService.GetFriends(Session.Current.UserID);
+
+			foreach(var item in friends) {
+				response.Add(item);
+			}
+
+			return response;
+		}
+
 		[Route("{id:int}"), HttpGet]
 		public SessionModel GetUser(int id) {
 			var user = _userService.Fetch(id);

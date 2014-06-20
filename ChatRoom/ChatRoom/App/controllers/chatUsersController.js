@@ -39,7 +39,9 @@
 	}
 
 	$scope.connectToUsers = function () {
-		signalrService.startListening(
+
+		chatService.getFriends(
+			signalrService.startListening(
 				function (data) { // U got online users 
 					for (var i = 0; i < data.length; i++) {
 						chatService.addOnlineUser(data[i], function () {
@@ -123,7 +125,13 @@
 				function () { // call back
 					$scope.$apply();
 				}
-			);
+			)
+		);
+
+
+
+
+
 	}
 
 	$scope.stopConnection = function () {

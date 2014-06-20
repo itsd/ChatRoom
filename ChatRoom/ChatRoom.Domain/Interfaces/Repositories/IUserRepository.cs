@@ -18,5 +18,7 @@ namespace ChatRoom.Domain.Interfaces.Repositories {
 		bool EmailExists(int id, string email);
 
 		IEnumerable<User> GetAll();
+
+		IEnumerable<User> GetFriends(int userId);
 	}
 }

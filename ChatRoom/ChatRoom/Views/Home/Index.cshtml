@@ -1,5 +1,8 @@
 ﻿<!DOCTYPE html>
 <html ng-app="chatApp">
+@{
+	string serverUrl = "http://localhost:47806/signalr/js";
+}
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,12 +18,10 @@
 
 	<script src="~/Scripts/jquery-1.10.2.js"></script>
 	<script src="~/Scripts/jquery.signalR-2.0.3.js"></script>
-	<script src='http://localhost:47806/signalr/js'></script>
-	<script src="~/App/main.js"></script>
+	<script src='@serverUrl'></script>
 
 </head>
 <body>
-
 
 	<header>
 		<div ng-include="'app/views/shared/header.html'"></div>
