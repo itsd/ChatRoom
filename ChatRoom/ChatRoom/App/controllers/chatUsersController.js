@@ -3,13 +3,11 @@
 
 	$scope.showMoreItems = 0;
 
-	$scope.showUsersView = function () {
-		return sessionService.isAuthenticated;
-	}
-
 	$scope.showSettingBubble = false;
 
-	$scope.chatUsers = chatService.chatUsers;
+	$scope.chat = chatService;
+
+	$scope.session = sessionService;
 
 	$scope.changeRoom = function (userId, username) {
 		if (sessionService.isAuthenticated) {
@@ -39,7 +37,6 @@
 	}
 
 	$scope.connectToUsers = function () {
-
 		chatService.getFriends(
 			signalrService.startListening(
 				function (data) { // U got online users 
@@ -127,11 +124,6 @@
 				}
 			)
 		);
-
-
-
-
-
 	}
 
 	$scope.stopConnection = function () {

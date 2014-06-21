@@ -57,7 +57,7 @@
 	}
 
 	signalrSession.stopListening = function () {
-		connection.hub.stop();
+		//connection.hub.stop();
 	}
 
 	signalrSession.sendMessageTo = function (msg, roomToken, roomUsers, callBack) {

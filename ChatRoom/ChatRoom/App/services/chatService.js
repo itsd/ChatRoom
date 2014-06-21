@@ -37,14 +37,16 @@
 
 	shareData.getFriends = function (callBack) {
 
+		shareData.chatUsers = [];
+
 		$http.get(api('user/friends')).success(
 				function (data, status, headers, config) {
-
-					//shareData.chatUsers = [];
 
 					for (var i = 0; i < data.length; i++) {
 						shareData.chatUsers.push({ id: data[i].id, username: data[i].username, isOnline: false });
 					}
+
+					console.log(shareData.chatUsers);
 
 					if (callBack) { callBack(); }
 				}
