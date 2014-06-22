@@ -37,6 +37,7 @@
 	}
 
 	$scope.connectToUsers = function () {
+
 		chatService.getFriends(
 			signalrService.startListening(
 				function (data) { // U got online users 
@@ -185,9 +186,28 @@
 		$scope.showSettingBubble = !$scope.showSettingBubble;
 	}
 
+	//if (sessionService.isAuthenticated) {
+	//	console.log('is authorized');
+	//	$scope.connectToUsers();
+	//} else {
+	//	sessionService.initializeLoginSuccess($scope.connectToUsers);
+	//	console.log('is not authorized');
+	//}
+
 	if (sessionService.isAuthenticated) {
 		$scope.connectToUsers();
-	} else {
-		sessionService.initializeLoginSuccess($scope.connectToUsers);
 	}
+
+	//Don't like this ...
+	$scope.$watch(function () {
+		return sessionService.isAuthenticated;
+	}, function (newVal, oldVal) {
+
+		if (newVal === oldVal) { return; }
+
+		if (sessionService.isAuthenticated) {
+			$scope.connectToUsers();
+		}
+	}, true);
+
 });

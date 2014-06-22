@@ -6,22 +6,23 @@
 	};
 
 	var connection;
-	var connectionUrl = configuration.signalRUrl;
-	//var connectionUrl = "http://localhost:47806/signalR";
 	var COOKIEUSER_KEY = "CURRENT_USER";
 
 	signalrSession.startListening = function (getChatUsers, getOnlineUser, wentOffline, onMessageCallBack, onYourMessageCallBack, callBack) {
 		//Configure connection
 		connection = $.connection;
-		connection.hub.url = connectionUrl;
-		//connection.hub.logging = true;
-		//connection.hub.transportConnectTimeout = 50;
-		//connection.hub.qs = "token=" + $cookieStore.get(COOKIEUSER_KEY).token;
+		connection.hub.url = configuration.signalR.serverUrl;
+		connection.hub.logging = configuration.signalR.logging;
+		//connection.hub.transportConnectTimeout = configuration.signalR.transportConnectTimeout;
 		connection.hub.qs = { 'token': $cookieStore.get(COOKIEUSER_KEY).token };
 
 		connection.chatRoom.client.getWhoCameOnline = function (data) {
 			getOnlineUser(data);
 			callBack();
+		}
+
+		connection.chatRoom.client.done = function () {
+			alert("You are done !!!");
 		}
 
 		connection.chatRoom.client.getChatUsers = function (data) {
@@ -43,21 +44,26 @@
 		}
 
 		//Start hub connection
-		//connection.hub.start({ jsonp: true/*, transport: 'webSockets'*/ })     longPolling
-		connection.hub.start({ jsonp: true, transport: 'longPolling' })
-			.done(function () {
-				console.log("connected to >> " + connectionUrl);
-				$("#connectionID").html($.connection.hub.id);
+		connection.hub.start({ jsonp: configuration.signalR.jsonp, transport: configuration.signalR.transport })
+			.done(function (x, y, z) {
+				console.log("connected to >> " + configuration.signalR.serverUrl);
+				console.log(x);
+				console.log(y);
+				console.log(z);
+
 			})
-			.fail(function () { console.log("could not connect to " + connectionUrl); });
+			.fail(function () {
+				console.log("could not connect to " + configuration.signalR.serverUrl);
+			});
 
 		connection.hub.disconnected(function () {
-			//alert("You went offline");
+			chatService.chatUsers = [];
+			console.log("disconnected from " + configuration.signalR.serverUrl);
 		});
 	}
 
 	signalrSession.stopListening = function () {
-		//connection.hub.stop();
+		connection.hub.stop();
 	}
 
 	signalrSession.sendMessageTo = function (msg, roomToken, roomUsers, callBack) {

@@ -2,7 +2,19 @@
 var isDebug = true;
 
 var configuration = {
-	apiUrl: isDebug ? 'http://localhost:10512' : 'http://localhost/chatAPI',
+	api: {
+		Url: isDebug ? 'http://localhost:10512' : 'http://localhost/chatAPI',
+	},
+
 	viewUrlPrefix: isDebug ? 'http://localhost:10511' : 'http://localhost/chat',
-	signalRUrl: isDebug ? 'http://localhost:47806/signalr' : 'http://localhost/chatServer/signalr/'
+
+	signalR: {
+		// serverUrl = "http://localhost:47806/signalR";
+		serverUrl: 'http://localhost/chatServer/signalr',
+		//serverUrl: isDebug ? 'http://localhost:47806/signalr' : 'http://localhost/chatServer/signalr',
+		transportConnectTimeout: 50,
+		logging: false,
+		jsonp: true,
+		transport: ['webSockets', 'longPolling']
+	}
 }

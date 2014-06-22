@@ -1,3 +1,3 @@
-﻿app.controller('headerController', function ($scope, sessionService) {
+﻿app.controller('headerController', function ($scope, sessionService, signalrService) {
 	$scope.session = sessionService;
 });

@@ -30,5 +30,11 @@
 				controller: 'profileController'
 			});
 
+		$routeProvider.when('/share',
+			{
+				templateUrl: 'app/views/profile/index.html',
+				controller: 'shareController'
+			});
+
 		//$locationProvider.html5Mode(true);
 	});

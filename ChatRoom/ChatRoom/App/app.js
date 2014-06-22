@@ -10,9 +10,9 @@ app.directive('enter', function () {
 		})
 	};
 });
- 
+
 function api(path) {
-	return configuration.apiUrl + '/' + path;
+	return configuration.api.Url + '/' + path;
 }
 
 Array.prototype.where = function (predicate) {
