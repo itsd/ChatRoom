@@ -10,10 +10,10 @@ var configuration = {
 
 	signalR: {
 		// serverUrl = "http://localhost:47806/signalR";
-		serverUrl: 'http://localhost/chatServer/signalr',
-		//serverUrl: isDebug ? 'http://localhost:47806/signalr' : 'http://localhost/chatServer/signalr',
+		//serverUrl: 'http://localhost/chatServer/signalr',
+		serverUrl: isDebug ? 'http://localhost:47806/signalr' : 'http://localhost/chatServer/signalr',
 		transportConnectTimeout: 50,
-		logging: false,
+		logging: true,
 		jsonp: true,
 		transport: ['webSockets', 'longPolling']
 	}

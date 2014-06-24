@@ -21,10 +21,6 @@
 			callBack();
 		}
 
-		connection.chatRoom.client.done = function () {
-			alert("You are done !!!");
-		}
-
 		connection.chatRoom.client.getChatUsers = function (data) {
 			getChatUsers(data);
 			callBack();
@@ -47,10 +43,6 @@
 		connection.hub.start({ jsonp: configuration.signalR.jsonp, transport: configuration.signalR.transport })
 			.done(function (x, y, z) {
 				console.log("connected to >> " + configuration.signalR.serverUrl);
-				console.log(x);
-				console.log(y);
-				console.log(z);
-
 			})
 			.fail(function () {
 				console.log("could not connect to " + configuration.signalR.serverUrl);

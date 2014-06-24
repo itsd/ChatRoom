@@ -23,8 +23,7 @@ namespace ChatRoom.Server.SignalR {
 			GlobalHost.DependencyResolver.Register(typeof(JsonSerializer), () => serializer);
 
 			//Authentication
-			//GlobalHost.HubPipeline.RequireAuthentication();
-			 
+			//GlobalHost.HubPipeline.RequireAuthentication(); 
 		}
 	}
 }

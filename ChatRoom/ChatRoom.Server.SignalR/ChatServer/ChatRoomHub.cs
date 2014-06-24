@@ -18,13 +18,11 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 		public ChatRoomHub() {
 			_messenger = Messanger.Instance;
-			Log("Pass constructor");
 		}
 
 		#region BaseMethods
 
 		public override Task OnConnected() {
-			Log("Start onconnected");
 			//Connection Properties
 			string roomToken = Context.QueryString["groupToken"];
 			string token = Context.QueryString["token"];
@@ -49,13 +47,10 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 				Clients.Caller.getChatUsers(users);
 			}
 
-			Log("pass onconnected");
-
 			return base.OnConnected();
 		}
 
 		public override Task OnDisconnected() {
-			Log("start ondisconnected");
 
 			//Connection Properties
 			string roomToken = Context.QueryString["groupToken"];
@@ -75,7 +70,6 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 				Clients.Others.wentOffline(user);
 			}
 
-			Log("passed ondisconnected");
 			return base.OnDisconnected();
 		}
 
@@ -84,11 +78,6 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 		}
 
 		#endregion
-
-		public void Log(string message) {
-			string path = @"E:\Log\Log.txt";
-			System.IO.File.AppendAllText(path, message);
-		}
 
 		public string SendMessage(string message, IEnumerable<int> userIds) {
 			//Connection Properties
@@ -138,6 +127,11 @@ namespace ChatRoom.Server.SignalR.ChatServer {
 
 			//Return room token to post creator
 			return roomToken;
+		}
+
+		public void Log(string message) {
+			string path = @"E:\Log\Log.txt";
+			System.IO.File.AppendAllText(path, message + Environment.NewLine);
 		}
 	}
 }
